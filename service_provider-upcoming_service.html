@@ -9,7 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel=stylesheet>
-    <title>Upcoming Service</title>
+    <title>Service_provider -> Upcoming Service</title>
 </head>
 
 <body>
@@ -17,8 +17,8 @@
         <div class="container">
             <nav class="navbar navbar-expand-lg">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="#">
-                        <img src="images\site-logo.png" alt="Logo">
+                    <a class="navbar-brand" href="home.html">
+                        <img src="images/site-logo.png" alt="Logo">
                     </a>
 
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -28,12 +28,8 @@
 
                     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                         <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a class="nav-link border-btn" href="#">Book now</a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link border-btn-bg" href="#">Prices & Services</a>
+                            <li class="nav-item under-line">
+                                <a class="nav-link" href="price.html">Prices & Services</a>
                             </li>
 
                             <li class="nav-item under-line">
@@ -45,15 +41,24 @@
                             </li>
 
                             <li class="nav-item under-line">
-                                <a class="nav-link" href="#">Contact</a>
+                                <a class="nav-link" href="contact.html">Contact</a>
                             </li>
 
+                            <span class="verticle-white-line-1"></span>
                             <li class="nav-item">
-                                <a class="nav-link border-btn" href="#">Login</a>
+                                <a href="#">
+                                    <img src="images/notification-bell-icon/icon-notification.png">
+                                </a>
                             </li>
+                            <span class="verticle-white-line-2"></span>
 
                             <li class="nav-item">
-                                <a class="nav-link border-btn" href="#">Become a Helper</a>
+                                <a class="profile-photo" href="">
+                                    <img src="images/profile-logo-man/forma-1.png">
+                                </a>
+                                <a href="">
+                                    <img src="images/down-arrow-side-by-user-profile/forma-1-copy.png">
+                                </a>
                             </li>
                         </ul>
                     </div>
@@ -72,174 +77,171 @@
             </span>
         </div>
         <div class="container">
-            <div class="row justify-content-center ">
-                <div class="col-lg-3 col-sm-3">
-                    <div class="link-table">
-                        <table>
-                            <tr>
-                                <td>
-                                    <a href="#">
-                                        Dashboard
-                                    </a>
-                                </td>
-                            </tr>
+            <div class="upcoming-service-flex">
+                <div class="link-table">
+                    <table>
+                        <tr>
+                            <td>
+                                <a href="#">
+                                    Dashboard
+                                </a>
+                            </td>
+                        </tr>
 
-                            <tr>
-                                <td><a href="#">New Service Requests</a></td>
-                            </tr>
-                            <tr>
-                                <td><a href="#">Upcoming Services</a></td>
-                            </tr>
-                            <tr>
-                                <td><a href="#">Service Schedule</a></td>
-                            </tr>
-                            <tr>
-                                <td><a href="#">Service History</a></td>
-                            </tr>
-                            <tr>
-                                <td><a href="#">My Ratings</a></td>
-                            </tr>
-                            <tr>
-                                <td><a href="#">Block Customer</a></td>
-                            </tr>
-                        </table>
+                        <tr>
+                            <td><a href="#">New Service Requests</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">Upcoming Services</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">Service Schedule</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">Service History</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">My Ratings</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">Block Customer</a></td>
+                        </tr>
+                    </table>
 
-                    </div>
                 </div>
 
-                <div class="col-lg-9 col-sm-9">
-                    <div class="data-table">
-                        <table style="width:100%">
-                            <tr>
-                                <th>Service ID</th>
-                                <th>Service Date</th>
-                                <th>Costomer details</th>
-                                <th>Distance</th>
-                                <th>Actions</th>
-                            </tr>
-                            <tr>
-                                <td>Jill</td>
-                                <td>
-                                    <img src="images/small-calender-logo/calculator.png">Smith
-                                    <br>
-                                    <img src="images/small-watch-logo/layer-712.png">okok
-                                </td>
-                                <td>
-                                    Smith
-                                    <br>
-                                    <img src="images/small-home-logo/layer-719.png">okok
-                                </td>
-                                <td>Jill</td>
-                                <td><button class="cencel-button">Cencel</button></td>
-                            </tr>
-                            <tr>
-                                <td>Jill</td>
-                                <td>
-                                    <img src="images/small-calender-logo/calculator.png">Smith
-                                    <br>
-                                    <img src="images/small-watch-logo/layer-712.png">okok
-                                </td>
-                                <td>
-                                    Smith
-                                    <br>
-                                    <img src="images/small-home-logo/layer-719.png">okok
-                                </td>
-                                <td>Jill</td>
-                                <td><button class="cencel-button">Cencel</button></td>
-                            </tr>
-                            <tr>
-                                <td>Jill</td>
-                                <td>
-                                    <img src="images/small-calender-logo/calculator.png">Smith
-                                    <br>
-                                    <img src="images/small-watch-logo/layer-712.png">okok
-                                </td>
-                                <td>
-                                    Smith
-                                    <br>
-                                    <img src="images/small-home-logo/layer-719.png">okok
-                                </td>
-                                <td>Jill</td>
-                                <td><button class="cencel-button">Cencel</button></td>
-                            </tr>
-                            <tr>
-                                <td>Jill</td>
-                                <td>
-                                    <img src="images/small-calender-logo/calculator.png">Smith
-                                    <br>
-                                    <img src="images/small-watch-logo/layer-712.png">okok
-                                </td>
-                                <td>
-                                    Smith
-                                    <br>
-                                    <img src="images/small-home-logo/layer-719.png">okok
-                                </td>
-                                <td>Jill</td>
-                                <td><button class="cencel-button">Cencel</button></td>
-                            </tr>
-                            <tr>
-                                <td>Jill</td>
-                                <td>
-                                    <img src="images/small-calender-logo/calculator.png">Smith
-                                    <br>
-                                    <img src="images/small-watch-logo/layer-712.png">okok
-                                </td>
-                                <td>
-                                    Smith
-                                    <br>
-                                    <img src="images/small-home-logo/layer-719.png">okok
-                                </td>
-                                <td>Jill</td>
-                                <td><button class="cencel-button">Cencel</button></td>
-                            </tr>
-                            <tr>
-                                <td>Jill</td>
-                                <td>
-                                    <img src="images/small-calender-logo/calculator.png">Smith
-                                    <br>
-                                    <img src="images/small-watch-logo/layer-712.png">okok
-                                </td>
-                                <td>
-                                    Smith
-                                    <br>
-                                    <img src="images/small-home-logo/layer-719.png">okok
-                                </td>
-                                <td>Jill</td>
-                                <td><button class="cencel-button">Cencel</button></td>
-                            </tr>
-                            <tr>
-                                <td>Jill</td>
-                                <td>
-                                    <img src="images/small-calender-logo/calculator.png">Smith
-                                    <br>
-                                    <img src="images/small-watch-logo/layer-712.png">okok
-                                </td>
-                                <td>
-                                    Smith
-                                    <br>
-                                    <img src="images/small-home-logo/layer-719.png">okok
-                                </td>
-                                <td>Jill</td>
-                                <td><button class="cencel-button">Cencel</button></td>
-                            </tr>
-                            <tr>
-                                <td>Jill</td>
-                                <td>
-                                    <img src="images/small-calender-logo/calculator.png">Smith
-                                    <br>
-                                    <img src="images/small-watch-logo/layer-712.png">okok
-                                </td>
-                                <td>
-                                    Smith
-                                    <br>
-                                    <img src="images/small-home-logo/layer-719.png">okok
-                                </td>
-                                <td>Jill</td>
-                                <td><button class="cencel-button">Cencel</button></td>
-                            </tr>
-                        </table>
-                    </div>
+                <div class="data-table">
+                    <table style="width:100%">
+                        <tr>
+                            <th>Service ID</th>
+                            <th>Service Date</th>
+                            <th>Costomer details</th>
+                            <th>Distance</th>
+                            <th>Actions</th>
+                        </tr>
+                        <tr>
+                            <td>Jill</td>
+                            <td>
+                                <img src="images/small-calender-logo/calculator.png">Smith
+                                <br>
+                                <img src="images/small-watch-logo/layer-712.png">okok
+                            </td>
+                            <td>
+                                Smith
+                                <br>
+                                <img src="images/small-home-logo/layer-719.png">okok
+                            </td>
+                            <td class="center-table-data">Jill</td>
+                            <td><button class="cencel-button">Cencel</button></td>
+                        </tr>
+                        <tr>
+                            <td>Jill</td>
+                            <td>
+                                <img src="images/small-calender-logo/calculator.png">Smith
+                                <br>
+                                <img src="images/small-watch-logo/layer-712.png">okok
+                            </td>
+                            <td>
+                                Smith
+                                <br>
+                                <img src="images/small-home-logo/layer-719.png">okok
+                            </td>
+                            <td>Jill</td>
+                            <td><button class="cencel-button">Cencel</button></td>
+                        </tr>
+                        <tr>
+                            <td>Jill</td>
+                            <td>
+                                <img src="images/small-calender-logo/calculator.png">Smith
+                                <br>
+                                <img src="images/small-watch-logo/layer-712.png">okok
+                            </td>
+                            <td>
+                                Smith
+                                <br>
+                                <img src="images/small-home-logo/layer-719.png">okok
+                            </td>
+                            <td>Jill</td>
+                            <td><button class="cencel-button">Cencel</button></td>
+                        </tr>
+                        <tr>
+                            <td>Jill</td>
+                            <td>
+                                <img src="images/small-calender-logo/calculator.png">Smith
+                                <br>
+                                <img src="images/small-watch-logo/layer-712.png">okok
+                            </td>
+                            <td>
+                                Smith
+                                <br>
+                                <img src="images/small-home-logo/layer-719.png">okok
+                            </td>
+                            <td>Jill</td>
+                            <td><button class="cencel-button">Cencel</button></td>
+                        </tr>
+                        <tr>
+                            <td>Jill</td>
+                            <td>
+                                <img src="images/small-calender-logo/calculator.png">Smith
+                                <br>
+                                <img src="images/small-watch-logo/layer-712.png">okok
+                            </td>
+                            <td>
+                                Smith
+                                <br>
+                                <img src="images/small-home-logo/layer-719.png">okok
+                            </td>
+                            <td>Jill</td>
+                            <td><button class="cencel-button">Cencel</button></td>
+                        </tr>
+                        <tr>
+                            <td>Jill</td>
+                            <td>
+                                <img src="images/small-calender-logo/calculator.png">Smith
+                                <br>
+                                <img src="images/small-watch-logo/layer-712.png">okok
+                            </td>
+                            <td>
+                                Smith
+                                <br>
+                                <img src="images/small-home-logo/layer-719.png">okok
+                            </td>
+                            <td>Jill</td>
+                            <td><button class="cencel-button">Cencel</button></td>
+                        </tr>
+                        <tr>
+                            <td>Jill</td>
+                            <td>
+                                <img src="images/small-calender-logo/calculator.png">Smith
+                                <br>
+                                <img src="images/small-watch-logo/layer-712.png">okok
+                            </td>
+                            <td>
+                                Smith
+                                <br>
+                                <img src="images/small-home-logo/layer-719.png">okok
+                            </td>
+                            <td>Jill</td>
+                            <td><button class="cencel-button">Cencel</button></td>
+                        </tr>
+                        <tr>
+                            <td>Jill</td>
+                            <td>
+                                <img src="images/small-calender-logo/calculator.png">Smith
+                                <br>
+                                <img src="images/small-watch-logo/layer-712.png">okok
+                            </td>
+                            <td>
+                                Smith
+                                <br>
+                                <img src="images/small-home-logo/layer-719.png">okok
+                            </td>
+                            <td>Jill</td>
+                            <td><button class="cencel-button">Cencel</button></td>
+                        </tr>
+                    </table>
                 </div>
+
             </div>
         </div>
 
@@ -301,7 +303,8 @@
 
             <div class="copyright text-center">
                 <div class="d-flex justify-content-center">
-                    <p>©2018 Helperland. All rights reserved. &nbsp&nbsp&nbsp Terms and Conditions &nbsp|&nbsp Privacy Policy</p>
+                    <p>©2018 Helperland. All rights reserved. &nbsp&nbsp&nbsp Terms and Conditions &nbsp|&nbsp Privacy
+                        Policy</p>
                 </div>
             </div>
         </div>
