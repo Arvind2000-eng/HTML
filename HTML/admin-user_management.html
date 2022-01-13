@@ -1,0 +1,418 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/home.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel=stylesheet>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Admin -> user management</title>
+</head>
+
+<body>
+    <header class="admin-header">
+        <div class="admin-container">
+            <div class="admin-container-left-block">
+                <p class="">Helperland</p>
+            </div>
+
+            <div class="admin-container-right-block">
+                <a class="profile-photo" href="#">
+                    <img src="images/profile-logo-man/forma-1.png">
+                </a>
+                <a href="#">
+                    James Smith
+                </a>
+                <a href="#">
+                    <img class="power-button" src="images/power-icon-png-19.png">
+                </a>
+            </div>
+
+        </div>
+    </header>
+
+
+    <!--welcome section-->
+    <section class="admin-section">
+        <div class="admin-left-block">
+            <div class="link-table">
+                <div class="non-collapsible-table">
+                    <table>
+                        <tr>
+                            <td>
+                                <a href="#">
+                                    Service Management
+                                </a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td><a href="#">Role Management</a></td>
+                        </tr>
+                        <tr class="collapse-menu">
+                            <td>
+                                <p class="panel-title">
+                                    <a data-toggle="collapse" href="#collapse1">Coupon Code Management</a>
+                                </p>
+                                <div id="collapse1" class="panel-collapse collapse">
+                                    <div class="coupon-code"><a href="">Coupon Code</a></div>
+                                    <div class="usage-history"><a href="">Usage History</a></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">Escalation Management</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">Service Requests</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">Service Providers</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">User Management</a></td>
+                        </tr>
+                        <tr class="collapse-menu">
+                            <td>
+                                <div>
+
+                                    <p class="panel-title">
+                                        <a data-toggle="collapse" href="#collapse2">Finance Module</a>
+                                    </p>
+                                    <div id="collapse2" class="panel-collapse collapse">
+                                        <div class="all-transactions"><a href="">All Transactions</a></div>
+                                        <div class="generate-payment"><a href="">Generate payment</a></div>
+                                        <div class="customer-invoices"><a href="">Customer Invoices</a></div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">Zip Code Management</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">Rating Management</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">Inquiry Management</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">Newsletter Management</a></td>
+                        </tr>
+                        <tr class="collapse-menu">
+                            <td>
+                                <p class="panel-title">
+                                    <a data-toggle="collapse" href="#collapse3">Content Management</a>
+                                </p>
+                                <div id="collapse3" class="panel-collapse collapse">
+                                    <div class="coupon-code"><a href="">Blog</a></div>
+                                    <div class="usage-history"><a href="">FAQs</a></div>
+                                </div>
+                            </td>>
+
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="admin-right-block">
+            <div class="user-management">
+                <div class="user-management-1">
+                    <div class="collapsible-table">
+                        <p class="panel-title">
+                            <a data-toggle="collapse" href="#table-link1">Click hear</a>
+                        </p>
+                        <div id="table-link1" class="panel-collapse collapse">
+                            <div class="">
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <a href="#">
+                                                Service Management
+                                            </a>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td><a href="#">Role Management</a></td>
+                                    </tr>
+                                    <tr class="collapse-menu">
+                                        <td>
+                                            <p class="panel-title">
+                                                <a data-toggle="collapse" href="#collapse1-inside-collspsible-table">Coupon Code Management</a>
+                                            </p>
+                                            <div id="collapse1-inside-collspsible-table" class="panel-collapse collapse">
+                                                <div class="coupon-code"><a href="">Coupon Code</a></div>
+                                                <div class="usage-history"><a href="">Usage History</a></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="#">Escalation Management</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="#">Service Requests</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="#">Service Providers</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="#">User Management</a></td>
+                                    </tr>
+                                    <tr class="collapse-menu">
+                                        <td>
+                                            <div>
+                                                <p class="panel-title">
+                                                    <a data-toggle="collapse" href="#collapse2-inside-collspsible-table">Finance Module</a>
+                                                </p>
+                                                <div id="collapse2-inside-collspsible-table" class="panel-collapse collapse">
+                                                    <div class="all-transactions"><a href="">All Transactions</a></div>
+                                                    <div class="generate-payment"><a href="">Generate payment</a></div>
+                                                    <div class="customer-invoices"><a href="">Customer Invoices</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="#">Zip Code Management</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="#">Rating Management</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="#">Inquiry Management</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="#">Newsletter Management</a></td>
+                                    </tr>
+                                    <tr class="collapse-menu">
+                                        <td>
+                                            <p class="panel-title">
+                                                <a data-toggle="collapse" href="#collapse3-inside-collspsible-table">Content Management</a>
+                                            </p>
+                                            <div id="collapse3-inside-collspsible-table" class="panel-collapse collapse">
+                                                <div class="coupon-code"><a href="">Blog</a></div>
+                                                <div class="usage-history"><a href="">FAQs</a></div>
+                                            </div>
+                                        </td>>
+
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3>User Management</h3>
+                    </div>
+                    <div class="add-new-user-button">
+                        <button type="button" id="add-new-button">
+                            <img src="images/add-new-user-plus-symbole/vector-smart-object.png">
+                            Add New User
+                        </button>
+
+                    </div>
+                </div>
+
+                <div class="user-management-2">
+                    <div>
+                        <input class="box-1" type="text" id="user-name" placeholder="User name">
+                    </div>
+                    <div>
+                        <input class="box-1" type="text" id="user-role" placeholder="User role">
+                    </div>
+                    <div>
+                        <input class="box-1" type="text" id="phone-number" placeholder="Phone number">
+                    </div>
+                    <div>
+                        <input class="box-2" type="text" id="zip-code" placeholder="Zip code">
+                    </div>
+                    <div>
+                        <button id="search-inside-user-management">Search</button>
+                    </div>
+                    <div>
+                        <button id="clear-inside-user-management">clear</button>
+                    </div>
+                </div>
+                <div class="data-table">
+                    <table style="width:100%">
+                        <tr>
+                            <th>User Name</th>
+                            <th>User Type</th>
+                            <th>Role</th>
+                            <th>Postal Code</th>
+                            <th>City</th>
+                            <th>Radius</th>
+                            <th>User Status</th>
+                            <th>Actions</th>
+                        </tr>
+                        <tr>
+                            <td>Jill</td>
+                            <td>ok</td>
+                            <td>ok</td>
+                            <td>ok</td>
+                            <td>ok</td>
+                            <td>ok</td>
+                            <td>
+                                <div class="status-button-active">
+                                </div>
+                            </td>
+                            <td>
+                                <button class="dot-button-wrapper">
+                                    <div class="three-dot-button">
+                                    </div>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Jill</td>
+                            <td>ok</td>
+                            <td>ok</td>
+                            <td>ok</td>
+                            <td>ok</td>
+                            <td>ok</td>
+                            <td>
+                                <div class="status-button-inactive">
+                                </div>
+                            </td>
+                            <td>
+                                <button class="dot-button-wrapper">
+                                    <div class="three-dot-button">
+                                    </div>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Jill</td>
+                            <td>ok</td>
+                            <td>ok</td>
+                            <td>ok</td>
+                            <td>ok</td>
+                            <td>ok</td>
+                            <td>
+                                <div class="status-button-active">
+                                </div>
+                            </td>
+                            <td>
+                                <button class="dot-button-wrapper">
+                                    <div class="three-dot-button">
+                                    </div>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Jill</td>
+                            <td>ok</td>
+                            <td>ok</td>
+                            <td>ok</td>
+                            <td>ok</td>
+                            <td>ok</td>
+                            <td>
+                                <div class="status-button-active">
+                                </div>
+                            </td>
+                            <td>
+                                <button class="dot-button-wrapper">
+                                    <div class="three-dot-button">
+                                    </div>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Jill</td>
+                            <td>ok</td>
+                            <td>ok</td>
+                            <td>ok</td>
+                            <td>ok</td>
+                            <td>ok</td>
+                            <td>
+                                <div class="status-button-active">
+                                </div>
+                            </td>
+                            <td>
+                                <button class="dot-button-wrapper">
+                                    <div class="three-dot-button">
+                                    </div>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Jill</td>
+                            <td>ok</td>
+                            <td>ok</td>
+                            <td>ok</td>
+                            <td>ok</td>
+                            <td>ok</td>
+                            <td>
+                                <div class="status-button-active">
+                                </div>
+                            </td>
+                            <td>
+                                <button class="dot-button-wrapper">
+                                    <div class="three-dot-button">
+                                    </div>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Jill</td>
+                            <td>ok</td>
+                            <td>ok</td>
+                            <td>ok</td>
+                            <td>ok</td>
+                            <td>ok</td>
+                            <td>
+                                <div class="status-button-active">
+                                </div>
+                            </td>
+                            <td>
+                                <button class="dot-button-wrapper">
+                                    <div class="three-dot-button">
+                                    </div>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Jill</td>
+                            <td>ok</td>
+                            <td>ok</td>
+                            <td>ok</td>
+                            <td>ok</td>
+                            <td>ok</td>
+                            <td>
+                                <div class="status-button-active">
+                                </div>
+                            </td>
+                            <td>
+                                <button class="dot-button-wrapper">
+                                    <div class="three-dot-button">
+                                    </div>
+                                </button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous">
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js">
+    </script>
+</body>
+
+</html>
