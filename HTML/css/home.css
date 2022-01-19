@@ -34,7 +34,6 @@ p {
 
 .container { 
   max-width: 1262px; 
-  padding: 0 50px; 
   width: 100%; 
 }
 
@@ -244,7 +243,7 @@ img
 
 /*blog section*/
 .blog-section { 
-  padding: 135px 0 50px; 
+  padding: 80px 0 50px; 
   position: relative; }
 
 .blog-section:before { 
@@ -432,17 +431,17 @@ img
 
 .site-footer .footer-top { 
   background: #111111; 
-  padding-top: 20px;
 }
 
 .site-footer a { 
   display: inline-block; 
+  margin: 10px 0;
 }
 
 .site-footer ul { 
   list-style: none; 
   padding: 0; 
-  margin: 0; 
+  margin: 10px 0; 
 }
 
 .site-footer ul.footer-navigation li a:hover, .site-footer ul.social-media-list a:hover { 
@@ -803,10 +802,6 @@ img
       font-size: 32px; }
     h3, .h3 { 
       font-size: 28px; }
-
-    .container { 
-      padding: 0 30px; 
-    }
 
     .blue-btn { 
       height: 54px; 
@@ -1330,7 +1325,7 @@ img
       width: 40px; 
       height: 40px; 
       left: 50%; 
-      bottom: -80px; 
+      bottom: -60px; 
       transform: translateX(-50%); 
       position: absolute; 
       z-index: 1;
@@ -1694,6 +1689,7 @@ img
 
 .copyright{
   display: flex;
+  padding-top:8px;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
@@ -1701,16 +1697,14 @@ img
 
 .copyright .p1 a,.copyright .p2 a{
   text-decoration: none;
-  font-size: 15px;
   color: #9ba0a3; 
-  padding-top: 5px;
 }
 
 
 .copyright .p1,.p2{
   padding-left: 5px;
   transition: 0.3s;
-  margin-bottom: 0px;
+  margin-top: -14px;
 }
 
 .copyright .p1 a:hover,.p2 a:hover{
@@ -2188,7 +2182,6 @@ img
 
 .copyright{
   font-size: 14px; 
-  line-height: 1.71; 
   color: #9ba0a3; 
   font-family: 'Roboto';
   background-color: black;
@@ -2221,87 +2214,28 @@ img
 
 .how-it-work-section { 
   padding: 68px 0 50px; 
-  position: relative; }
-
-.how-it-work-section:before { 
-  content: ''; 
-  position: absolute; 
-  left: 0; 
-  top: 27px; 
-  background-image: url(../images/blog-left-bg.png); 
-  background-repeat: repeat; 
-  width: 154px; 
-  height: calc(100% - 100px); 
-  z-index: -1; }
-
-.how-it-work-section:after { 
-  content: ''; 
-  position: absolute; 
-  right: 0; 
-  top: 27px; 
-  background-image: url(../images/blog-right-bg.png); 
-  background-repeat: no-repeat; 
-  width: 174px; 
-  height: calc(100% - 100px); 
-  z-index: -1; }
-
-.how-it-work-section 
-.our-blog-block .blog-wrapper {
-  padding-left: 245px;
-  padding-right: 200px;
-  padding-bottom: px;
+  position: relative; 
 }
 
 .how-it-work-section 
-.our-blog-block .blog-wrapper 
-.one-block
-{
-  padding-top: 50px;
-  padding-right: 57px;
-}
-
-.how-it-work-section 
-.our-blog-block .blog-wrapper 
-.one-img
-{
-  padding-left: 101px;
-}
-
-.how-it-work-section 
-.our-blog-block h2 { 
+ h2 { 
   margin: 0 0 62px; 
   font-size: 40px;
 }
 
 .how-it-work-section 
-.our-blog-block h3 {
+h3 {
   font-size: 30px;
 }
 
 .how-it-work-section 
-.our-blog-block 
-.blog-image img { 
-  position: absolute; 
+.work-section-img{
   height: 260px; 
   width: 260px; 
-  left: 0; top: 0; 
-  object-fit: cover; 
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.how-it-work-section 
-.our-blog-block 
-.one-block p,a { 
-  margin: 0 0 20px;
-  font-size: 18px;
- }
-
-
-
-.blog-image {
-    width: 260px;
-    height: 260px;
-    object-fit: contain;
-  }
 
 .my-block{
   display: flex;
@@ -2570,7 +2504,6 @@ a.profile-photo{
 .Welcome-Sandip {
   font-family: Roboto;
   font-size: 30px;
-  text-align: center;
 }
 
 .welcome-banner
@@ -2583,76 +2516,47 @@ a.profile-photo{
   margin-top: 30px;
 }
 
-.admin-left-block{
+.admin-left-block table{
   width: auto;
+  height:auto;
 }
 
-.link-table table {
-  width:273px;
-  margin-right: 25px;
-  background-color: white;
+.upcoming-service-flex table.table-hover td a { 
+  display: block; 
+  padding: 16px;
 }
 
-.link-table table,td,tr{
-  border-collapse: collapse;
-  border: 1px solid white;
+.upcoming-service-flex table.table-hover{
+  background: #1d7a8c;
 }
 
-
-.link-table
-table 
-td {
-  text-align: left;
-  padding-left: 10px;
-}
-
-
-.link-table
-table 
-td a{
-  color: var(--brownish-grey);
+.upcoming-service-flex table.table-hover a{
   text-decoration: none;
-  width:100%;
-  display:block;
-  font-size: 16px;
+  color: white;
 }
 
-.link-table
-table tr.collapse-menu 
-td #collapse1,#collapse2,#collapse3 a{
-  font-size: 15px;
-}
-
-.link-table table tr{
-  border-bottom:1px solid #e5e5e5;
-}
-
-.link-table .collapse-menu 
-#collapse1,#collapse2,#collapse3{
-  padding-left: 30px;
-}
-
-.admin-left-block .link-table .collapse-menu img{
-  padding-left: 90%;
-}
-
-.welcome .container .data-table{
+.welcome .container .table-responsive{
+  margin-left: 20px;
   color: #111111;
   font-size: 16px;
   background-color: #fff;
   width: 845px;
 }
-
-.data-table table,td,tr{
-  border-collapse: collapse;
-  border: 1px solid white;
+.welcome .container .table-responsive 
+.table-bordered{
+  border: #e1e1e1;
 }
-.data-table table tr,th,td{
-  border-bottom:1px solid white;
+.welcome .container .table-responsive 
+.table-bordered tr td{
+  padding-left: 10px;
 }
 
-.data-table table td,th{
+.table-responsive table td,th{
   height: 67px;
+}
+
+.table-responsive 
+table.table-bordered thead tr th{
   padding-left: 10px;
 }
 
@@ -2661,7 +2565,6 @@ td #collapse1,#collapse2,#collapse3 a{
   height: 34px;
   border-radius: 17px;
   background-color: #ff6b6b;
-  align-items: center;
   border-style: none;
 }
 
@@ -2709,7 +2612,7 @@ td #collapse1,#collapse2,#collapse3 a{
 /*Service History*/
 
 
-.data-table table .rate-sp-button{
+.rate-sp-button{
   height: 34px;
   width: 70px;
   border-radius: 17px;
@@ -2729,34 +2632,35 @@ td #collapse1,#collapse2,#collapse3 a{
   margin-right: 10px;
 }
 
-
 .hate-circle img {
   width: 30px;
   height: 20px;
 }
 
 .welcome .container  
-.export-button{
+.export-block{
   display: flex;
   justify-content: space-between ;
+  align-items: center;
   margin-top: 15px;
   margin-bottom: 15px;
+  margin-left: 30px;
 }
 
+.welcome .container  
+.export-block button h4{
+  font-size: 20px;
+}
 
 .welcome .container  
-.export-button button{ 
+.export-block button{
   width: 70px;
   height: 34px;
   border-radius: 17px;
-  background-color: #146371;
   color: white;
+  background-color: #146371;
   border-style: none;
-}
-
-.welcome .container  
-.export-button h4{
-  font-size: 20px;
+  padding-bottom: 4px;
 }
 
 .checked {
@@ -2795,12 +2699,6 @@ td #collapse1,#collapse2,#collapse3 a{
   color:white;
   font-size: 13px;
 }
-
-.welcome .container 
-.export-block{
-  width: 845px;
-}
-
 
 .service-history-flex{
   display: flex;
@@ -2877,25 +2775,13 @@ a .power-button{
   display: flex;
   margin-left:0px;
   background-color: #f2f4f5;
-  margin-bottom: 10px;
 }
 
-/* .admin-section
-.admin-right-block{
-  background-color: #f2f4f5;
-} */
 .admin-section
 .admin-right-block
 .user-management{
-  max-width: 1000px;
-}
-.admin-section
-.admin-right-block
-.user-management
-.user-management-1 {
-  display: flex;
-  margin: 10px;
-  justify-content: space-between;
+  width: 1200px;
+  margin: 20px;
 }
 
 .user-management
@@ -2913,13 +2799,20 @@ a .power-button{
 .add-new-user-button button
 img{
   padding-right: 4px;
-  padding-bottom: 4px;
+  padding-bottom: 3px;
 }
+.admin-section
+  .admin-right-block
+  .user-management
+  .user-management-1 h3{
+    margin-top:0px;
+  }
+
 .user-management
 .user-management-2 {
   display: flex;
-  justify-content: space-evenly;
-  margin : 10px
+  justify-content: space-between;
+  margin: 15px 0;
 }
 .user-management
 .user-management-2
@@ -2960,6 +2853,17 @@ img{
 
 }
 
+.admin-section .admin-left-block 
+table{
+  background: white;
+  min-width: 200px;
+}
+.admin-section .admin-left-block 
+table tr td a{
+  color: #111111;
+  text-decoration: none;
+}
+
 .admin-section
 .admin-right-block
 .data-table
@@ -2975,6 +2879,8 @@ img{
   background-color: #67b644;
   text-align: center;
   color: white;
+  padding-top: 2px;
+  margin-left: 5px;
 }
 .admin-section
 .admin-right-block
@@ -2985,6 +2891,8 @@ img{
   background-color: #ff6b6b;
   text-align: center;
   color: white;
+  padding-top: 2px;
+  margin-left: 5px;
 }
 .admin-section
 .admin-right-block
@@ -3021,38 +2929,11 @@ img{
     display: block;
   }
 
-  .admin-section .admin-left-block
-  .non-collapsible-table{
-    display: none;
-  }
-
-  .admin-section
-  .admin-right-block
-  .user-management
-  .user-management-1 .collapsible-table {
-    margin-top: auto;
-    margin-bottom: auto;
-  }
   .admin-section
   .admin-right-block
   .user-management
   .user-management-1 h3{
     font-size: 22px;
-  }
-
-  .admin-section
-  .admin-right-block
-  .user-management
-  .user-management-1 .collapsible-table a{
-    text-decoration: none;
-    color: black;
-  }
-
-}
-@media (min-width:760px) {
-  .admin-section .admin-right-block
-  .collapsible-table{
-    display: none;
   }
 }
 @media (max-width:1388px) 
@@ -3063,12 +2944,7 @@ img{
   .admin-right-block
   .user-management{
     width: auto;
-  }
-  .admin-section
-  .admin-right-block
-  .user-management
-  .user-management-1 {
-    margin-top: 10px;
+    min-width: 800px;
   }
 
   .user-management
