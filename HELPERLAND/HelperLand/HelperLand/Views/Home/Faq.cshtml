@@ -1,0 +1,160 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "FAQ";
+}
+
+    <!-- Banner -->
+    <div class="faq-banner">
+        <img src="~/images/faq-banner.png" alt="FAQ-Banner">
+    </div>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container text-center">
+            <h2>FAQs</h2>
+            <div class="d-flex justify-content-center">
+                <div class="line1"></div>
+                <img src="~/images/forma-1-copy-5.png">
+                <div class="line1"></div>
+            </div>
+            <div class="intro">
+                <p>Whether you are Customer or Service provider,</p>
+                <p> We have tried to solve all your queries and questions</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer-User -->
+    <section class="cust-user text-center">
+        <div class="container">
+            <div class="d-flex justify-content-center text-center align-items-center">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" aria-current="page" href="#customerFAQ">For Customer</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" aria-current="page" href="#serviceFAQ">For Sercive Provider</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="tab-content content">
+                <div id="customerFAQ" class="tab-pane fade active in show">
+                    <div class="container text-start">
+                        <div class="que-ans align-items-center">
+                            <div class="que d-flex">
+                                <button data-bs-toggle="collapse" data-bs-target="#ans-1">
+                                    <img src="~/images/right-arrow.png" alt="">
+                                </button>
+                                <p>What's included in a cleaning?</p>
+                            </div>
+                            <div id="ans-1" class="collapse in ans">
+                                <p>Bedroom, Living Room & Common Areas, Bathrooms, Kitchen, Extras </p>
+                            </div>
+                        </div>
+                        <div class="que-ans">
+                            <div class="que d-flex">
+                                <button data-bs-toggle="collapse" data-bs-target="#ans-2">
+                                    <img src="~/images/right-arrow.png" alt="">
+                                </button>
+                                <p>Which Helperland professional will come to my place?</p>
+                            </div>
+                            <div id="ans-2" class="collapse in ans">
+                                <p>Helperland has a vast network of experienced, top-rated cleaners. Based on the time
+                                    and date of your request, we work to assign the best professional available. Like
+                                    working with a specific pro? Add them to your Pro Team from the mobile app and
+                                    they'll be requested first for all future bookings. You will receive an email with
+                                    details about your professional prior to your appointment. </p>
+                            </div>
+                        </div>
+                        <div class="que-ans">
+                            <div class="que d-flex">
+                                <button data-bs-toggle="collapse" data-bs-target="#ans-3">
+                                    <img src="~/images/right-arrow.png" alt="">
+                                </button>
+                                <p>Can I skip or reschedule bookings?</p>
+                            </div>
+                            <div id="ans-3" class="collapse in ans">
+                                <p>You can reschedule any booking for free at least 24 hours in advance of the scheduled
+                                    start time. If you need to skip a booking within the minimum commitment, we’ll
+                                    credit the value of the booking to your account. You can use this credit on future
+                                    cleanings and other Helperland services. </p>
+                            </div>
+                        </div>
+                        <div class="que-ans">
+                            <div class="que d-flex">
+                                <button data-bs-toggle="collapse" data-bs-target="#ans-4">
+                                    <img src="~/images/right-arrow.png" alt="">
+                                </button>
+                                <p>Do I need to be home for the booking?</p>
+                            </div>
+                            <div id="ans-4" class="collapse in ans">
+                                <p>We strongly recommend that you are home for the first clean of your booking to show
+                                    your cleaner around. Some customers choose to give a spare key to their cleaner, but
+                                    this decision is based on individual preferences. </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div id="serviceFAQ" class="tab-pane fade show">
+                    <div class="container text-start">
+                        <div class="que-ans">
+                            <div class="que d-flex">
+                                <button data-bs-toggle="collapse" data-bs-target="#ans-1">
+                                    <img src="~/images/right-arrow.png" alt="">
+                                </button>
+                                <p>How can I register?</p>
+                            </div>
+                            <div id="ans-1" class="collapse in ans">
+                                <p>Test Answer</p>
+                            </div>
+                        </div>
+                        <div class="que-ans">
+                            <div class="que d-flex">
+                                <button data-bs-toggle="collapse" data-bs-target="#ans-2">
+                                    <img src="~/images/right-arrow.png" alt="">
+                                </button>
+                                <p>How much do service providers earn?</p>
+                            </div>
+                            <div id="ans-2" class="collapse in ans">
+                                <p>The freelancers who work with Helperland set their own payouts, 
+                                    meaning they decide how much they make per hour.</p>
+                            </div>
+                        </div>
+                        <div class="que-ans">
+                            <div class="que d-flex">
+                                <button data-bs-toggle="collapse" data-bs-target="#ans-3">
+                                    <img src="~/images/right-arrow.png" alt="">
+                                </button>
+                                <p>What support do you offer the service providers?</p>
+                            </div>
+                            <div id="ans-3" class="collapse in ans">
+                                <p>Our call center is available to service providers with any questions or problems regarding their bookings during office hours. 
+                                    Before a service provider receives orders, 
+                                    each individual partner receives an orientation session to familiarize themselves with the online platform and its profile.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Letter -->
+    <section class="our-news-letter">
+        <div class="container text-center">
+            <h2>GET OUR NEWSLETTER</h2>
+            <div class="row justify-content-center align-items-center">
+            <div class="col-md-3" style="display: flex; justify-content: center;">
+                <input type="text" placeholder="YOUR EMAIL" id="email" class="form-control">
+            </div>
+
+            <div class="col-lg-1 btn-wrapper text-center">
+                <button class="red-btn">Submit</button>
+            </div>
+        </div>
+        </div>
+    </section>
