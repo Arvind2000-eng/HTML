@@ -1,179 +1,227 @@
-﻿<html lang="en">
+﻿@model HelperLand.ViewModels.LoginViewModel
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
    
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="~/css/Index.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="~/css/Index.css">
     
-    <title>@ViewBag.Title</title>
-</head>
+        <title>@ViewBag.Title</title>
+    </head>
 
-<body>
-    <!-- header -->
-    <header class="site-header">
-        <div class="header-wrapper d-flex justify-content-between align-items-center">
-            <a href="~/Home/Index" title="Helperland" class="logo-block">
-                <img src="~/images/site-logo-large.png" alt="HelperLand logo">
-            </a>
-            <div class="header-right-block">
-                <div class="right-block-inner d-flex align-items-center">
-                    <nav class="navbar navbar-expand-lg align-items-center">
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
-                            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
+    <body>
+        <!-- header -->
+        <header class="site-header">
+            <div class="header-wrapper d-flex justify-content-between align-items-center">
+                <a href="~/Home/Index" title="Helperland" class="logo-block">
+                    <img src="~/images/site-logo-large.png" alt="HelperLand logo">
+                </a>
+                <div class="header-right-block">
+                    <div class="right-block-inner d-flex align-items-center">
+                        <nav class="navbar navbar-expand-lg align-items-center">
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
 
-                        <div class="collapse navbar-collapse" id="navbarNav" style="padding-bottom: 15px;">
-                            <ul class="navbar-nav align-items-center">
-                                <li class="nav-item">
-                                    <a class="nav-link border-btn" href="#" title="Book a Cleaner">Book a Cleaner</a>
-                                </li>
-                                <li class="nav-item under-line">
-                                    <a class="nav-link" href="~/Home/price" title="Prices">Prices</a>
-                                </li>
-                                <li class="nav-item under-line">
-                                    <a class="nav-link" href="#" title="Our Guarantee">Our Guarantee</a>
-                                </li>
-                                <li class="nav-item under-line">
-                                    <a class="nav-link" href="#" title="Blog">Blog</a>
-                                </li>
-                                <li class="nav-item under-line">
-                                    <a class="nav-link" href="~/Home/contact" title="Contact us">Contact us</a>
-                                </li>
-                                <li class="nav-item">
-                                    <div class="container">
-                                        <div>
-                                          <button class="nav-link border-btn" title="Login" data-bs-toggle="modal" data-bs-target="#myModal">Login</button>
-                                        </div>
+                            <div class="collapse navbar-collapse" id="navbarNav" style="padding-bottom: 15px;">
+                                <ul class="navbar-nav align-items-center">
+                                    <li class="nav-item">
+                                        <a class="nav-link border-btn" href="#" title="Book a Cleaner">Book a Cleaner</a>
+                                    </li>
+                                    <li class="nav-item under-line">
+                                        <a class="nav-link" href="~/Home/price" title="Prices">Prices</a>
+                                    </li>
+                                    <li class="nav-item under-line">
+                                        <a class="nav-link" href="#" title="Our Guarantee">Our Guarantee</a>
+                                    </li>
+                                    <li class="nav-item under-line">
+                                        <a class="nav-link" href="#" title="Blog">Blog</a>
+                                    </li>
+                                    <li class="nav-item under-line">
+                                        <a class="nav-link" href="~/Home/contact" title="Contact us">Contact us</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <div class="container">
+                                            <div>
+                                              <button class="nav-link border-btn" title="Login" data-bs-toggle="modal" data-bs-target="#login">Login</button>
+                                            </div>
 
-                                        <!-- The Modal -->
-                                        <div class="modal fade" id="myModal">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <!-- Modal Header -->
-                                                    <div class="modal-header">
-                                                        <h4 class="modal-title">Log in</h4>
-                                                        <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
-                                                    </div>
+                                            <!-- The Modal -->
+                                            <div class="modal fade" id="login">
+                                                <div class="modal-dialog vertical-align-center">
+                                                    <div class="vertical-alignment-helper">
+                                                        <div class="modal-content">
+                                                            <!-- Modal Header -->
+                                                            <div class="modal-header">
+                                                                <h4 class="modal-title">Log in</h4>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                                            </div>
         
-                                                    <!-- Modal body -->
-                                                    <div class="modal-body">
-                                                        <div class="container">
-                                                            <input type="text" placeholder="E-Mail" name="uname" required>
+                                                            <form asp-controller="UserTable" asp-action="Login" method="post">
+                                                            <!-- Modal body -->
+                                                                <div class="modal-body">
+                                                                    <div class="user-image">
+                                                                        <input asp-for="Email" maxlength="100" class="form-control text-box" placeholder="E-Mail" required>
+                                                                        <img alt="Username" src="~/images/user.png">
+                                                                    </div>
 
+                                                                    <div class="lock-image">
+                                                                        <input asp-for="Password" maxlength="24" class="form-control text-box" type="password" placeholder="Enter Password" required>
+                                                                        <img alt="Username" src="~/images/lock.png">
+                                                                    </div>
+
+                                                                    <label>
+                                                                        <input type="checkbox" name="remember"> Save on computer
+                                                                    </label>
+        
+                                                                    <div class="d-grid mt-4">
+                                                                        <button class="btn btn-primary btn-lg d-block my-1" type="submit">Login</button>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+
+                                                            <div class="modal-footer d-block flex-row text-center">
+                                                                <div><a href="#" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#forgot-pwd">Forgot Password?</a></div>
+                                                                <div>Don't have an account yet?</div>
+                                                                <div>
+                                                                    <a href="~/UserTable/Registration">Create account</a>
+                                                                </div>
                                                             
-                                                            <input type="password" placeholder="Enter Password" name="psw" required>
-        
-                                                            <button type="submit">Login</button>
-                                                            <label>
-                                                              <input type="checkbox" checked="checked" name="remember"> Remember me
-                                                            </label>
-                                                          </div>
+                                                            </div>
+
+                                                        </div>
                                                     </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="modal fade" id="forgot-pwd">
+                                                <div class="modal-dialog vertical-align-center">
+                                                    <div class="vertical-alignment-helper">
+                                                        <div class="modal-content">
+                                                            <!-- Modal Header -->
+                                                            <div class="modal-header">
+                                                                <h4 class="modal-title">Forgot Password</h4>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                                            </div>
         
-                                                    <!-- Modal footer -->
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                                                        
+                                                            <!-- Modal body -->
+                                                            <form>
+                                                                <div class="modal-body">
+                                                                    <div class="user-image">
+                                                                        <input class="form-control text-box" type="text" placeholder="E-Mail" name="uname" required>
+                                                                        <img alt="Username" src="~/images/user.png">
+                                                                    </div>
+
+                                                                    <div class="d-grid mt-4">
+                                                                        <button class="btn btn-primary btn-lg d-block my-1" type="submit">Send</button>
+                                                                    </div>
+
+                                                                    <div class="text-center" style="margin-top: 20px;">
+                                                                        <a style="color: #1d7a8c;text-decoration:none;" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#login" href="">Login now</a>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+
+                                                    
+
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                   </div>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link border-btn" href="~/UserTable/HelperRegistration" title="Become a Helper">Become a
+                                            Helper</a>
+                                    </li>
+                                    </ul>
+                                </div>
+                            </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            @RenderBody()
+        </main>
+
+        <footer class="site-footer">
+            <div class="footer-top">
+                <div class="container">
+                    <div class="row justify-content-center align-items-center text-center">
+                        <div class="col-lg-2">
+                            <a href="index" title="Helper Hand">
+                                <img src="~/images/site-logo.png" alt="HelperLand">
+                            </a>
+                        </div>
+                        <div class="col-lg-8">
+                            <ul class="footer-navigation d-flex flex-wrap justify-content-center align-items-center">
+                                <li>
+                                    <a href="~/Home/index" title="Home">Home</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link border-btn" href="#" title="Become a Helper">Become a
-                                        Helper</a>
+                                <li>
+                                    <a href="~/Home/About" title="About">About</a>
                                 </li>
-                                </ul>
-                            </div>
-                        </nav>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <main>
-        @RenderBody()
-    </main>
-
-    <footer class="site-footer">
-        <div class="footer-top">
-            <div class="container">
-                <div class="row justify-content-center align-items-center text-center">
-                    <div class="col-lg-2">
-                        <a href="index" title="Helper Hand">
-                            <img src="~/images/site-logo.png" alt="HelperLand">
-                        </a>
-                    </div>
-                    <div class="col-lg-8">
-                        <ul class="footer-navigation d-flex flex-wrap justify-content-center align-items-center">
-                            <li>
-                                <a href="~/Home/index" title="Home">Home</a>
-                            </li>
-                            <li>
-                                <a href="~/Home/About" title="About">About</a>
-                            </li>
-                            <li>
-                                <a href="#" title="Testimonials">Testimonials</a>
-                            </li>
-                            <li>
-                                <a href="~/Home/faq" title="FAQs">FAQs</a>
-                            </li>
-                            <li>
-                                <a href="#" title="Insurance Policy">Insurance Policy</a>
-                            </li>
-                            <li>
-                                <a href="#" title="Impressum">Impressum</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-2">
-                        <ul class="social-media-list d-flex justify-content-end">
-                            <li>
-                                <a href="#" target="_blank" title="Facebook">
-                                    <img src="~/images/ic-facebook.png" alt="Facebook">
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" target="_blank" title="Instagram">
-                                    <img src="~/images/ic-instagram.png" alt="Instagram">
-                                </a>
-                            </li>
-                        </ul>
+                                <li>
+                                    <a href="#" title="Testimonials">Testimonials</a>
+                                </li>
+                                <li>
+                                    <a href="~/Home/faq" title="FAQs">FAQs</a>
+                                </li>
+                                <li>
+                                    <a href="#" title="Insurance Policy">Insurance Policy</a>
+                                </li>
+                                <li>
+                                    <a href="#" title="Impressum">Impressum</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-2">
+                            <ul class="social-media-list d-flex justify-content-end">
+                                <li>
+                                    <a href="#" target="_blank" title="Facebook">
+                                        <img src="~/images/ic-facebook.png" alt="Facebook">
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" target="_blank" title="Instagram">
+                                        <img src="~/images/ic-instagram.png" alt="Instagram">
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="line"></div>
+            <div class="line"></div>
 
-        <div class="footer-bottom">
-            <div class="container justify-content-center">
-                <div class="row">
-                <div class="col-md-10">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut feugiat nunc libero, ac
-                            malesuada ligula aliquam ac. <a href="#" style="display:inline-block" title="Privacy Policy">Privacy Policy</a></p>
-                </div>
-                <div style="margin:5px 0;" class="col-md-2 center-text align-items-center justify-content-center">
-                    <a href="#" class="ok-btn">OK!</a>
-                </div>
+            <div class="footer-bottom">
+                <div class="container justify-content-center">
+                    <div class="row">
+                    <div class="col-md-10">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut feugiat nunc libero, ac
+                                malesuada ligula aliquam ac. <a href="#" style="display:inline-block" title="Privacy Policy">Privacy Policy</a></p>
+                    </div>
+                    <div style="margin:5px 0;" class="col-md-2 center-text align-items-center justify-content-center">
+                        <a href="#" class="ok-btn">OK!</a>
+                    </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </footer>
+        </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-    <script type="text/javascript" src="../js/index.js"></script>
-
-</body>
+        <script type="text/javascript" src="../js/index.js"></script>
+    </body>
 
 </html>
-
-
-

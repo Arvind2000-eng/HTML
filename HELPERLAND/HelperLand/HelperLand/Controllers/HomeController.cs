@@ -17,7 +17,7 @@ namespace HelperLand.Controllers
         {
             _logger = logger;
         }
-
+  
         public IActionResult Index()
         {
             return View();
@@ -40,6 +40,7 @@ namespace HelperLand.Controllers
             return View();
         }
 
+        
         public IActionResult Privacy()
         {
             return View();

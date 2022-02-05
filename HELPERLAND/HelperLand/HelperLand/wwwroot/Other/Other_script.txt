@@ -1,1 +1,1 @@
-﻿//Scaffold - DbContext - provider Microsoft.EntityFrameworkCore.SqlServer - connection "Data source=DARWIN;Database=HelperLand_Database;Trusted_Connection=True;" - OutputDir "Models" - Contextdir "Data"
+﻿//Scaffold-DbContext -provider Microsoft.EntityFrameworkCore.SqlServer -connection "Data source=DARWIN;Database=HelperLand_Database;Trusted_Connection=True;" -OutputDir "Models" -Contextdir "Data" -Force

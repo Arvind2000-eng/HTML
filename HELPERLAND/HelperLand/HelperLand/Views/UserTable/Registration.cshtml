@@ -1,0 +1,129 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model HelperLand.ViewModels.UserViewModel
+
+@{
+    ViewData["Title"] = "Registration";
+}
+
+ 
+<section class="registration">
+    <div class="container text-center">
+        <h2 id='p1'>Create Account</h2>
+        <div class="d-flex justify-content-center">
+            <div class="line1"></div>
+            <img src="~/images/forma-1-copy-5.png">
+            <div class="line1"></div>
+        </div>
+    </div>
+
+        
+    <div class="container">
+        <form asp-controller="UserTable" asp-action="Registration" method="post" class="registration-form mx-auto">
+            
+            <div class="row">
+                <div class="col-sm-6">
+                        
+                    <div class="form-group">
+                        <input asp-for="FirstName" maxlength="100" class="form-control" placeholder="First Name" />
+                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <input asp-for="LastName" maxlength="100" class="form-control" placeholder="Last Name" />
+                        <span asp-validation-for="LastName" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+       
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <input asp-for="Email" maxlength="100" class="form-control" placeholder="EMail" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon">+49</span>
+                            <input asp-for="Mobile" class="form-control" maxlength="20" placeholder="Mobile Nummer" />
+                        </div>
+                        <span asp-validation-for="Mobile" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row ng-untouched ng-pristine ng-invalid" formgroupname="Password">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <input asp-for="Password" maxlength="24" class="form-control" placeholder="Password" type="password"/>
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <input asp-for="ConfirmPassword" class="form-control" placeholder="Confirm Password" type="password"/>
+                        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="checkbox">
+                        <label>
+                            <input formcontrolname="NewsletterSubscription" type="checkbox" class="ng-untouched ng-pristine ng-valid">
+                            <span>
+                                Yes, I would like to subscribe to the Helperland GmbH newsletter with vouchers, trends, promotions and individualized offers. 
+                                I can unsubscribe from the newsletter at any time in the newsletter and in my customer account.
+                            </span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="checkbox">
+                        <label>
+                            <input formcontrolname="IAgreeTermsCondition" type="checkbox" class="ng-untouched ng-pristine ng-valid">
+                            <span>
+                                I agree with the
+                                <a data-toggle="modal" href="#termsAndConditions" title="Terms and Conditions">AGB</a>
+                                by Helperland GmbH.
+                            </span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="checkbox">
+                        <label>
+                            <input formcontrolname="IAgreePrivacyPolicy" type="checkbox" class="ng-untouched ng-pristine ng-valid">
+                            <span>
+                                I have the
+                                <a data-toggle="modal" href="#privacy-policy-modal" title="Data protection">Data protection</a>
+                                acknowledged.
+                            </span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group d-flex justify-content-center" style="margin:20px 0;">
+                <button class="btn btn-primary btn-lg" type="submit">Register</button>
+            </div>
+
+            <div class="text-center">
+                Already registered?
+                <a href="" class="setPointer" data-bs-toggle="modal" data-bs-target="#login">log in now</a>
+            </div>
+        </form>
+    </div>
+</section>

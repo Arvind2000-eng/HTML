@@ -37,9 +37,9 @@ namespace HelperLand.Models
         public DateTime CreatedDate { get; set; }
         public DateTime ModifiedDate { get; set; }
         public int ModifiedBy { get; set; }
-        public bool IsApproves { get; set; }
+        public bool IsApproved { get; set; }
         public bool IsActive { get; set; }
-        public bool Isdeleted { get; set; }
+        public bool IsDeleted { get; set; }
         public int? Status { get; set; }
         public string BankTokenId { get; set; }
         public string TaxNo { get; set; }

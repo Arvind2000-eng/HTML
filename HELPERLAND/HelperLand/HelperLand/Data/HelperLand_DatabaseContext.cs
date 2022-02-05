@@ -35,7 +35,7 @@ namespace HelperLand.Data
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
                 optionsBuilder.UseSqlServer("Data source=DARWIN;Database=HelperLand_Database;Trusted_Connection=True;");
             }
         }
@@ -56,7 +56,7 @@ namespace HelperLand.Data
                     .WithMany(p => p.Cities)
                     .HasForeignKey(d => d.StateId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__City__StateId__286302EC");
+                    .HasConstraintName("FK_City_State");
             });
 
             modelBuilder.Entity<ContactU>(entity =>
@@ -69,7 +69,9 @@ namespace HelperLand.Data
                     .IsRequired()
                     .HasMaxLength(200);
 
-                entity.Property(e => e.FileName).HasMaxLength(500);
+                entity.Property(e => e.FileName)
+                    .HasMaxLength(500)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.Message).IsRequired();
 
@@ -94,13 +96,13 @@ namespace HelperLand.Data
                     .WithMany(p => p.FavoriteAndBlockedTargetUsers)
                     .HasForeignKey(d => d.TargetUserId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__FavoriteA__Targe__300424B4");
+                    .HasConstraintName("FK_FavoriteAndBlocked_User");
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.FavoriteAndBlockedUsers)
                     .HasForeignKey(d => d.UserId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__FavoriteA__UserI__2F10007B");
+                    .HasConstraintName("FK_FavoriteAndBlocked_FavoriteAndBlocked");
             });
 
             modelBuilder.Entity<Rating>(entity =>
@@ -109,33 +111,33 @@ namespace HelperLand.Data
 
                 entity.Property(e => e.Comments).HasMaxLength(2000);
 
-                entity.Property(e => e.Friendly).HasColumnType("decimal(5, 0)");
+                entity.Property(e => e.Friendly).HasColumnType("decimal(2, 1)");
 
-                entity.Property(e => e.OnTimeArrival).HasColumnType("decimal(5, 0)");
+                entity.Property(e => e.OnTimeArrival).HasColumnType("decimal(2, 1)");
 
-                entity.Property(e => e.QualityOfService).HasColumnType("decimal(5, 0)");
+                entity.Property(e => e.QualityOfService).HasColumnType("decimal(2, 1)");
 
                 entity.Property(e => e.RatingDate).HasColumnType("datetime");
 
-                entity.Property(e => e.Ratings).HasColumnType("decimal(5, 0)");
+                entity.Property(e => e.Ratings).HasColumnType("decimal(2, 1)");
 
                 entity.HasOne(d => d.RatingFromNavigation)
                     .WithMany(p => p.RatingRatingFromNavigations)
                     .HasForeignKey(d => d.RatingFrom)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Rating__RatingFr__3F466844");
+                    .HasConstraintName("FK_Rating_User");
 
                 entity.HasOne(d => d.RatingToNavigation)
                     .WithMany(p => p.RatingRatingToNavigations)
                     .HasForeignKey(d => d.RatingTo)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Rating__RatingTo__403A8C7D");
+                    .HasConstraintName("FK_Rating_User1");
 
                 entity.HasOne(d => d.ServiceRequest)
                     .WithMany(p => p.Ratings)
                     .HasForeignKey(d => d.ServiceRequestId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Rating__ServiceR__3E52440B");
+                    .HasConstraintName("FK_Rating_ServiceRequest");
             });
 
             modelBuilder.Entity<ServiceRequest>(entity =>
@@ -148,9 +150,9 @@ namespace HelperLand.Data
                     .HasColumnType("datetime")
                     .HasDefaultValueSql("(getdate())");
 
-                entity.Property(e => e.Discount).HasColumnType("decimal(5, 0)");
+                entity.Property(e => e.Discount).HasColumnType("decimal(8, 2)");
 
-                entity.Property(e => e.Distance).HasColumnType("decimal(9, 0)");
+                entity.Property(e => e.Distance).HasColumnType("decimal(18, 2)");
 
                 entity.Property(e => e.ModifiedDate)
                     .HasColumnType("datetime")
@@ -158,9 +160,9 @@ namespace HelperLand.Data
 
                 entity.Property(e => e.PaymentTransactionRefNo).HasMaxLength(50);
 
-                entity.Property(e => e.RefundedAmount).HasColumnType("decimal(5, 0)");
+                entity.Property(e => e.RefundedAmount).HasColumnType("decimal(8, 2)");
 
-                entity.Property(e => e.ServiceHourlyRate).HasColumnType("decimal(5, 0)");
+                entity.Property(e => e.ServiceHourlyRate).HasColumnType("decimal(8, 2)");
 
                 entity.Property(e => e.ServiceStartDate).HasColumnType("datetime");
 
@@ -168,9 +170,9 @@ namespace HelperLand.Data
                     .HasColumnType("datetime")
                     .HasColumnName("SPAcceptedDate");
 
-                entity.Property(e => e.SubTotal).HasColumnType("decimal(5, 0)");
+                entity.Property(e => e.SubTotal).HasColumnType("decimal(8, 2)");
 
-                entity.Property(e => e.TotalCost).HasColumnType("decimal(5, 0)");
+                entity.Property(e => e.TotalCost).HasColumnType("decimal(8, 2)");
 
                 entity.Property(e => e.ZipCode)
                     .IsRequired()
@@ -179,13 +181,13 @@ namespace HelperLand.Data
                 entity.HasOne(d => d.ServiceProvider)
                     .WithMany(p => p.ServiceRequestServiceProviders)
                     .HasForeignKey(d => d.ServiceProviderId)
-                    .HasConstraintName("FK__ServiceRe__Servi__38996AB5");
+                    .HasConstraintName("FK_ServiceRequest_User1");
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.ServiceRequestUsers)
                     .HasForeignKey(d => d.UserId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__ServiceRe__UserI__37A5467C");
+                    .HasConstraintName("FK_ServiceRequest_User");
             });
 
             modelBuilder.Entity<ServiceRequestAddress>(entity =>
@@ -209,7 +211,7 @@ namespace HelperLand.Data
                 entity.HasOne(d => d.ServiceRequest)
                     .WithMany(p => p.ServiceRequestAddresses)
                     .HasForeignKey(d => d.ServiceRequestId)
-                    .HasConstraintName("FK__ServiceRe__Servi__4316F928");
+                    .HasConstraintName("FK_ServiceRequestAddress_ServiceRequest");
             });
 
             modelBuilder.Entity<ServiceRequestExtra>(entity =>
@@ -220,7 +222,7 @@ namespace HelperLand.Data
                     .WithMany(p => p.ServiceRequestExtras)
                     .HasForeignKey(d => d.ServiceRequestId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__ServiceRe__Servi__45F365D3");
+                    .HasConstraintName("FK_ServiceRequestExtra_ServiceRequest");
             });
 
             modelBuilder.Entity<State>(entity =>
@@ -238,7 +240,9 @@ namespace HelperLand.Data
 
                 entity.ToTable("Test");
 
-                entity.Property(e => e.TestName).HasMaxLength(50);
+                entity.Property(e => e.TestName)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
             });
 
             modelBuilder.Entity<User>(entity =>
@@ -311,7 +315,7 @@ namespace HelperLand.Data
                     .WithMany(p => p.UserAddresses)
                     .HasForeignKey(d => d.UserId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__UserAddre__UserI__4AB81AF0");
+                    .HasConstraintName("FK_UserAddresses_User");
             });
 
             modelBuilder.Entity<Zipcode>(entity =>
@@ -326,7 +330,7 @@ namespace HelperLand.Data
                     .WithMany(p => p.Zipcodes)
                     .HasForeignKey(d => d.CityId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Zipcode__CityId__4D94879B");
+                    .HasConstraintName("FK_Zipcode_City");
             });
 
             OnModelCreatingPartial(modelBuilder);
