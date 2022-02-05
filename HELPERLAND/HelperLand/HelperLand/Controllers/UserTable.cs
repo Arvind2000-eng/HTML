@@ -105,7 +105,7 @@ namespace HelperLand.Controllers
         [HttpPost]
         public IActionResult HelperRegistration(HelperViewModel helperViewModel)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid) 
             {
                 User user = new User();
                 user.CreatedDate = DateTime.Today;
