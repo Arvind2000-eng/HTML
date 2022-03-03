@@ -1,0 +1,726 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@model HelperLand.ViewModels.BookServiceViewModel
+
+@{
+    ViewData["Title"] = "Book Service";
+}
+
+<section class="book-service">
+    <div>
+        <div class="text-center">
+            <h2>
+                Book your cleaning service
+            </h2>
+        </div>
+        <div class="d-flex justify-content-center">
+            <div class="line1" style="margin-top:10px;margin-bottom:0;"></div>
+            <img src="~/images/forma-1-copy-5.png" style="width:20px;height:20px;">
+            <div class="line1" style="margin-top:10px;margin-bottom:0;"></div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7 navigation">
+                <section class="cust-user text-center">
+                    <div class="container">
+                        <div class="nav1">
+                            <ul class="nav nav-tabs">
+                                <li class="nav-item">
+                                    <a class="first nav-link active" data-bs-toggle="tab" aria-current="page" href="#bookingService">Booking Service</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="second nav-link" data-bs-toggle="tab" aria-current="page" href="#timeSchedule">Time schedule</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="third nav-link" data-bs-toggle="tab" aria-current="page" href="#yourData">your data</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="forth nav-link" data-bs-toggle="tab" aria-current="page" href="#Payment">Pay now</a>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="tab-content content">
+                            <div id="bookingService" class="tab-pane fade active in show">
+                                <form>
+                                    <div class="container text-start">
+                                        <span>Please enter your zip code:</span>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-7 col-md-5 form-group">
+                                            <input asp-for="@Model.zipcode.ZipcodeValue" onkeypress='return event.charCode >= 48 && event.charCode <= 57' class="form-control" maxlength="6" placeholder="Postal code" />
+                                        </div>
+
+                                        <div class="col-sm-5">
+                                            <button id="zipcodeavailable" class="btn btn-primary" type="button">Check Availability</button>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <span asp-validation-for="@Model.zipcode.ZipcodeValue" class="text-danger" id="postalcode-validation"></span>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div id="timeSchedule" class="tab-pane fade show">
+                                <div class="container text-start">
+                                    <div class="payment-step2 show">
+                                        <div class="step-content">
+                                            <div class="row">
+                                            <div class="col-md-6">
+                                                <span class="question">When do you want your helper to be with you?</span>
+                                                <div class="form-group calculator-date-time">
+                                                <div class="input-wrapper">
+                                                    <input class="form-control" id="txtServiceStartDate" type="date" style="width:150px;"/>
+                                                </div>
+                                                <select id="servicetimetextbox" class="form-control inline ng-pristine ng-valid ng-touched" formcontrolname="ServiceTime">
+                                                    <option value="8">8:00</option>
+                                                    <option value="8.5">8:30</option>
+                                                    <option value="9">9:00</option>
+                                                    <option value="9.5">9:30</option>
+                                                    <option value="10">10:00</option>
+                                                    <option value="10.5">10:30</option>
+                                                    <option value="11">11:00</option>
+                                                    <option value="11.5">11:30</option>
+                                                    <option value="12">12:00</option>
+                                                    <option value="12.5">12:30</option>
+                                                    <option value="13">13:00</option>
+                                                    <option value="13.5">13:30</option>
+                                                    <option value="14">14:00</option>
+                                                    <option value="14.5">14:30</option>
+                                                    <option value="15">15:00</option>
+                                                    <option value="15.5">15:30</option>
+                                                    <option value="16">16:00</option>
+                                                    <option value="16.5">16:30</option>
+                                                    <option value="17">17:00</option>
+                                                    <option value="17.5">17:30</option>
+                                                    <option value="18">18:00</option>
+                                                </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <span class="question cleaner-hour-picker">How long do you need your helper?</span>
+                                                <select class="form-control inline cleaner-hours ng-valid ng-dirty ng-touched" formcontrolname="ServiceHours">
+                                                <option value="3">3.0 Hours.</option>
+                                                <option value="3.5">3.5 Hours.</option>
+                                                <option value="4">4.0 Hours.</option>
+                                                <option value="4.5">4.5 Hours.</option>
+                                                <option value="5">5.0 Hours.</option>
+                                                <option value="5.5">5.5 Hours.</option>
+                                                <option value="6">6.0 Hours.</option>
+                                                <option value="6.5">6.5 Hours.</option>
+                                                <option value="7">7.0 Hours.</option>
+                                                <option value="7.5">7.5 Hours.</option>
+                                                <option value="8">8.0 Hours.</option>
+                                                <option value="8.5">8.5 Hours.</option>
+                                                <option value="9">9.0 Hours.</option>
+                                                <option value="9.5">9.5 Hours.</option>
+                                                <option value="10">10.0 Hours.</option>
+                                                <option value="10.5">10.5 Hours.</option>
+                                                <option value="11">11.0 Hours.</option>
+                                                <option value="11.5">11.5 Hours.</option>
+                                                <option value="12">12.0 Hours.</option>
+                    
+                                                </select>
+                                            </div>
+                                            </div>
+                                            <hr>
+                                            <span class="question">additional services</span>
+                                            <div class="extra-services">
+                                            <label class="service1">
+                                               
+                                                <div class="img-container">
+                                                <div class="img-wrapper">
+                                                    <img src="~/images/3.png">
+                                                </div>
+                                                </div>
+                                                <span>Clean cabinet interiors</span>
+                  
+                                            </label>
+                                            <label class="service2">
+                                                
+                                                <div class="img-container">
+                                                <div class="img-wrapper">
+                                                    <img src="~/images/5.png">
+                                                </div>
+                                                </div>
+                                                <span>Cleaning the fridge</span>
+                  
+                                            </label>
+                                            <label class="service3">
+                                                
+                                                <div class="img-container">
+                                                <div class="img-wrapper">
+                                                    <img src="~/images/4.png">
+                                                </div>
+                                                </div>
+                                                <span>Cleaning the oven</span>
+                  
+                                            </label>
+                                            <label class="service4">
+                                                <div class="img-container">
+                                                <div class="img-wrapper">
+                                                    <img src="~/images/2.png">
+                                                </div>
+                                                </div>
+                                                <span>washing and drying laundry</span>
+                  
+                                            </label>
+                                            <label class="service5">
+                                                
+                                                <div class="img-container">
+                                                <div class="img-wrapper">
+                                                    <img src="~/images/1.png">
+                                                </div>
+                                                </div>
+                                                <span>clean windows</span>
+                  
+                                            </label>
+                                            </div>
+                                            <hr>
+                                            <span class="question">Do you want to tell your helper something?</span>
+
+                                            <div class="form-group">
+                                                <textarea class="form-control ng-dirty ng-valid ng-touched" formcontrolname="Comments" maxlength="500" 
+                                                    rows="3" placeholder="Do you want to tell your helper something?">
+                                                </textarea>
+                                            </div>
+
+                                            <div class="">
+                                                <label>
+                                                    <input id="HavePet" type="checkbox" />
+                                                    <span>
+                                                        I keep pets
+                                                    </span>
+                                                </label>
+                                            </div>
+                                            <hr />
+
+                                            <div class="text-right">
+                                            <button class="btn btn-primary btn-lg" type="submit">Continue</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="yourData" class="tab-pane fade show">
+                                <div class="container text-start">
+                                    <div class="payment-step3 show">
+                                          <div class="step-content">
+                                              <span class="question">Please enter your address so that your helper can find you.</span>
+                                              <div class="scenario2">
+                                                <ul class="address-picker">
+                                                  <li class="">
+                                                    <label>
+                                                      <input type="radio" id="109" />
+                                                      <span class="address-block">
+                                                        <b>Address:</b> Abcd45,Bonn 53225
+                                                      </span>
+                                                      <span>
+                                                          <b>Telephone number:</b> 9988556644
+                                                      </span>
+                                                      <span class="radio-pointer"></span>
+                                                    </label>
+                                                  </li>
+                                                </ul>
+                                                <div class="scenario1 hide">
+                                                  <form>
+                                                        <div class="row">
+                                                            <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                <label class="control-label">Street</label>
+                                                                <input asp-for="@Model.address.Street" class="" placeholder="Street" />
+                                                            </div>
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                <label class="control-label">House number</label>
+                                                                <input asp-for="@Model.address.HouseNumber" class="" placeholder="House number" />
+                                                            </div>
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                <label class="control-label">Postal code</label>
+                                                                <input asp-for="@Model.address.PostalCode" class="" readonly="" placeholder="Postal code" value="382450"/>
+                                                            </div>
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                <label class="control-label">location</label>
+                                                                <select asp-for="@Model.address.City" class="">
+                                                                    <option value="Bonn">Bonn</option>
+                                                                </select>
+                                                            </div>
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                <label class="control-label">Telefonnummer</label>
+                                                                <div class="input-group">
+                                                                <span class="input-group-addon">+49</span>
+                                                                <input asp-for="@Model.address.Mobile" class="" placeholder="Phone Number"/>
+                                                                </div>
+                                                            </div>
+                                                            </div>
+                                                        </div>
+                                                        <button class="btn btn-primary" id="addressSave" type="button">Save</button>
+                                                  </form>
+                                                  <input class="btn btn-default add-new-address-close" type="button" value="discard">
+                                                </div>
+                                                <input class="btn btn-primary btn-linear btn-thick scenario1-button" type="button" value="+ Add new address">
+                                                <br />
+                                                <br />
+                                                <div class="checkbox invoice-checkbox">
+                                                    <input id="billingAddress" type="checkbox" class="">
+                                                    <label for="billingAddress">
+                                                        My billing address differs from the given address.
+                                                    </label>
+                                                </div>
+                                                <div class="invoice-address-form hide">
+                                                  <form>
+                                                    <div class="row">
+                                                      <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                          <label class="control-label">Street</label>
+                                                          <input id="billingStreet" placeholder="Street"/>
+                                                          
+                                                        </div>
+                                                      </div>
+                                                      <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                          <label class="control-label">House Number</label>
+                                                          <input id="billingHouseNumber" class="" placeholder="House Number" />
+                                                         
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                    <div class="row">
+                                                      <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                          <label class="control-label">Postal Code</label>
+                                                          <input id="billingPostalCode" class="" placeholder="PLZ" />
+                                                         
+                                                        </div>
+                                                      </div>
+                                                      <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                          <label class="control-label">Location</label>
+                                                          <select id="billingCity" class="">
+                                                                <option value="Bonn">Bonn</option>
+                                                            </select>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                    <button class="btn btn-primary save-billing-address" type="button">Save</button>
+                                                  </form>
+                                                </div>
+                                              </div>
+                                              <hr class="hr">
+                                              <div class="text-right">
+                
+                                                <button class="btn btn-primary btn-lg" type="submit">Continue</button>
+                                              </div>
+                                          </div>
+                                        </div>
+                                </div>
+                            </div>
+
+                            <div id="Payment" class="tab-pane fade show">
+                                <div class="container text-start">
+                                    <div class="payment-step4 show">
+
+                                          <div class="step-content">
+                                            <form novalidate="" class="ng-untouched ng-pristine ng-valid">
+
+                                              <span class="question marginBottom20">Choose one of the following payment methods.</span>
+                                              <div class="promo-code">
+                                                <form novalidate="" class="ng-untouched ng-pristine ng-invalid">
+                                                  <span>Discount code (optional)</span>
+                                                  <div class="row">
+                                                    <div class="col-xs-7 col-sm-6 col-md-4">
+                                                      <input class="form-control ng-untouched ng-pristine ng-invalid" formcontrolname="PromoCode" name="PromoCode" type="text" 
+                                                      placeholder="Do you have a discount code? (optional)" data-placeholder="Do you have a discount code? (optional)">
+                                                    </div>
+                                                    <div class="col-xs-5 col-sm-3 col-md-2">
+                                                      <button class="btn btn-primary btn-linear" id="btnApply" type="submit" disabled="">Use</button>
+                                                    </div>
+                                                  </div>
+                                                </form>
+                                              </div>
+                                              <hr>
+                                              <div class="field input--focus StripeElement StripeElement--empty" ref="card">
+                                                  <div class="__PrivateStripeElement" style="margin: 0px !important; padding: 0px !important; border: none !important; display: block !important; 
+                                                        background: transparent !important; position: relative !important; opacity: 1 !important;">
+                                                      <iframe name="__privateStripeFrame67715" frameborder="0" allowtransparency="true" scrolling="no" allow="payment *" 
+                                                      src="https://js.stripe.com/v3/elements-inner-card-006cfb59170d91afbb71d5f371471a54.html#locale=de&amp;wait=false&amp;mids[guid]=4d09fb58-1ea3-449c-beec-eef29a8258d899d5fc&amp;mids[muid]=047aa14d-80f9-40fe-
+                                                            8897-4c64a16a6cf70dc0d2&amp;mids[sid]=2c1b8e4c-9518-4b60-9ea6-881173d9190d1fb1db&amp;hidePostalCode=true&amp;style[base][iconColor]=%23666EE8&amp;style[base][color]=%2331325F&amp;style[base][lineHeight]=36px&amp;
+                                                            style[base][fontSize]=16px&amp;style[base][::placeholder][color]=%23c5c5c5&amp;rtl=false&amp;componentName=card&amp;
+                                                            keyMode=test&amp;apiKey=pk_test_CbN2mTsadzVC1WpDPDgcDWbG&amp;referrer=https%3A%2F%2Fweb1.anasource.com%2Ftrainee2021%2Fbook-service&amp;controllerId=__privateStripeController67711" 
+                                                      title="Sicherer Eingaberahmen für Kartenzahlungen" style="border: none !important; margin: 0px !important; padding: 0px !important; width: 1px !important; min-width: 100% !important;
+                                                            overflow: hidden !important; display: block !important; user-select: none !important; transform: translate(0px) !important; height: 36px;">
+                                                    </iframe>
+                                                    <input class="__PrivateStripeElement-input" aria-hidden="true" aria-label=" " autocomplete="false" maxlength="1" 
+                                                    style="border: none !important; display: block !important; position: absolute !important; height: 1px !important; top: -1px !important; left: 0px !important; padding: 0px !important; margin: 0px !important;
+                                                        width: 100% !important; opacity: 0 !important; background: transparent !important; pointer-events: none !important; font-size: 16px !important;"></div></div>
+                                              
+
+              
+                                              <hr class="hr">
+                                              <div class="checkbox small">
+                                                <label>
+                                                  <input formcontrolname="TnCAgree" type="checkbox" class="ng-untouched ng-pristine ng-valid">
+                                                  <span>
+                                                    I accepted
+                                                    <a data-toggle="modal" href="#termsAndConditions" title="AGB">Conditions</a>,
+                                                    the
+                                                    <a data-tog="" gle="modal" href="#CancellationPolicyModal" title="Widerrufsbelehrung">Right of withdrawal</a>
+                                                    and the
+                                                    <a data-toggle="modal" href="#privacy-policy-modal" title="Datenschutzbestimmungen">Privacy Policy</a>.
+                                                    I confirm that Helperland will start executing the contract before the end of the cancellation period and that 
+                                                    I will lose my right of cancellation as a consumer once the contract has been fully performed.
+                                                  </span>
+                                                </label>
+                
+                                              </div>
+                                              <hr class="hr">
+                                              <div class="text-right">
+                                                <input class="btn btn-primary btn-lg" type="submit" value="Book with costs">
+                  
+                                              </div>
+
+                                            </form>
+                                          </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="col-md-4">
+                <div class="modal fade payment-summary-modal" id="payment-summary-modal" tabindex="-1">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="col-sm-5 col-md-4 payment-summary-wrapper-parent">
+                          <div class="payment-summary-wrapper" style="">
+                              <div class="inner-wrapper-sticky" style="position: relative; transform: translate3d(0px, 0px, 0px);">
+                            <div class="payment-summary">
+                              <h3 class="heading">
+                                Payment Summary
+                              </h3>
+                              <div class="content">
+                                <span id="date-time-update">10/02/2022 08:00 </span>
+                    
+                                <table>
+                                  <thead>
+                                    <tr>
+                                      <th>Time</th>
+                                      <th></th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td>Basic</td>
+                                      <td>3 Hours.</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                                <p><b>Additional Services</b></p>
+                                <table class="extra-service-detail">
+                                  <tbody>
+                                    <tr class="service1 d-none">
+                                      <td>Clean cabinet interiors</td>
+                                      <td>30 min.</td>
+                                    </tr>
+
+                                    <tr class="service2 d-none">
+                                      <td>Cleaning the fridge</td>
+                                      <td>30 min.</td>
+                                    </tr>
+
+                                    <tr class="service3 d-none">
+                                      <td>Cleaning the oven</td>
+                                      <td>30 min.</td>
+                                    </tr>
+
+                                    <tr class="service4 d-none">
+                                      <td>washing and drying laundry</td>
+                                      <td>30 min.</td>
+                                    </tr>
+
+                                    <tr class="service5 d-none">
+                                      <td>clean windows</td>
+                                      <td>30 min.</td>
+                                    </tr>
+
+                                    <tr class="total-service-time d-none">
+                                      <td><b>total service time</b></td>
+                                      <td><p><b id = "tsrvedt">2.5</b> <b>Hours.</b></p></td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                              <div class="content">
+                                <table>
+                                  <tbody>
+                                    <tr>
+                                      <td>Per cleaning</td>
+                                      <td><p><b id = "perclprc">54.00</b> €</p></td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                              <div class="content total-payment">
+                                <table>
+                                  <tbody><tr>
+                                    <td>total price</td>
+                                    <td><b id="totalprc">54.00</b>&nbsp;€</td>
+                                  </tr>
+                                  <tr>
+                                    <td colspan="2">
+                                      <p style="text-align: left;" class="no-sales-tax">According to § 19 UStG no sales tax will be charged.</p>
+                                    </td>
+                                  </tr>
+                                  <tr class="effective-price">
+                                    <td>Effective price*</td>
+                                    <td>
+                                      <b><div class="d-inline" id="effeprc">43.20</div>&nbsp;€</b>
+                                    </td>
+                                  </tr>
+                                </tbody></table>
+                                <p>
+                                  <a data-bs-dismiss="modal" data-bs-toggle="modal" href="#moreInfoOn20Modal">
+                                    <span>*</span>Save 20% according to 35a Income Tax Act (EStG).
+                                  </a>
+                                </p>
+                              </div>
+                              <div class="footer">
+                                <img alt="Smiley" src="~/images/smiley.png">
+                                <a data-bs-dismiss="modal" data-bs-toggle="modal" href="#servicesModal">Take a look at our included basic services</a>
+                              </div>
+                            </div>
+                            <div class="payment-faq">
+                              <h3>Questions?</h3>
+                              <div class="panel-group" id="accordion">
+                                <div class="panel panel-default">
+                                  <div class="panel-heading" id="heading0">
+                                    <a class="collapsed" data-bs-parent="#accordion" data-bs-toggle="collapse" href="#collapse0" title="Was ist in der Basisreinigung enthalten?">
+                                      <img alt="Right Arrow" src="~/images/right-arrow-dark.png"> What is included in the basic cleaning?
+                                    </a>
+                                  </div>
+                                  <div class="panel-collapse collapse" id="collapse0">
+                                    <div class="panel-body">
+                                      Living room, bedroom and bathroom, kitchen and common areas
+                                    </div>
+                                  </div>
+                                </div><div class="panel panel-default">
+                                  <div class="panel-heading" id="heading1">
+                                    <a class="collapsed" data-bs-parent="#accordion" data-bs-toggle="collapse" href="#collapse1" title="Kann ich Buchungen überspringen oder verschieben?">
+                                      <img alt="Right Arrow" src="~/images/right-arrow-dark.png">Can I skip or move bookings?
+                                    </a>
+                                  </div>
+                                  <div class="panel-collapse collapse" id="collapse1">
+                                    <div class="panel-body">
+                                      You can change a booking free of charge 48 hours before an assignment. If you want to skip an already booked assignment, we will credit the value of the booking to your account. 
+                                      You can use the credit for a future booking.
+                                    </div>
+                                  </div>
+                                </div><div class="panel panel-default">
+                                  <div class="panel-heading" id="heading2">
+                                    <a class="collapsed" data-bs-parent="#accordion" data-bs-toggle="collapse" href="#collapse2" title="Muss ich während der Reinigung zu Hause sein?">
+                                      <img alt="Right Arrow" src="~/images/right-arrow-dark.png">Do I have to be at home during the cleaning?
+                                    </a>
+                                  </div>
+                                  <div class="panel-collapse collapse" id="collapse2">
+                                    <div class="panel-body">
+                                      We recommend that you be at home for the first cleaning. This way you get to know your helper personally. You can also show him the rooms and respond to your wishes. 
+                                      Of course you can arrange an appointment or place for the key handover with your helper. With frequent bookings, some customers choose to leave a spare key to their cleaner.
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <a title="Weitere Fragen und Antworten" href="~/Home/faq">More questions and answers</a>
+                            </div>
+                          <div dir="ltr" class="resize-sensor" style="pointer-events: none; position: absolute; inset: 0px; overflow: hidden; z-index: -1; visibility: hidden; max-width: 100%;">
+                              <div class="resize-sensor-expand" style="pointer-events: none; position: absolute; inset: 0px; overflow: hidden; z-index: -1; visibility: hidden; max-width: 100%;">
+                                  <div style="position: absolute; left: 0px; top: 0px; transition: all 0s ease 0s; width: 370px; height: 791px;"></div>
+                              </div>
+                              <div class="resize-sensor-shrink" style="pointer-events: none; position: absolute; inset: 0px; overflow: hidden; z-index: -1; visibility: hidden; max-width: 100%;">
+                                  <div style="position: absolute; left: 0px; top: 0px; transition: all 0s ease 0s; width: 200%; height: 200%;"></div>
+                              </div>
+                          </div>
+                          </div>
+                          </div>
+                        <div dir="ltr" class="resize-sensor" style="pointer-events: none; position: absolute; inset: 0px; overflow: hidden; z-index: -1; visibility: hidden; max-width: 100%;">
+                            <div class="resize-sensor-expand" style="pointer-events: none; position: absolute; inset: 0px; overflow: hidden; z-index: -1; visibility: hidden; max-width: 100%;">
+                                <div style="position: absolute; left: 0px; top: 0px; transition: all 0s ease 0s; width: 400px; height: 1110px;"></div>
+                            </div>
+                            <div class="resize-sensor-shrink" style="pointer-events: none; position: absolute; inset: 0px; overflow: hidden; z-index: -1; visibility: hidden; max-width: 100%;">
+                                <div style="position: absolute; left: 0px; top: 0px; transition: all 0s ease 0s; width: 200%; height: 200%;"></div>
+                            </div>
+                        </div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts{
+    <script>
+        $(document).ready(function(){
+            
+
+            $("#bookingService button").click(function () {
+                var model = {    
+                    ZipcodeValue: $('#@Html.IdFor(x=>x.zipcode.ZipcodeValue)').val()
+                }
+                
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("ZipCodeCheck", "BookingService")',
+                    data: model,
+                    dataType: "json",
+                    success: function(data) {
+                        //alert(JSON.stringify(data.responseText));
+                        //alert("inside");
+                        if(data)
+                        {
+                            //alert("found");
+                            $(".book-service .navigation .nav-item a.first").removeClass("active");
+                            $(".book-service .navigation .nav-item a.second").addClass("active");
+                            $("#bookingService").removeClass("active");
+                            $("#timeSchedule").addClass("active");
+                        }
+                        else{
+                            alert("not found");
+                        }
+                    },
+                    error: function(e) {
+                       alert("Error: " + e);
+                    }
+                    
+                });
+            });
+
+            //var today = new Date();
+            //var tomorrow=new Date(today.getTime() + 24 * 60 * 60 * 1000);
+            //var dd = String(tomorrow.getDate()).padStart(2, '0');
+            //var mm = String(tomorrow.getMonth() + 1).padStart(2, '0'); //January is 0!
+            //var yyyy = String(tomorrow.getFullYear());
+            //tomorrow = dd + '-' + mm + '-' + yyyy;
+            ////alert(today);
+            //var starttime=$("#servicetimetextbox").text("8:30");
+            //var startdate=$("#txtServiceStartDate").val(tomorrow);
+            //$("#date-time-update").text(startdate+" "+starttime);
+
+            $("#timeSchedule .text-right button").click(function () {
+                var startdate=$("#txtServiceStartDate").val();
+                var starttime=$("#servicetimetextbox").val();
+                
+                if(startdate=="")
+                {
+                    alert("please enter date");
+                }
+                else{
+                    $("#date-time-update").text(startdate+" "+starttime);
+                    $(".book-service .navigation .nav-item a.second").removeClass("active");
+                    $(".book-service .navigation .nav-item a.third").addClass("active");
+                    $("#timeSchedule").removeClass("active");
+                    $("#yourData").addClass("active");
+                }
+            });
+
+            $(".add-new-address-close").click(function () {
+                $('#@Html.IdFor(x=>x.address.Street)').val(null);
+                $('#@Html.IdFor(x=>x.address.HouseNumber)').val(null);
+                $(".scenario1-button").show();
+                $(".scenario1").addClass("hide");
+            });
+
+            $(".save-billing-address").click(function(){
+                var model1 = {
+                    Street: $('#billingStreet').val(),
+                    HouseNumber: $('#billingHouseNumber').val(),
+                    
+                    PostalCode: $('#billingPostalCode').val(),
+                    City: $('#billingCity').val(),
+                    Mobile:"23412312"
+                }
+                
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("SaveBillingAddress", "BookingService")',
+                    data: model1,
+                    //dataType: "json",
+                    success: function() {
+                        alert("Address Saved !");
+                        $('#billingStreet').val(null);
+                        $('#billingHouseNumber').val(null);
+                        $('#billingCity').val(null);
+                        $('#billingPostalCode').val(null);
+                        $('#billingAddress').prop('checked', false);
+                        $(".invoice-address-form").addClass("hide")
+                    },
+                    error: function(e) {
+                       alert("Error: " + e);
+                    }
+                });
+            });
+
+            $("#addressSave").click(function(){
+                var model = {
+                    //Street:"abc",
+                    Street: $('#@Html.IdFor(x=>x.address.Street)').val(),
+                    HouseNumber: $('#@Html.IdFor(x=>x.address.HouseNumber)').val(),
+                    Mobile: $('#@Html.IdFor(x=>x.address.Mobile)').val(),
+                    PostalCode: $('#@Html.IdFor(x=>x.address.PostalCode)').val(),
+                    City: $('#@Html.IdFor(x=>x.address.City)').val()
+
+                }
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("NewPasswordSave", "BookingService")',
+                    data: model,
+                    //dataType: "json",
+                    success: function() {
+                        alert("Address Saved !");
+                        $('#@Html.IdFor(x=>x.address.Street)').val(null);
+                        $('#@Html.IdFor(x=>x.address.HouseNumber)').val(null);
+                        $(".scenario1-button").show();
+                        $(".scenario1").addClass("hide");
+                    },
+                    error: function(e) {
+                       alert("Error: " + e);
+                    }
+                });
+            });
+
+            $("#yourData .text-right button").click(function () {
+                $(".book-service .navigation .nav-item a.third").removeClass("active");
+                $(".book-service .navigation .nav-item a.forth").addClass("active");
+                $("#yourData").removeClass("active");
+                $("#Payment").addClass("active");
+                
+            });
+
+
+
+
+
+
+
+
+
+
+
+
+
+        });
+    </script>
+}

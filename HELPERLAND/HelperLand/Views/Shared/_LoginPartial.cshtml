@@ -1,0 +1,98 @@
+﻿@model HelperLand.ViewModels.LoginViewModel
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+
+<div class="container">
+    <div>
+        <button class="nav-link border-btn" title="Login" data-bs-toggle="modal" data-bs-target="#login">Login</button>
+    </div>
+
+    <form asp-controller="UserTable" asp-action="Login" method="post">
+    <!-- The Modal -->
+    <div class="modal fade" id="login">
+        <div class="modal-dialog vertical-align-center">
+            <div class="vertical-alignment-helper">
+                <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Log in</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+        
+                    <!-- Modal body -->
+                        <div class="modal-body">
+                            <div class="user-image form-group">
+                                <input asp-for="Email" maxlength="100" class="form-control text-box" placeholder="E-Mail">
+                                <img alt="Username" src="~/images/user.png">
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+
+                            <div class="lock-image form-group">
+                                <input asp-for="Password" maxlength="24" class="form-control text-box" type="password" placeholder="Enter Password">
+                                <img alt="Username" src="~/images/lock.png">
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+
+                            <label>
+                                <input asp-for="RememberMe" type="checkbox" name="remember"> Save on computer
+                            </label>
+
+        
+                            <div class="d-grid mt-4">
+                                <button class="btn btn-primary btn-lg d-block my-1" type="submit">Login</button>
+                            </div>
+
+                            <div class="d-block text-danger">
+                                @ViewData["Invalid"]
+                            </div>
+                        </div>
+
+                    <div class="modal-footer d-block flex-row text-center">
+                        <div><a href="#" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#forgot-pwd">Forgot Password?</a></div>
+                        <div>Don't have an account yet?</div>
+                        <div>
+                            <a href="~/UserTable/Registration">Create account</a>
+                        </div>                          
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </form>
+
+
+    <div class="modal fade" id="forgot-pwd">
+        <div class="modal-dialog vertical-align-center">
+            <div class="vertical-alignment-helper">
+                <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Forgot Password</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                                                        
+                    <!-- Modal body -->
+                    <form asp-controller="UserTable" asp-action="ForgotPassword" method="post">
+                        <div class="modal-body">
+                            <div class="user-image">
+                                <input asp-for="Email" maxlength="100" class="form-control text-box" placeholder="E-Mail">
+                                <img alt="Username" src="~/images/user.png">
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+
+                            <div class="d-grid mt-4">
+                                <button class="btn btn-primary btn-lg d-block my-1" type="submit">Send</button>
+                            </div>
+
+                            <div class="text-center" style="margin-top: 20px;">
+                                <a style="color: #1d7a8c;text-decoration:none;" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#login" href="">Login now</a>
+                            </div>
+                        </div>
+                    </form>   
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

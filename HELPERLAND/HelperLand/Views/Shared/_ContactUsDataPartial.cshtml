@@ -1,0 +1,107 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model HelperLand.ViewModels.ContactUsDataViewModel
+
+<form asp-controller="ContactUsTable" asp-action="ContactUsData" method="post">
+    <section class="form">
+        <div class="container text-center">
+            <span class="Get-in-touch-with-us">
+                Get in touch with us
+            </span>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <input asp-for="FirstName" maxlength="100" class="form-control" placeholder="First Name" />
+                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <input asp-for="LastName" maxlength="100" class="form-control" placeholder="Last Name" />
+                        <span asp-validation-for="LastName" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+       
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon" style="background: #dedddd;padding: 10px;margin-top: 20px;">+49</span>
+                            <input asp-for="PhoneNumber" class="form-control" maxlength="20" placeholder="Mobile Nummer" />
+                        </div>
+                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <input asp-for="Email" maxlength="100" class="form-control" placeholder="EMail" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                </div>
+
+            </div>
+                
+
+            <div class="row">
+                <div class="form-group">
+                    <select asp-for="Subject" id="subject" class="form-control">
+                        <option value="1">General</option>
+                        <option value="2">Inquiry</option>
+                        <option value="3">Renewal</option>
+                        <option value="4">Widerruf</option>
+                    </select>
+                    <span asp-validation-for="Subject" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <textarea asp-for="Message" placeholder="text" cols="50" rows="5" class="form-control" >
+                        </textarea>
+                        
+                        <span asp-validation-for="Message" class="text-danger"></span>
+                    </div>
+                </div>
+                    
+            </div>
+
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="form-group">
+                  <label class="control-label d-flex">Enclose Attachment</label>
+                  <input class="d-flex upload-control" id="fileUpload" type="file" style="width:auto;height:auto;padding-left:0;margin-top:5px;">
+                  <button class="d-flex btn btn-default auto-width upload-btn" type="button">Upload</button>
+                  <label id="lblfileUpload"></label>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="checkbox">
+                    <input type="checkbox" />
+                    <span>
+                        Our current ones apply
+                      <a href="#">Privacy Policy</a>
+                      . I hereby agree that my data entered in the contact form will be stored electronically and processed and used for the purpose of establishing contact. 
+                      The consent can be revoked at any time in accordance with Art. 7 Para. 3 GDPR by informal notification (e.g. by e-mail).
+                    </span>
+                
+                </div>
+              </div>
+            </div>
+
+            <div class="d-flex flex-wrap justify-content-center">
+                <div>
+                    <button id="Submit" class="Rounded-Rectangle-2-copy-6">Submit</button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+</form>

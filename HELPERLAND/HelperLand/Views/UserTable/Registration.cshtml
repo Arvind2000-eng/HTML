@@ -1,0 +1,138 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@model HelperLand.ViewModels.UserViewModel
+
+@{
+    ViewData["Title"] = "Registration";
+}
+
+ 
+<section class="registration">
+    <div class="container text-center">
+        <h2 id='p1'>Create Account</h2>
+        <div class="d-flex justify-content-center">
+            <div class="line1"></div>
+            <img src="~/images/forma-1-copy-5.png">
+            <div class="line1"></div>
+        </div>
+    </div>
+
+        
+    <div class="container">
+        <form asp-controller="UserTable" asp-action="Registration" method="post" class="registration-form mx-auto">
+            
+            <div class="row">
+                <div class="col-sm-6">
+                        
+                    <div class="form-group">
+                        <input asp-for="FirstName" maxlength="100" class="form-control" placeholder="First Name" />
+                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <input asp-for="LastName" maxlength="100" class="form-control" placeholder="Last Name" />
+                        <span asp-validation-for="LastName" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+       
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <input asp-for="Email" maxlength="100" class="form-control" placeholder="EMail" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon">+49</span>
+                            <input asp-for="Mobile" class="form-control" type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' maxlength="10" placeholder="Mobile Nummer" />
+                        </div>
+                        <span asp-validation-for="Mobile" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row ng-untouched ng-pristine ng-invalid" formgroupname="Password">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <input asp-for="Password" id="psw-user" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" maxlength="24" class="form-control" placeholder="Password" type="password" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required/>
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <input asp-for="ConfirmPassword" class="form-control" placeholder="Confirm Password" type="password"/>
+                        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div id="message">
+                  <h6>Password must contain the following:</h6>
+                  <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+                  <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+                  <p id="number" class="invalid">A <b>number</b></p>
+                  <p id="spesymb" class="invalid">A <b>Special</b> Symbole like !@@#$%^&*()\-_+.=<>,?/:;|~{}</p>
+                  <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="checkbox d-flex">
+                        <input type="checkbox" id="like-to-subscribe" style="width:50px;">
+                        <label for="like-to-subscribe">
+                            Yes, I would like to subscribe to the Helperland GmbH newsletter with vouchers, trends, promotions and individualized offers. 
+                            I can unsubscribe from the newsletter at any time in the newsletter and in my customer account.
+                        </label>
+                        <br />
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="checkbox d-flex">
+                        <input type="checkbox" id="terms-condition" onclick="termcondition()">
+                        <label for="terms-condition">
+                            I agree with the
+                            <a data-toggle="modal" href="#termsAndConditions" title="Terms and Conditions">AGB</a>
+                            by Helperland GmbH.
+                        </label>
+                        <br />
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="checkbox d-flex">
+                        <input type="checkbox" id="data-protection" onclick="dataprotection()">
+                        <label for="data-protection">
+                            I have the
+                            <a href="#">Data protection</a>
+                            acknowledged.
+                        </label>
+                        <br />
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group d-flex justify-content-center" style="margin:20px 0;">
+                <button id="usersubmit" class="btn btn-primary btn-lg" type="submit" disabled>Register</button>
+            </div>
+
+            <div class="text-center">
+                Already registered?
+                <a href="" class="setPointer" data-bs-toggle="modal" data-bs-target="#login">log in now</a>
+            </div>
+        </form>
+    </div>
+</section>
