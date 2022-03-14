@@ -1,11 +1,14 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-
-@model HelperLand.ViewModels.BookServiceViewModel
+﻿@model HelperLand.ViewModels.BookServiceViewModel
 
 @{
     ViewData["Title"] = "Book Service";
+    var c = 0;
+    var id = "Address";
+    var ids = "";
+
+    var HCount = 0;
+    var idHelper = "Helper";
+    var idsHelper = "";
 }
 
 <section class="book-service">
@@ -68,15 +71,16 @@
                             <div id="timeSchedule" class="tab-pane fade show">
                                 <div class="container text-start">
                                     <div class="payment-step2 show">
+                                        <form>
                                         <div class="step-content">
                                             <div class="row">
                                             <div class="col-md-6">
                                                 <span class="question">When do you want your helper to be with you?</span>
                                                 <div class="form-group calculator-date-time">
                                                 <div class="input-wrapper">
-                                                    <input class="form-control" id="txtServiceStartDate" type="date" style="width:150px;"/>
+                                                    <input asp-for="@Model.scheduleAndPlan.ServiceStartDate" class="form-control" type="date" style="width:150px;"/>
                                                 </div>
-                                                <select id="servicetimetextbox" class="form-control inline ng-pristine ng-valid ng-touched" formcontrolname="ServiceTime">
+                                                <select asp-for="@Model.scheduleAndPlan.StartTime" class="form-control inline">
                                                     <option value="8">8:00</option>
                                                     <option value="8.5">8:30</option>
                                                     <option value="9">9:00</option>
@@ -103,33 +107,37 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <span class="question cleaner-hour-picker">How long do you need your helper?</span>
-                                                <select class="form-control inline cleaner-hours ng-valid ng-dirty ng-touched" formcontrolname="ServiceHours">
-                                                <option value="3">3.0 Hours.</option>
-                                                <option value="3.5">3.5 Hours.</option>
-                                                <option value="4">4.0 Hours.</option>
-                                                <option value="4.5">4.5 Hours.</option>
-                                                <option value="5">5.0 Hours.</option>
-                                                <option value="5.5">5.5 Hours.</option>
-                                                <option value="6">6.0 Hours.</option>
-                                                <option value="6.5">6.5 Hours.</option>
-                                                <option value="7">7.0 Hours.</option>
-                                                <option value="7.5">7.5 Hours.</option>
-                                                <option value="8">8.0 Hours.</option>
-                                                <option value="8.5">8.5 Hours.</option>
-                                                <option value="9">9.0 Hours.</option>
-                                                <option value="9.5">9.5 Hours.</option>
-                                                <option value="10">10.0 Hours.</option>
-                                                <option value="10.5">10.5 Hours.</option>
-                                                <option value="11">11.0 Hours.</option>
-                                                <option value="11.5">11.5 Hours.</option>
-                                                <option value="12">12.0 Hours.</option>
-                    
+                                                <select asp-for="@Model.scheduleAndPlan.ServiceHrs" class="form-control inline cleaner-hours">
+                                                    <option value="3">3.0 Hours.</option>
+                                                    <option value="3.5">3.5 Hours.</option>
+                                                    <option value="4">4.0 Hours.</option>
+                                                    <option value="4.5">4.5 Hours.</option>
+                                                    <option value="5">5.0 Hours.</option>
+                                                    <option value="5.5">5.5 Hours.</option>
+                                                    <option value="6">6.0 Hours.</option>
+                                                    <option value="6.5">6.5 Hours.</option>
+                                                    <option value="7">7.0 Hours.</option>
+                                                    <option value="7.5">7.5 Hours.</option>
+                                                    <option value="8">8.0 Hours.</option>
+                                                    <option value="8.5">8.5 Hours.</option>
+                                                    <option value="9">9.0 Hours.</option>
+                                                    <option value="9.5">9.5 Hours.</option>
+                                                    <option value="10">10.0 Hours.</option>
+                                                    <option value="10.5">10.5 Hours.</option>
+                                                    <option value="11">11.0 Hours.</option>
+                                                    <option value="11.5">11.5 Hours.</option>
+                                                    <option value="12">12.0 Hours.</option>
                                                 </select>
                                             </div>
                                             </div>
                                             <hr>
                                             <span class="question">additional services</span>
                                             <div class="extra-services">
+                                                <input id="cabinetExtra" type="checkbox" class="">
+                                                <input id="fridgeExtra" type="checkbox" class="">
+                                                <input id="ovenExtra" type="checkbox" class="">
+                                                <input id="laundryExtra" type="checkbox" class="">
+                                                <input id="windowsExtra" type="checkbox" class="">
                                             <label class="service1">
                                                
                                                 <div class="img-container">
@@ -177,21 +185,19 @@
                                                 </div>
                                                 </div>
                                                 <span>clean windows</span>
-                  
                                             </label>
                                             </div>
                                             <hr>
                                             <span class="question">Do you want to tell your helper something?</span>
 
                                             <div class="form-group">
-                                                <textarea class="form-control ng-dirty ng-valid ng-touched" formcontrolname="Comments" maxlength="500" 
-                                                    rows="3" placeholder="Do you want to tell your helper something?">
+                                                <textarea asp-for="@Model.scheduleAndPlan.Comments" class="form-control" maxlength="500" rows="3" placeholder="Do you want to tell your helper something?">
                                                 </textarea>
                                             </div>
 
                                             <div class="">
                                                 <label>
-                                                    <input id="HavePet" type="checkbox" />
+                                                    <input asp-for="@Model.scheduleAndPlan.HavePets" type="checkbox" />
                                                     <span>
                                                         I keep pets
                                                     </span>
@@ -200,9 +206,10 @@
                                             <hr />
 
                                             <div class="text-right">
-                                            <button class="btn btn-primary btn-lg" type="submit">Continue</button>
+                                            <button class="btn btn-primary btn-lg" type="button">Continue</button>
                                             </div>
                                         </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -214,114 +221,88 @@
                                               <span class="question">Please enter your address so that your helper can find you.</span>
                                               <div class="scenario2">
                                                 <ul class="address-picker">
-                                                  <li class="">
-                                                    <label>
-                                                      <input type="radio" id="109" />
-                                                      <span class="address-block">
-                                                        <b>Address:</b> Abcd45,Bonn 53225
-                                                      </span>
-                                                      <span>
-                                                          <b>Telephone number:</b> 9988556644
-                                                      </span>
-                                                      <span class="radio-pointer"></span>
-                                                    </label>
-                                                  </li>
+                                                    @foreach (var item in Model.userAddresses1) {
+                                                        c = c + 1;
+                                                        ids = id + (c);
+                                                        <li>
+                                                            <label>
+                                                                <input type="radio" name="Select_Address" id=@ids />
+                                                                <span class="address-block">
+                                                                <b>Address:</b> @Html.DisplayFor(modelItem => item.AddressLine1),@Html.DisplayFor(modelItem => item.City) @Html.DisplayFor(modelItem => item.PostalCode)
+                                                                </span>
+                                                                <span>
+                                                                    <b>Telephone number:</b> @Html.DisplayFor(modelItem => item.Mobile)
+                                                                </span>
+                                                                <span class="radio-pointer"></span>
+                                                            </label>
+                                                        </li>
+
+                                                    }
                                                 </ul>
+                                                <input type="text" id="totalAddress" value=@c disabled/>
                                                 <div class="scenario1 hide">
-                                                  <form>
+                                                    <form>
                                                         <div class="row">
                                                             <div class="col-sm-6">
                                                             <div class="form-group">
                                                                 <label class="control-label">Street</label>
-                                                                <input asp-for="@Model.address.Street" class="" placeholder="Street" />
+                                                                <input asp-for="@Model.address.Street" class="form-control" placeholder="Street" />
                                                             </div>
                                                             </div>
                                                             <div class="col-sm-6">
                                                             <div class="form-group">
                                                                 <label class="control-label">House number</label>
-                                                                <input asp-for="@Model.address.HouseNumber" class="" placeholder="House number" />
+                                                                <input asp-for="@Model.address.HouseNumber" class="form-control" placeholder="House number" />
                                                             </div>
                                                             </div>
                                                             <div class="col-sm-6">
                                                             <div class="form-group">
                                                                 <label class="control-label">Postal code</label>
-                                                                <input asp-for="@Model.address.PostalCode" class="" readonly="" placeholder="Postal code" value="382450"/>
+                                                                <input asp-for="@Model.address.PostalCode" class="form-control" readonly="true" placeholder="Postal code" />
                                                             </div>
                                                             </div>
                                                             <div class="col-sm-6">
                                                             <div class="form-group">
-                                                                <label class="control-label">location</label>
-                                                                <select asp-for="@Model.address.City" class="">
-                                                                    <option value="Bonn">Bonn</option>
-                                                                </select>
+                                                                <label class="control-label">City</label>
+                                                                <input asp-for="@Model.address.City" class="form-control" placeholder="City" />
+                                                                
                                                             </div>
                                                             </div>
                                                             <div class="col-sm-6">
                                                             <div class="form-group">
-                                                                <label class="control-label">Telefonnummer</label>
+                                                                <label class="control-label">Phone nomber</label>
                                                                 <div class="input-group">
                                                                 <span class="input-group-addon">+49</span>
-                                                                <input asp-for="@Model.address.Mobile" class="" placeholder="Phone Number"/>
+                                                                <input asp-for="@Model.address.Mobile" class="form-control" placeholder="Phone Number"/>
                                                                 </div>
                                                             </div>
                                                             </div>
                                                         </div>
                                                         <button class="btn btn-primary" id="addressSave" type="button">Save</button>
-                                                  </form>
-                                                  <input class="btn btn-default add-new-address-close" type="button" value="discard">
+                                                        <input class="btn btn-default add-new-address-close" type="button" value="discard">
+                                                    </form>
+                                                  
                                                 </div>
                                                 <input class="btn btn-primary btn-linear btn-thick scenario1-button" type="button" value="+ Add new address">
                                                 <br />
                                                 <br />
-                                                <div class="checkbox invoice-checkbox">
-                                                    <input id="billingAddress" type="checkbox" class="">
-                                                    <label for="billingAddress">
-                                                        My billing address differs from the given address.
-                                                    </label>
-                                                </div>
-                                                <div class="invoice-address-form hide">
-                                                  <form>
-                                                    <div class="row">
-                                                      <div class="col-sm-6">
-                                                        <div class="form-group">
-                                                          <label class="control-label">Street</label>
-                                                          <input id="billingStreet" placeholder="Street"/>
-                                                          
-                                                        </div>
-                                                      </div>
-                                                      <div class="col-sm-6">
-                                                        <div class="form-group">
-                                                          <label class="control-label">House Number</label>
-                                                          <input id="billingHouseNumber" class="" placeholder="House Number" />
-                                                         
-                                                        </div>
-                                                      </div>
-                                                    </div>
-                                                    <div class="row">
-                                                      <div class="col-sm-6">
-                                                        <div class="form-group">
-                                                          <label class="control-label">Postal Code</label>
-                                                          <input id="billingPostalCode" class="" placeholder="PLZ" />
-                                                         
-                                                        </div>
-                                                      </div>
-                                                      <div class="col-sm-6">
-                                                        <div class="form-group">
-                                                          <label class="control-label">Location</label>
-                                                          <select id="billingCity" class="">
-                                                                <option value="Bonn">Bonn</option>
-                                                            </select>
-                                                        </div>
-                                                      </div>
-                                                    </div>
-                                                    <button class="btn btn-primary save-billing-address" type="button">Save</button>
-                                                  </form>
-                                                </div>
+                                                
                                               </div>
                                               <hr class="hr">
+                                              <div class="ServiceProviderList">
+                                                  <div>You can choose service provider from bellow list</div>
+                                                  @foreach (var item in Model.Helper) {
+                                                    HCount = HCount + 1;
+                                                    idsHelper = idHelper + (HCount);
+
+                                                    <input type="radio" name="Helpers" id=@idsHelper>
+                                                      @Html.DisplayFor(modelItem => item.FirstName)
+                                                      
+                                                  }
+                                                  <input type="text" id="totalHelper" value=@HCount disabled/>
+                                              </div>
                                               <div class="text-right">
-                
-                                                <button class="btn btn-primary btn-lg" type="submit">Continue</button>
+                                                  <button class="btn btn-primary btn-lg" type="submit">Continue</button>
                                               </div>
                                           </div>
                                         </div>
@@ -333,11 +314,11 @@
                                     <div class="payment-step4 show">
 
                                           <div class="step-content">
-                                            <form novalidate="" class="ng-untouched ng-pristine ng-valid">
+                                            <form>
 
                                               <span class="question marginBottom20">Choose one of the following payment methods.</span>
                                               <div class="promo-code">
-                                                <form novalidate="" class="ng-untouched ng-pristine ng-invalid">
+                                                
                                                   <span>Discount code (optional)</span>
                                                   <div class="row">
                                                     <div class="col-xs-7 col-sm-6 col-md-4">
@@ -348,7 +329,7 @@
                                                       <button class="btn btn-primary btn-linear" id="btnApply" type="submit" disabled="">Use</button>
                                                     </div>
                                                   </div>
-                                                </form>
+                                                
                                               </div>
                                               <hr>
                                               <div class="field input--focus StripeElement StripeElement--empty" ref="card">
@@ -369,16 +350,16 @@
 
               
                                               <hr class="hr">
-                                              <div class="checkbox small">
+                                              <div class="checkbox1 small">
                                                 <label>
-                                                  <input formcontrolname="TnCAgree" type="checkbox" class="ng-untouched ng-pristine ng-valid">
+                                                  <input id="cbpayment" type="checkbox" />
                                                   <span>
                                                     I accepted
-                                                    <a data-toggle="modal" href="#termsAndConditions" title="AGB">Conditions</a>,
+                                                    <a data-bs-toggle="modal" href="#termsAndConditions" title="AGB">Conditions</a>,
                                                     the
-                                                    <a data-tog="" gle="modal" href="#CancellationPolicyModal" title="Widerrufsbelehrung">Right of withdrawal</a>
+                                                    <a data-bs-toggle="modal" href="#CancellationPolicyModal" title="Widerrufsbelehrung">Right of withdrawal</a>
                                                     and the
-                                                    <a data-toggle="modal" href="#privacy-policy-modal" title="Datenschutzbestimmungen">Privacy Policy</a>.
+                                                    <a data-bs-toggle="modal" href="#privacy-policy-modal" title="Datenschutzbestimmungen">Privacy Policy</a>.
                                                     I confirm that Helperland will start executing the contract before the end of the cancellation period and that 
                                                     I will lose my right of cancellation as a consumer once the contract has been fully performed.
                                                   </span>
@@ -387,9 +368,30 @@
                                               </div>
                                               <hr class="hr">
                                               <div class="text-right">
-                                                <input class="btn btn-primary btn-lg" type="submit" value="Book with costs">
-                  
+                                                <input id="acceptPay" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#serviceAccepted" type="button" value="Book with costs" disabled />
                                               </div>
+
+                                              <div class="modal fade" id="serviceAccepted">
+                                                    <div class="modal-dialog vertical-align-center">
+                                                        <div class="vertical-alignment-helper">
+                                                            <div class="modal-content">
+                                                                
+                                                                <div class="modal-header">
+                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                                                </div>
+        
+                                                                
+                                                                <div class="modal-body">
+                                                                    <h3>Booking has been successfully submitted</h3>
+                                                                    <div class="d-grid mt-4">
+                                                                        <a class="btn btn-primary btn-lg d-block my-1" href='~/Home/Index'>OK</a>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
 
                                             </form>
                                           </div>
@@ -412,7 +414,8 @@
                                 Payment Summary
                               </h3>
                               <div class="content">
-                                <span id="date-time-update">10/02/2022 08:00 </span>
+                                <span id="date-update">@DateTime.Today</span>
+                                <span id="time-update">08:00</span>
                     
                                 <table>
                                   <thead>
@@ -422,10 +425,7 @@
                                     </tr>
                                   </thead>
                                   <tbody>
-                                    <tr>
-                                      <td>Basic</td>
-                                      <td>3 Hours.</td>
-                                    </tr>
+                                    <tr><td>Basic</td><td>3 Hours.</td></tr>
                                   </tbody>
                                 </table>
                                 <p><b>Additional Services</b></p>
@@ -468,7 +468,7 @@
                                   <tbody>
                                     <tr>
                                       <td>Per cleaning</td>
-                                      <td><p><b id = "perclprc">54.00</b> €</p></td>
+                                      <td><p><b id="perclprc">54.00</b> €</p></td>
                                     </tr>
                                   </tbody>
                                 </table>
@@ -487,7 +487,9 @@
                                   <tr class="effective-price">
                                     <td>Effective price*</td>
                                     <td>
-                                      <b><div class="d-inline" id="effeprc">43.20</div>&nbsp;€</b>
+                                      <div class="d-inline" id="effeprc">
+                                         <b>43.20&nbsp;€</b>
+                                      </div>
                                     </td>
                                   </tr>
                                 </tbody></table>
@@ -542,7 +544,7 @@
                                   </div>
                                 </div>
                               </div>
-                              <a title="Weitere Fragen und Antworten" href="~/Home/faq">More questions and answers</a>
+                              <a href="~/Home/faq">More questions and answers</a>
                             </div>
                           <div dir="ltr" class="resize-sensor" style="pointer-events: none; position: absolute; inset: 0px; overflow: hidden; z-index: -1; visibility: hidden; max-width: 100%;">
                               <div class="resize-sensor-expand" style="pointer-events: none; position: absolute; inset: 0px; overflow: hidden; z-index: -1; visibility: hidden; max-width: 100%;">
@@ -580,14 +582,13 @@
                 var model = {    
                     ZipcodeValue: $('#@Html.IdFor(x=>x.zipcode.ZipcodeValue)').val()
                 }
-                
                 $.ajax({
                     type: 'POST',
                     url: '@Url.Action("ZipCodeCheck", "BookingService")',
                     data: model,
                     dataType: "json",
                     success: function(data) {
-                        //alert(JSON.stringify(data.responseText));
+                        //alert(JSON.stringify(data));
                         //alert("inside");
                         if(data)
                         {
@@ -596,6 +597,7 @@
                             $(".book-service .navigation .nav-item a.second").addClass("active");
                             $("#bookingService").removeClass("active");
                             $("#timeSchedule").addClass("active");
+                            $('#@Html.IdFor(x=>x.address.PostalCode)').val(model.ZipcodeValue);
                         }
                         else{
                             alert("not found");
@@ -608,34 +610,20 @@
                 });
             });
 
-            //var today = new Date();
-            //var tomorrow=new Date(today.getTime() + 24 * 60 * 60 * 1000);
-            //var dd = String(tomorrow.getDate()).padStart(2, '0');
-            //var mm = String(tomorrow.getMonth() + 1).padStart(2, '0'); //January is 0!
-            //var yyyy = String(tomorrow.getFullYear());
-            //tomorrow = dd + '-' + mm + '-' + yyyy;
-            ////alert(today);
-            //var starttime=$("#servicetimetextbox").text("8:30");
-            //var startdate=$("#txtServiceStartDate").val(tomorrow);
-            //$("#date-time-update").text(startdate+" "+starttime);
+          
+            
 
             $("#timeSchedule .text-right button").click(function () {
-                var startdate=$("#txtServiceStartDate").val();
-                var starttime=$("#servicetimetextbox").val();
+                $(".book-service .navigation .nav-item a.second").removeClass("active");
+                $(".book-service .navigation .nav-item a.third").addClass("active");
+                $("#timeSchedule").removeClass("active");
+                $("#yourData").addClass("active");
                 
-                if(startdate=="")
-                {
-                    alert("please enter date");
-                }
-                else{
-                    $("#date-time-update").text(startdate+" "+starttime);
-                    $(".book-service .navigation .nav-item a.second").removeClass("active");
-                    $(".book-service .navigation .nav-item a.third").addClass("active");
-                    $("#timeSchedule").removeClass("active");
-                    $("#yourData").addClass("active");
-                }
             });
 
+
+
+            ////////For Third Tab//////////////
             $(".add-new-address-close").click(function () {
                 $('#@Html.IdFor(x=>x.address.Street)').val(null);
                 $('#@Html.IdFor(x=>x.address.HouseNumber)').val(null);
@@ -643,35 +631,35 @@
                 $(".scenario1").addClass("hide");
             });
 
-            $(".save-billing-address").click(function(){
-                var model1 = {
-                    Street: $('#billingStreet').val(),
-                    HouseNumber: $('#billingHouseNumber').val(),
+            //$(".save-billing-address").click(function(){
+            //    var model1 = {
+            //        Street: $('#billingStreet').val(),
+            //        HouseNumber: $('#billingHouseNumber').val(),
                     
-                    PostalCode: $('#billingPostalCode').val(),
-                    City: $('#billingCity').val(),
-                    Mobile:"23412312"
-                }
+            //        PostalCode: $('#billingPostalCode').val(),
+            //        City: $('#billingCity').val(),
+            //        Mobile:"23412312"
+            //    }
                 
-                $.ajax({
-                    type: 'POST',
-                    url: '@Url.Action("SaveBillingAddress", "BookingService")',
-                    data: model1,
-                    //dataType: "json",
-                    success: function() {
-                        alert("Address Saved !");
-                        $('#billingStreet').val(null);
-                        $('#billingHouseNumber').val(null);
-                        $('#billingCity').val(null);
-                        $('#billingPostalCode').val(null);
-                        $('#billingAddress').prop('checked', false);
-                        $(".invoice-address-form").addClass("hide")
-                    },
-                    error: function(e) {
-                       alert("Error: " + e);
-                    }
-                });
-            });
+            //    $.ajax({
+            //        type: 'POST',
+            //        url: '@Url.Action("SaveBillingAddress", "BookingService")',
+            //        data: model1,
+            //        //dataType: "json",
+            //        success: function() {
+            //            alert("Address Saved !");
+            //            $('#billingStreet').val(null);
+            //            $('#billingHouseNumber').val(null);
+            //            $('#billingCity').val(null);
+            //            $('#billingPostalCode').val(null);
+            //            $('#billingAddress').prop('checked', false);
+            //            $(".invoice-address-form").addClass("hide")
+            //        },
+            //        error: function(e) {
+            //           alert("Error: " + e);
+            //        }
+            //    });
+            //});
 
             $("#addressSave").click(function(){
                 var model = {
@@ -683,9 +671,10 @@
                     City: $('#@Html.IdFor(x=>x.address.City)').val()
 
                 }
+                //alert(model.City);
                 $.ajax({
                     type: 'POST',
-                    url: '@Url.Action("NewPasswordSave", "BookingService")',
+                    url: '@Url.Action("NewAddressSave", "BookingService")',
                     data: model,
                     //dataType: "json",
                     success: function() {
@@ -702,25 +691,320 @@
             });
 
             $("#yourData .text-right button").click(function () {
-                $(".book-service .navigation .nav-item a.third").removeClass("active");
-                $(".book-service .navigation .nav-item a.forth").addClass("active");
-                $("#yourData").removeClass("active");
-                $("#Payment").addClass("active");
+   ///////////////Save Scedule and Plan block//////////////////////
+                var extraServices={
+                    cabinetExtra:$("#cabinetExtra").prop('checked')==true,
+                    fridgeExtra:$("#fridgeExtra").prop('checked')==true,
+                    ovenExtra:$("#ovenExtra").prop('checked')==true,
+                    laundryExtra:$("#laundryExtra").prop('checked')==true,
+                    windowsExtra:$("#windowsExtra").prop('checked')==true
+                }
+
+                var exh=0.5*(extraServices.cabinetExtra+extraServices.fridgeExtra+extraServices.ovenExtra+extraServices.laundryExtra+extraServices.windowsExtra);
+
+                var model2 = {
+                    ServiceStartDate: $('#@Html.IdFor(x=>x.scheduleAndPlan.ServiceStartDate)').val(),
+                    Code: $('#@Html.IdFor(x=>x.zipcode.ZipcodeValue)').val(),
+                    StartTime: $('#@Html.IdFor(x=>x.scheduleAndPlan.StartTime)').val(),
+                    ServiceHrs: $('#@Html.IdFor(x=>x.scheduleAndPlan.ServiceHrs)').val(),
+                    Comments:$('#@Html.IdFor(x=>x.scheduleAndPlan.Comments)').val(),
+                    ExtraHours:exh,
+                    HavePets:$('#@Html.IdFor(x=>x.scheduleAndPlan.HavePets)').prop('checked')==true,
+                    Total:$('#totalprc').text(),
+                    saveHelper:(SaveHelper-1)
+                }
+                //alert(model2.Code);
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("SaveScheduleAndPlan", "BookingService")',
+                    data: model2,
+                    success: function() {
+                        alert("Schedule And Plan Saved");
+                    },
+                    error: function(e) {
+                       alert("Error: " + e);
+                    }
+                });
+///////////////End Save Scedule and Plan block//////////////////////
+
+
+
+
+
+
+   ///////////////Save ServiceRequestAddress block//////////////////////
+                var modelServiceAdd={
+                    saveadd : (SaveThis-1)
+                }
+                var add=SaveThis-1;
+                alert(add);
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("SaveServiceRequestAddress", "BookingService")',
+                    data: modelServiceAdd,
+                    //dataType: "json",
+                    success: function() {
+                        alert("Address Saved !");
+                        $(".book-service .navigation .nav-item a.third").removeClass("active");
+                        $(".book-service .navigation .nav-item a.forth").addClass("active");
+                        $("#yourData").removeClass("active");
+                        $("#Payment").addClass("active");
+                    },
+                    error: function(e) {
+                       alert("Error in service request Address: " + e);
+                    }
+                });
+///////////////End Save ServiceRequestAddress block//////////////////////
+            });
+///////////////End Of your Data event              //////////////////////
+
+
+
+//////////////////Selecting Radio button which is selected///////////////////////
+            var totalAddress=$("#totalAddress").val();
+            var SaveThis = 0;
+            var saveIdAddress="";
+            //alert(totalAddress);
+            $("ul.address-picker li label input").change(function () {
+                for(var i = 1; i <= totalAddress; i++){
+                    var combin="Address"+i;
+                    
+                    if($("#"+combin).prop("checked")){
+                        SaveThis=i;
+                        saveIdAddress=combin;
+                        //alert(saveIdAddress);
+                    }
+                }
+            });
+
+            var totalHelper=$("#totalHelper").val();
+            var SaveHelper = 0;
+            var saveIdHelper="";
+            //alert(totalAddress);
+            $(".ServiceProviderList input").change(function () {
+                for(var i = 1; i <= totalHelper; i++){
+                    var combin1="Helper"+i;
+                    
+                    if($("#"+combin1).prop("checked")){
+                        SaveHelper=i;
+                        saveIdHelper=combin1;
+                        //alert(saveIdHelper);
+                    }
+                }
+            });
+//////////////////End Selecting Radio button which is selected///////////////////////
+
+
+
+
+
+
+            
+        });
+//////////////////End Of Document.ready///////////////////////
+
+
+
+//////////////////Extra Services///////////////////////
+        $(document).ready(function () {
+            var service1 = $(".extra-services .service1 .img-container");
+            var service2 = $(".extra-services .service2 .img-container");
+            var service3 = $(".extra-services .service3 .img-container");
+            var service4 = $(".extra-services .service4 .img-container");
+            var service5 = $(".extra-services .service5 .img-container");
+
+            var servimg1 = $(".extra-services .service1");
+            var servimg2 = $(".extra-services .service2");
+            var servimg3 = $(".extra-services .service3");
+            var servimg4 = $(".extra-services .service4");
+            var servimg5 = $(".extra-services .service5");
+
+            var setborder = "3px solid #1d7a8c";
+
+            var servdtl1 = $(".extra-service-detail .service1");
+            var servdtl2 = $(".extra-service-detail .service2");
+            var servdtl3 = $(".extra-service-detail .service3");
+            var servdtl4 = $(".extra-service-detail .service4");
+            var servdtl5 = $(".extra-service-detail .service5");
+
+            var srvedit = Number($(".total-service-time td p #tsrvedt").text());
+            var totalPrice = Number($("#perclprc").text());
+                
+
+            var extraServiceCount=0;
+            var perExtraServicecharge=9;
+
+            function cleanprcedtadd() {
+                var price=Number($("#totalprc").text());
+                var extraServicePrice=Number((extraServiceCount-1)*perExtraServicecharge);
+                var excludeextra=price-extraServicePrice;
+                $("#totalprc,#perclprc").text((excludeextra+extraServicePrice+perExtraServicecharge).toFixed(2));
+                $("#effeprc").text(($("#totalprc").text()*0.8).toFixed(2));
+            }
+            function cleanprcedtsub() {
+                var price=Number($("#totalprc").text());
+                var extraServicePrice=Number((extraServiceCount+1)*perExtraServicecharge);
+                var excludeextra=price-extraServicePrice;
+                $("#totalprc,#perclprc").text((excludeextra+extraServicePrice-perExtraServicecharge).toFixed(2));
+                $("#effeprc").text(($("#totalprc").text()*0.8).toFixed(2));
+            }
+
+            function grt3check(number) {
+                if (number >= 3.0) {
+                    $(".total-service-time").removeClass("d-none");
+                    $(".total-service-time td p #tsrvedt").text(srvedit);
+                }
+                else {
+                    $(".total-service-time").addClass("d-none");
+                }
+            }
+
+
+            var st = $('#@Html.IdFor(x=>x.scheduleAndPlan.StartTime)');
+            st.change(function () {
+                var time = st.val();
+                $("#time-update").text(time);
+            });
+
+            var st1 = $('#@Html.IdFor(x=>x.scheduleAndPlan.ServiceStartDate)');
+            st1.change(function () {
+                var time = st1.val();
+                $("#date-update").text(time);
+            });
+
+            var st2 = $('#@Html.IdFor(x=>x.scheduleAndPlan.ServiceHrs)');
+            st2.change(function () {
+                var fatchtprc=Number($("#totalprc").text());
+                var excludeextra=fatchtprc-Number(extraServiceCount*9);
+                var thr = st2.val();
+                var thrp=thr*18+Number(extraServiceCount*9);
+                $("#totalprc,#perclprc").text(thrp.toFixed(2));
+                $("#effeprc").text(($("#totalprc").text()*0.8).toFixed(2));
                 
             });
 
 
+            servimg1.click(function () {
+                if (service1.css("border") == "1px solid rgb(200, 200, 200)") {
+                    service1.css("border", setborder);
+                    servdtl1.removeClass("d-none");
+                    $("#cabinetExtra").prop('checked', true);
+                    extraServiceCount+=1;
+                    srvedit += 0.5;
+                    cleanprcedtadd();
+                        
+                }
+                else {
+                    service1.css("border", "1px solid #c8c8c8");
+                    servdtl1.addClass("d-none");
+                    $("#cabinetExtra").prop('checked', false);
+                    extraServiceCount-=1;
+                    srvedit -= 0.5;
+                    cleanprcedtsub();
+                }
+        
+                grt3check(srvedit);
+                    
+            });
+
+            servimg2.click(function () {
+                if (service2.css("border") == "1px solid rgb(200, 200, 200)") {
+                    service2.css("border", setborder);
+                    servdtl2.removeClass("d-none");
+                    $("#fridgeExtra").prop('checked', true);
+                    extraServiceCount+=1;
+                    srvedit += 0.5;
+                    cleanprcedtadd();
+                        
+                }
+                else {
+                    service2.css("border", "1px solid #c8c8c8");
+                    servdtl2.addClass("d-none");
+                    $("#fridgeExtra").prop('checked', false);
+                    extraServiceCount-=1;
+                    srvedit -= 0.5;
+                    cleanprcedtsub();
+                }
+                grt3check(srvedit);
+            });
+
+            servimg3.click(function () {
+                if (service3.css("border") == "1px solid rgb(200, 200, 200)") {
+                    service3.css("border", setborder);
+                    servdtl3.removeClass("d-none");
+                    $("#ovenExtra").prop('checked', true);
+                    extraServiceCount+=1;
+                    srvedit += 0.5;
+                    cleanprcedtadd();
+                        
+                }
+                else {
+                    service3.css("border", "1px solid #c8c8c8");
+                    servdtl3.addClass("d-none");
+                    $("#ovenExtra").prop('checked', false);
+                    extraServiceCount-=1;
+                    srvedit -= 0.5;
+                    cleanprcedtsub();
+                }
+                grt3check(srvedit);
+            });
+
+            servimg4.click(function () {
+                if (service4.css("border") == "1px solid rgb(200, 200, 200)") {
+                    service4.css("border", setborder);
+                    servdtl4.removeClass("d-none");
+                    $("#laundryExtra").prop('checked', true);
+                    extraServiceCount+=1;
+                    srvedit += 0.5;
+                    cleanprcedtadd();
+                        
+                }
+                else {
+                    service4.css("border", "1px solid #c8c8c8");
+                    servdtl4.addClass("d-none");
+                    $("#laundryExtra").prop('checked', false);
+                    extraServiceCount-=1;
+                    srvedit -= 0.5;
+                    cleanprcedtsub();
+                }
+                grt3check(srvedit);
+            });
+
+            servimg5.click(function () {
+                if (service5.css("border") == "1px solid rgb(200, 200, 200)") {
+                    service5.css("border", setborder);
+                    servdtl5.removeClass("d-none");
+                    $("#windowsExtra").prop('checked', true);
+                    extraServiceCount+=1;
+                    srvedit += 0.5;
+                    cleanprcedtadd();
+                        
+                }
+                else {
+                    service5.css("border", "1px solid #c8c8c8");
+                    servdtl5.addClass("d-none");
+                    $("#windowsExtra").prop('checked', false);
+                    extraServiceCount-=1;
+                    srvedit -= 0.5;
+                    cleanprcedtsub();
+                }
+                grt3check(srvedit);
+            });
 
 
+            //for payment button enable and disable
+            $('#cbpayment').change(function () { 
+                if ($("#cbpayment").is(':checked')) {
+                    $("#acceptPay").prop("disabled", false);
+                }
+                else {
+                    $("#acceptPay").prop("disabled", true);
+                }
+            });
 
-
-
-
-
-
-
-
-
+    
         });
+//////////////////End Of Document.ready///////////////////////
+
     </script>
 }

@@ -1,4 +1,9 @@
-﻿namespace HelperLand.ViewModels
+﻿
+
+using System.Collections.Generic;
+using HelperLand.Models;
+
+namespace HelperLand.ViewModels
 {
     public class BookServiceViewModel
     {
@@ -6,6 +11,9 @@
 
         public ScheduleAndPlanViewModel scheduleAndPlan { get; set; }
         public AddressViewModel address { get; set; }
+
+        public List<UserAddress> userAddresses1 { get; set; }
+        public List<User> Helper { get; set; }
 
         public float startTime { get; set; }
         public float totalamount { get; set; }

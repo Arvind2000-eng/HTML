@@ -35,7 +35,16 @@
                             <div class="collapse navbar-collapse" id="navbarNav" style="padding-bottom: 15px;">
                                 <ul class="navbar-nav align-items-center">
                                     <li class="nav-item">
-                                        <a class="nav-link border-btn" href="~/BookingService/Index" title="Book a Cleaner">Book a Cleaner</a>
+                                        @if (HttpContextAccessor.HttpContext.Session.GetString("UserName") == null)
+                                        {
+                                            <a class="nav-link border-btn" href="#" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#login">Book a Cleaner</a>
+                                            <partial name="_LoginPartial" />
+                                        }
+                                        else
+                                        {
+                                            <a class="nav-link border-btn" href="~/BookingService/BookService" title="Book a Cleaner">Book a Cleaner</a>
+                                        }
+                                        
                                     </li>
                                     <li class="nav-item under-line">
                                         <a class="nav-link" href="~/Home/price" title="Prices">Prices</a>
@@ -49,10 +58,15 @@
                                     <li class="nav-item under-line">
                                         <a class="nav-link" href="~/Home/contact" title="Contact us">Contact us</a>
                                     </li>
-                                    @if (HttpContextAccessor.HttpContext.Session.GetString("FirstName") == null)
+                                    @if (HttpContextAccessor.HttpContext.Session.GetString("UserName") == null)
                                     {
                                         <li class="nav-item">
+                                            <div class="container">
+                                            <div>
+                                                <button class="nav-link border-btn" title="Login" data-bs-toggle="modal" data-bs-target="#login">Login</button>
+                                            </div>
                                             <partial name="_LoginPartial" />
+                                        </div>
                                         </li>
                                     }
                                     else
@@ -75,12 +89,13 @@
                                                 <img src="~/images/up-arrow/forma-1-copy-14.png" style="margin-left:8px;">
                                             </a>
                                             <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-                                                <a class="dropdown-item">My Setting</a>
+                                                <a asp-action="MySetting" asp-controller="Customer" id="mySetting" class="dropdown-item">My Setting</a>
                                                 <a class="dropdown-item" asp-action="Logout" asp-controller="UserTable">Logout</a>
 
                                             </div>
                                         </li>
                                     }
+
                                     <li class="nav-item">
                                         <a class="nav-link border-btn" href="~/UserTable/HelperRegistration" title="Become a Helper">Become a Helper</a>
                                     </li>
@@ -171,10 +186,12 @@
 
         <script type="text/javascript" src="~/js/index.js"></script>
 
+        
         @if (IsSectionDefined("Scripts"))
         {
             @RenderSection("Scripts", required:true)
         }
+
     </body>
 
 </html>

@@ -37,6 +37,7 @@ namespace HelperLand.Controllers
             User user = _coreDBContext.Users.Where(x => x.Email == userViewModel.Email).FirstOrDefault();
             if (user == null && ModelState.IsValid)
             {
+                
                 User user1 = new User();
                 user1.CreatedDate = DateTime.Today;
                 user1.ModifiedDate = DateTime.Today;
@@ -48,6 +49,7 @@ namespace HelperLand.Controllers
                 user1.UserTypeId = userNo;
                 _coreDBContext.Users.Add(user1);
                 _coreDBContext.SaveChanges();
+                
                 return RedirectToAction("Index","Home");
             }
             else
@@ -62,10 +64,10 @@ namespace HelperLand.Controllers
         }
 
         [HttpPost]
-        public void HelperRegistration(HelperViewModel helperViewModel)
+        public bool HelperRegistration(HelperViewModel helperViewModel)
         {
-            User user = _coreDBContext.Users.Where(x => x.Email == helperViewModel.Email).FirstOrDefault();
-            if (user == null && ModelState.IsValid)
+            bool found = _coreDBContext.Users.Any(x => x.Email == helperViewModel.Email);
+            if (!found)
             {
                 User user2 = new User();
                 user2.CreatedDate = DateTime.Today;
@@ -79,11 +81,11 @@ namespace HelperLand.Controllers
 
                 _coreDBContext.Users.Add(user2);
                 _coreDBContext.SaveChanges();
-                //return RedirectToAction("Index", "Home");
+                return found;
             }
             else
             {
-                //return RedirectToAction("About", "Home");
+                return found;
             }
 
         }
@@ -97,32 +99,19 @@ namespace HelperLand.Controllers
         {
 
             User user = _coreDBContext.Users.Where(x => x.Email == loginViewModel.Email).FirstOrDefault();
-            //if(user !=null && ModelState.IsValid)
-            //{
-            //    if (user.Email == loginViewModel.Email && user.Password == loginViewModel.Password)
-            //    {
-            //        ViewData["Invalid"] = "valid Credential";
-            //    }
-            //    else
-            //    {
-            //        ViewData["Invalid"] = "Invalid Credential";
-            //    }
-
-            //}
+            
             if (user != null && user.Email == loginViewModel.Email && user.Password == loginViewModel.Password && user.UserTypeId == 1)
             {
-                HttpContext.Session.SetString("UserId",
-                                              user.UserId.ToString());
-                HttpContext.Session.SetString("FirstName", user.FirstName);
+                HttpContext.Session.SetString("UserId",user.UserId.ToString());
+                HttpContext.Session.SetString("UserName", user.FirstName);
                 HttpContext.Session.SetString("UserTypeId", user.UserTypeId.ToString());
 
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Customer");
             }
             else if (user != null && user.Email == loginViewModel.Email && user.Password == loginViewModel.Password && user.UserTypeId == 2)
             {
-                HttpContext.Session.SetString("UserId",
-                                              user.UserId.ToString());
-                HttpContext.Session.SetString("FirstName", user.FirstName);
+                HttpContext.Session.SetString("UserId",user.UserId.ToString());
+                HttpContext.Session.SetString("UserName", user.FirstName);
                 HttpContext.Session.SetString("UserTypeId", user.UserTypeId.ToString());
 
                 return RedirectToAction("Customer", "Home");
@@ -134,11 +123,7 @@ namespace HelperLand.Controllers
                 return View("~/Views/Home/Index.cshtml");
             }
         
-            //return View(loginViewModel);
-            //else
-            //{
-            //    ViewData["Invalid"] = "Email Not Exist";
-            //}
+            
         }
 
         public IActionResult Logout()

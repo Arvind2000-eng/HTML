@@ -1,4 +1,6 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+@{
     ViewData["Title"] = "Home";
     Layout = "~/Views/Shared/_LayoutHome.cshtml";
 }
@@ -12,7 +14,16 @@
             <li>Lorem ipsum dolor sit amet, consectetur adipiscing</li>
         </ul>
         <div class="btn-wrapper text-center">
-            <a href="~/BookingService/Index" title="Let's Book a Cleaner" class="blue-btn">Let's Book a Cleaner</a>
+            @if (HttpContextAccessor.HttpContext.Session.GetString("UserName") == null)
+            {
+                <a class="blue-btn" href="#" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#login">Let's Book a Cleaner</a>
+                <partial name="_LoginPartial" />
+            }
+            else
+            {
+                <a href="~/BookingService/BookService" title="Let's Book a Cleaner" class="blue-btn">Let's Book a Cleaner</a>
+            }
+            
         </div>
 
         <div class="step-wrapper">

@@ -12,7 +12,7 @@ namespace HelperLand.Models
             Cities = new HashSet<City>();
         }
 
-        public int Id { get; set; }
+        public int StateId { get; set; }
         public string StateName { get; set; }
 
         public virtual ICollection<City> Cities { get; set; }

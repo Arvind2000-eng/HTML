@@ -3,14 +3,7 @@
     For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 *@
 
-
-<div class="container">
-    <div>
-        <button class="nav-link border-btn" title="Login" data-bs-toggle="modal" data-bs-target="#login">Login</button>
-    </div>
-
-    <form asp-controller="UserTable" asp-action="Login" method="post">
-    <!-- The Modal -->
+<form asp-controller="UserTable" asp-action="Login" method="post">
     <div class="modal fade" id="login">
         <div class="modal-dialog vertical-align-center">
             <div class="vertical-alignment-helper">
@@ -60,38 +53,36 @@
             </div>
         </div>
     </div>
-    </form>
+</form>
 
-
-    <div class="modal fade" id="forgot-pwd">
-        <div class="modal-dialog vertical-align-center">
-            <div class="vertical-alignment-helper">
-                <div class="modal-content">
-                    <!-- Modal Header -->
-                    <div class="modal-header">
-                        <h4 class="modal-title">Forgot Password</h4>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                    </div>
-                                                        
-                    <!-- Modal body -->
-                    <form asp-controller="UserTable" asp-action="ForgotPassword" method="post">
-                        <div class="modal-body">
-                            <div class="user-image">
-                                <input asp-for="Email" maxlength="100" class="form-control text-box" placeholder="E-Mail">
-                                <img alt="Username" src="~/images/user.png">
-                                <span asp-validation-for="Email" class="text-danger"></span>
-                            </div>
-
-                            <div class="d-grid mt-4">
-                                <button class="btn btn-primary btn-lg d-block my-1" type="submit">Send</button>
-                            </div>
-
-                            <div class="text-center" style="margin-top: 20px;">
-                                <a style="color: #1d7a8c;text-decoration:none;" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#login" href="">Login now</a>
-                            </div>
-                        </div>
-                    </form>   
+<div class="modal fade" id="forgot-pwd">
+    <div class="modal-dialog vertical-align-center">
+        <div class="vertical-alignment-helper">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Forgot Password</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
+                                                        
+                <!-- Modal body -->
+                <form asp-controller="UserTable" asp-action="ForgotPassword" method="post">
+                    <div class="modal-body">
+                        <div class="user-image">
+                            <input asp-for="Email" maxlength="100" class="form-control text-box" placeholder="E-Mail">
+                            <img alt="Username" src="~/images/user.png">
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+
+                        <div class="d-grid mt-4">
+                            <button class="btn btn-primary btn-lg d-block my-1" type="submit">Send</button>
+                        </div>
+
+                        <div class="text-center" style="margin-top: 20px;">
+                            <a style="color: #1d7a8c;text-decoration:none;" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#login" href="">Login now</a>
+                        </div>
+                    </div>
+                </form>   
             </div>
         </div>
     </div>
