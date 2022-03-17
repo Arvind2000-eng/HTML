@@ -15,6 +15,12 @@ namespace HelperLand.ViewModels
 
         public List<UserAddress> userAddressData { get; set; }
 
+        public UserAddress userAddress1 { get; set; }
+
+        public int EditPerticularAddress { get; set; }
+
+        public int CancelServiceId { get; set; }
+
         public ChangePassViewModel changePassViewModel { get; set; }
     }
 }

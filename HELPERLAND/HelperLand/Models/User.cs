@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 #nullable disable
 
@@ -26,6 +27,8 @@ namespace HelperLand.Models
         public string Mobile { get; set; }
         public int UserTypeId { get; set; }
         public int? Gender { get; set; }
+
+        
         public DateTime? DateOfBirth { get; set; }
         public string UserProfilePicture { get; set; }
         public bool IsRegisteredUser { get; set; }

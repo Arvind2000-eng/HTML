@@ -89,7 +89,15 @@
                                                 <img src="~/images/up-arrow/forma-1-copy-14.png" style="margin-left:8px;">
                                             </a>
                                             <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-                                                <a asp-action="MySetting" asp-controller="Customer" id="mySetting" class="dropdown-item">My Setting</a>
+                                                @if(HttpContextAccessor.HttpContext.Session.GetString("UserTypeId")==1.ToString())
+                                                {
+                                                    <a asp-action="MySetting" asp-controller="Customer" class="dropdown-item">My Setting</a>
+                                                }
+                                                else
+                                                {
+                                                    <a asp-action="Index" asp-controller="Helper" class="dropdown-item">My Setting</a>
+                                                }
+                                                
                                                 <a class="dropdown-item" asp-action="Logout" asp-controller="UserTable">Logout</a>
 
                                             </div>

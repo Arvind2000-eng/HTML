@@ -4216,6 +4216,24 @@ textarea.form-control {
     font-weight: bold;
 }
 
+.addServiceExport {
+    font-size: 14px;
+    align-items: end;
+    color: white;
+    border: 1px solid;
+    border-radius: 42px;
+    background-color: #146371;
+    padding: 8px 8px;
+    float: right;
+    margin-bottom: 8px;
+    text-decoration: none;
+    transition-duration: 0.4s;
+}
+.addServiceExport:hover{
+    color: white;
+    background-color: #093f4a;
+}
+
 .export {
     font-size: 14px;
     align-items: end;
@@ -4223,9 +4241,16 @@ textarea.form-control {
     border: 1px solid;
     border-radius: 42px;
     background-color: #146371;
-    padding: 6px 10px;
+    padding: 8px 8px;
     float: right;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
+    text-decoration: none;
+    transition-duration: 0.4s;
+}
+
+.export:hover {
+    color: white;
+    background-color: #093f4a;
 }
 
 .export2 {
@@ -4256,7 +4281,7 @@ textarea.form-control {
     border: 1px solid;
     border-color: #e1e1e1;
     color: #646464;
-    width: 864px;
+    width: 700px;
 }
 
 .table-heading {
@@ -4424,6 +4449,78 @@ textarea.form-control {
 
 
 
+/*Helper dash board view model*/
+
+#dashboard1:checked ~ .list label.dashboard1,
+#new-service-request1:checked ~ .list label.new-service-request1,
+#upcomming-service1:checked ~ .list label.upcomming-service1,
+#service-schedule1:checked ~ .list label.service-schedule1,
+#service-history1:checked ~ .list label.service-history1,
+#my-ratting1:checked ~ .list label.my-ratting1,
+#block-customer1:checked ~ .list label.block-customer1,
+#HelperSetting1:checked ~ .list label.HelperSetting1 {
+    color: #fff;
+}
+
+#dashboard1:checked ~ .list .slider {
+    top: 0;
+}
+
+#new-service-request1:checked ~ .list .slider {
+    top: 60px;
+}
+
+#upcomming-service1:checked ~ .list .slider {
+    top: 120px;
+}
+
+#service-schedule1:checked ~ .list .slider {
+    top: 180px;
+}
+
+#service-history1:checked ~ .list .slider {
+    top: 240px;
+}
+
+#my-ratting1:checked ~ .list .slider {
+    top: 300px;
+}
+
+#block-customer1:checked ~ .list .slider {
+    top: 360px;
+}
+
+#HelperSetting1:checked ~ .list .slider {
+    top: 420px;
+}
+
+#dashboard1:checked ~ .text-content .dashboard1,
+#new-service-request1:checked ~ .text-content .new-service-request1,
+#upcomming-service1:checked ~ .text-content .upcomming-service1,
+#service-schedule1:checked ~ .text-content .service-schedule1,
+#service-history1:checked ~ .text-content .service-history1,
+#my-ratting1:checked ~ .text-content .my-ratting1,
+#block-customer1:checked ~ .text-content .block-customer1,
+#HelperSetting1:checked ~ .text-content .HelperSetting1 {
+    display: block;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -4432,5 +4529,17 @@ textarea.form-control {
 .dropdown-item{
     color:black !important;
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 

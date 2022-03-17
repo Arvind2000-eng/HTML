@@ -3,52 +3,52 @@
 *@
 @{
     ViewData["Title"] = "Service History";
-    var a = 0;
-    var b = 0;
-    var d = 0;
-    var CancelId = 0;
-    var CancelId1 = 0;
-
 }
 
-@model HelperLand.ViewModels.DashboardViewModel
+@model HelperLand.ViewModels.HelperDashBoardViewModel
 
 <section class="welcome-section">
     <div class="d-flex justify-content-center">
-        <h1 class="welcome-header">Welcome, <span class="welcome-sandip">@Model.userData[0].FirstName !</span></h1>
+        <h1 class="welcome-header">Welcome, <span class="welcome-sandip">Sandip !</span></h1>
     </div>
 </section>
 <section class="service-section table-responsive">
     <div class="container container-fluid d-flex justify-content-center">
         <div class="content1 table-responsive">
-            <input type="radio" name="slider" id="dashboard" style="display: none;">
-            <input type="radio" name="slider" id="service-history" style="display: none;">
-            <input type="radio" name="slider" id="service-schedule" style="display: none;">
-            <input type="radio" name="slider" id="favourite-pros" style="display: none;">
-            <input type="radio" name="slider" id="invoices" style="display: none;">
-            <input type="radio" name="slider" id="notifications" style="display: none;">
-            <input type="radio" name="slider" checked id="MySetting" style="display: none;">
+            <input type="radio" name="slider" checked id="dashboard1" style="display: none;">
+            <input type="radio" name="slider" id="new-service-request1" style="display: none;">
+            <input type="radio" name="slider" id="upcomming-service1" style="display: none;">
+            <input type="radio" name="slider" id="service-schedule1" style="display: none;">
+            <input type="radio" name="slider" id="service-history1" style="display: none;">
+            <input type="radio" name="slider" id="my-ratting1" style="display: none;">
+            <input type="radio" name="slider" id="block-customer1" style="display: none;">
+            <input type="radio" name="slider" id="HelperSetting1" style="display: none;">
             <div class="list">
-                <label for="dashboard" class="dashboard">
+                <label for="dashboard1" class="dashboard1">
                     <span class="title">Dashboard</span>
                 </label>
-                <label for="service-history" class="service-history">
-                    <span class="title">Service History</span>
+                <label for="new-service-request1" class="new-service-request1">
+                    <span class="title">New Service Request</span>
                 </label>
-                <label for="service-schedule" class="service-schedule">
+                <label for="upcomming-service1" class="upcomming-service1">
+                    <span class="title">Upcomming Service</span>
+                </label>
+                <label for="service-schedule1" class="service-schedule1">
                     <span class="title">Service Schedule</span>
                 </label>
-                <label for="favourite-pros" class="favourite-pros">
-                    <span class="title">Favourite Pros</span>
+                <label for="service-history1" class="service-history1">
+                    <span class="title">Service History</span>
                 </label>
-                <label for="invoices" class="invoices">
-                    <span class="title">Invoices</span>
+                
+                <label for="my-ratting1" class="my-ratting1">
+                    <span class="title">My Ratting</span>
                 </label>
-                <label for="notifications" class="notifications">
-                    <span class="title">Notifications</span>
+                <label for="block-customer1" class="block-customer1">
+                    <span class="title">Block Customer</span>
                 </label>
-                <label for="MySetting" class="MySetting d-none">
-                    <span class="title">MySetting</span>
+                
+                <label for="HelperSetting1" class="HelperSetting1">
+                    <span class="title">Helper Setting</span>
                 </label>
 
                 <span class="none">
@@ -56,24 +56,22 @@
                 <div class="slider"></div>
             </div>
             <div class="text-content">
-                <div class="dashboard text">
-                    <span class="service-header">Current Service Requests</span>
-                    <a asp-action="BookService" asp-controller="BookingService" class="addServiceExport">Add New Service Request</a>
+                <div class="dashboard1 text">
+                    
+                    
                     <div class="table-responsive mt-3">
                         <table class="table">
                             <thead>
                                 <tr class="table-heading">
                                     <th scope="col">Service Id</th>
                                     <th scope="col">Service Date</th>
-                                    <th scope="col">Service Provider</th>
+                                    <th scope="col">Customer details</th>
                                     <th scope="col">Payment</th>
                                     <th scope="col" class="text-center">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach (var item in Model.dashboardData) {
-                                    CancelId = CancelId + 1;
-                                    var x = "#Cancel"+CancelId;
                                     <tr data-bs-toggle="modal" data-bs-target="#row1">
                                         <td>@Html.DisplayFor(modelItem => item.ServiceId)</td>
                                         <td>
@@ -86,7 +84,7 @@
                                         <td class="euro">@Html.DisplayFor(modelItem => item.TotalCost) &euro;
                                         </td>
                                         <td>
-                                            <button class="btn btn-danger export1 mx-3" data-bs-toggle="modal" data-bs-target=@x>Cancel</button>
+                                            <button class="btn btn-danger export1 mx-3" data-bs-toggle="modal" data-bs-target="">Cancel</button>
                                             <button class="btn btn-primary export" data-bs-toggle="modal" data-bs-target="#Reschedule">Reschedule</button>
 
                                         </td>
@@ -96,10 +94,8 @@
                             </tbody>
                         </table>
                         <form asp-action="CancelService" asp-controller="Customer" method="post">
-                        @foreach (var item in Model.dashboardData) {
-                            CancelId1 = CancelId1 + 1;
-                            var z = "Cancel"+CancelId1;
-                            <div class="modal fade" id=@z data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        
+                            <div class="modal fade" id="" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -112,12 +108,12 @@
                                                 <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
                                             </div>
                                         </div>
-                                        <input asp-for="CancelServiceId" value=@item.ServiceRequestId />
+                                        <input  />
                                         <button type="submit" class="btn btn-primary export m-3">Cancle Now</button>
                                     </div>
                                 </div>
                             </div>
-                        }
+                        
                         </form>
                     </div>
 
@@ -151,7 +147,19 @@
                     </div>
                 </div>
 
-                <div class="service-history text">
+                <div class="new-service-request1 text">
+                    new service request
+                </div>
+
+                <div class="upcomming-service1 text">
+                    upcomming service
+                </div>
+
+                <div class="service-schedule1 text">
+                    service schedule
+                </div>
+
+                <div class="service-history1 text">
                     <span class="service-header">Service History</span>
                     <span class="export">Export</span>
                     <table class="table">
@@ -176,16 +184,9 @@
                                         <span><img src="~/images/small-watch-logo/layer-712.png">@Html.DisplayFor(modelItem => item.ServiceStartDate) 12:00 - 18:00</span>
                                     </td>
                                     <td>
+                                        @Html.DisplayFor(modelItem => item.ServiceStartDate)
                                     </td>
-                                    <td class="euro">
-                                        @Html.DisplayFor(modelItem => item.TotalCost) &euro;
-                                    </td>
-                                    <td>
-                                        <span class="btn btn-primary cancelled">
-                                            <div>Cancelled</div>
-                                        </span>
-                                    </td>
-                                    <td><span class="btn btn-primary rate-sp" data-bs-toggle="modal" data-bs-target="#rateSp">Rate SP</span></td>
+                                    
                                 </tr>
                             }
                             
@@ -248,11 +249,15 @@
                     </div>
                 </div>
 
-                <div class="service-schedule text">
-                   
+                <div class="my-ratting1 text">
+                   my-ratting
                 </div>
 
-                <div class="MySetting text">
+                <div class="block-customer1 text">
+                    block-customer
+                </div>
+
+                <div class="HelperSetting1 text">
                     <div class="row">
                         <div class="col">
                             <nav>
@@ -277,15 +282,15 @@
                                         <div class="row g-3 mt-2">
                                             <div class="col">
                                                 <label class="mb-2">First name</label>
-                                                <input asp-for="uData.FirstName" value="@Model.userData[0].FirstName" class="form-control" placeholder="First name" required/>
+                                                <input class="form-control" placeholder="First name" required/>
                                             </div>
                                             <div class="col">
                                                 <label class="mb-2">Last name</label>
-                                                <input asp-for="uData.LastName" value="@Model.userData[0].LastName" class="form-control" placeholder="Last name" required/>
+                                                <input class="form-control" placeholder="Last name" required/>
                                             </div>
                                             <div class="col">
                                                 <label class="mb-2">E-mail Address</label>
-                                                <input value="@Model.userData[0].Email" type="email" class="form-control" placeholder="email address" disabled>
+                                                <input type="email" class="form-control" placeholder="email address" disabled>
                                             </div>
                                         </div>
                                         <div class="row mt-2">
@@ -293,13 +298,13 @@
                                                 <label for="MobileNumber" class="mb-2">Mobile Number</label>
                                                 <div class="input-group">
                                                     <span class="input-group-text" id="inputGroupPrepend2">+91</span>
-                                                    <input asp-for="uData.Mobile" value="@Model.userData[0].Mobile" type="text" class="form-control" id="MobileNumber" placeholder="Mobile number"
+                                                    <input type="text" class="form-control" id="MobileNumber" placeholder="Mobile number"
                                                         aria-describedby="inputGroupPrepend2" required>
                                                 </div>
                                             </div>
                                             <div class="col">
                                                 <label class="mb-2">Birthday</label>
-                                                <input asp-for="uData.DateOfBirth" type="datetime" value="@Model.userData[0].DateOfBirth" id="birthday" class="form-control" required>
+                                                <input type="datetime" id="birthday" class="form-control" required>
                                             </div>
                                         </div>
                                         <hr>
@@ -320,8 +325,6 @@
                                             </div>
                                         </div>
 
-
-
                                     </form>
                                 </div>
                                 <div class="tab-pane fade" id="nav-myaddress" role="tabpanel" aria-labelledby="nav-myaddress-tab">
@@ -333,29 +336,23 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach (var item in Model.userAddressData) {
-                                                a = a + 1;
-                                                var c = "#editIcon" + a;
-                                                var e = "#delete" + a;
+                                            
                                                 <tr>
-                                                <td><b>Address: </b>@Html.DisplayFor(modelItem => item.AddressLine1) @Html.DisplayFor(modelItem => item.AddressLine2),
-                                                    @Html.DisplayFor(modelItem => item.PostalCode)<br /><b>Phone Number</b>@Html.DisplayFor(modelItem => item.Mobile)</td>
-                                                <td><img src="~/images/edit-icon.png" data-bs-target=@c data-bs-toggle="modal"> 
-                                                        <img data-bs-target=@e data-bs-toggle="modal" src="~/images/delete-icon.png">
+                                                <td><b>Address: </b>,
+                                                    <br /><b>Phone Number</b></td>
+                                                <td><img src="~/images/edit-icon.png" data-bs-target="" data-bs-toggle="modal"> 
+                                                        <img data-bs-target="" data-bs-toggle="modal" src="~/images/delete-icon.png">
                                                 </td>
 
                                             </tr>
-                                            }
+                                            
 
                                         </tbody>
                                     </table>
                                     <span class="export2">Add New Address</span>
                                     
-                                    @foreach (var item in Model.userAddressData)
-                                    {
-                                        d=d+1;
-                                        var f = "delete" + d;
-                                        <div class="modal fade" id=@f data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                    
+                                        <div class="modal fade" id="" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
                                                 <div class="modal-header">
@@ -372,7 +369,7 @@
                                                     </div>
                                                     <button type="submit" class="btn btn-primary editBtn m-3">Delete</button>
 
-                                                    <input asp-for="EditPerticularAddress" value=@(d-1) class=""/>
+                                                    <input value="" class=""/>
 
                                                 </form>
 
@@ -380,13 +377,11 @@
                                             </div>
                                         </div>
                                         
-                                    }
+                                    
 
 
-                                    @foreach (var item in Model.userAddressData) {
-                                    b = b + 1;
-                                    var c = "editIcon" + b;
-                                    <div class="modal fade" id=@c data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                    @*for loop*@
+                                    <div class="modal fade" id="" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
                                                 <div class="modal-header">
@@ -401,21 +396,21 @@
                                                             <div class="row g-3 mt-2">
                                                             <div class="col">
                                                                 <label class="mb-2">Street name</label>
-                                                                <input asp-for="userAddress1.AddressLine1" value="@Model.userAddressData[b-1].AddressLine1" type="text" class="form-control" placeholder="Street name"/>
+                                                                <input type="text" class="form-control" placeholder="Street name"/>
                                                             </div>
                                                             <div class="col">
                                                                 <label class="mb-2">House number</label>
-                                                                <input asp-for="userAddress1.AddressLine2" value="@Model.userAddressData[b-1].AddressLine2" type="number" class="form-control" placeholder="House number"/>
+                                                                <input type="number" class="form-control" placeholder="House number"/>
                                                             </div>
                                                         </div>
                                                         <div class="row mt-2">
                                                             <div class="col">
                                                                 <label class="mb-2">Postal Code</label>
-                                                                <input asp-for="userAddress1.PostalCode" value="@Model.userAddressData[b-1].PostalCode" class="form-control" type="number" placeholder="Postal code">
+                                                                <input class="form-control" type="number" placeholder="Postal code">
                                                             </div>
                                                             <div class="col">
                                                                 <label class="mb-2">City</label>
-                                                                <input asp-for="userAddress1.City" value="@Model.userAddressData[b-1].City" type="text" class="form-control" placeholder="City">
+                                                                <input type="text" class="form-control" placeholder="City">
                                                             </div>
                                                         </div>
 
@@ -425,7 +420,7 @@
 
                                                                 <div class="input-group">
                                                                     <span class="input-group-text" id="inputGroupPrepend2">+91</span>
-                                                                    <input asp-for="userAddress1.Mobile" value="@Model.userAddressData[b-1].Mobile" type="text" class="form-control" placeholder="Mobile number" required>
+                                                                    <input type="text" class="form-control" placeholder="Mobile number" required>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -433,25 +428,25 @@
                                                     </div>
                                                     <button type="submit" class="btn btn-primary editBtn m-3">Edit</button>
 
-                                                    <input asp-for="EditPerticularAddress" value=@(b-1) class="d-none"/>
+                                                    <input class="d-none"/>
 
                                                 </form>
 
                                             </div>
                                         </div>
                                     </div>
-                                    }
+                                    
                                 </div>
                                  
                                 <div class="tab-pane fade" id="nav-changpass" role="tabpanel"
                                     aria-labelledby="nav-changpass-tab">
                                     <form asp-action="ChangePass" asp-controller="Customer" method="post">
                                         <label for="Old Password" class="mb-2 mt-2">Old Password</label>
-                                        <input asp-for="changePassViewModel.OldPassword" class="form-control mb-2" type="password" placeholder="Old Password">
+                                        <input class="form-control mb-2" type="password" placeholder="Old Password">
                                         <label for="New Password" class="mb-2">New Password</label>
-                                        <input asp-for="changePassViewModel.Password" class="form-control mb-2" type="password" placeholder="Password">
+                                        <input class="form-control mb-2" type="password" placeholder="Password">
                                         <label for="Confirm Password" class="mb-2">Confirm Password</label>
-                                        <input asp-for="changePassViewModel.ConfirmPassword" class="form-control mb-2" type="password" placeholder="Confirm Password">
+                                        <input class="form-control mb-2" type="password" placeholder="Confirm Password">
                                         <button class="export2">Save</button>
                                     </form>
                                 </div>
@@ -459,6 +454,7 @@
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
@@ -489,8 +485,7 @@
 
                 <div class="modal-footer">
                     <button class="btn btn-primary export" data-bs-toggle="modal" data-bs-target="#Reschedule">Reschedule</button>
-                    <button class="btn btn-danger export1" data-bs-toggle="modal" data-bs-target="#Cancle">Cancelled
-                    </button>
+                    <button class="btn btn-danger export1" data-bs-toggle="modal" data-bs-target="#Cancle">Cancelled</button>
                 </div>
             </div>
         </div>

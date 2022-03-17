@@ -114,7 +114,7 @@ namespace HelperLand.Controllers
                 HttpContext.Session.SetString("UserName", user.FirstName);
                 HttpContext.Session.SetString("UserTypeId", user.UserTypeId.ToString());
 
-                return RedirectToAction("Customer", "Home");
+                return RedirectToAction("Index", "Helper");
             }
             else
             {
