@@ -29,40 +29,6 @@ namespace HelperLand.Controllers
         }
 
 
-        public IActionResult Index()
-        {
-            var id = int.Parse(HttpContext.Session.GetString("UserId"));
-            //var id = 1;
-            DashboardViewModel dashboardViewModel = new DashboardViewModel();
-            dashboardViewModel.dashboardData = new List<ServiceRequest>();
-            dashboardViewModel.serviceHistory = new List<ServiceRequest>();
-
-            dashboardViewModel.userData= _coreDBContext.Users.Where(x => x.UserId == id).ToList();
-            var a = _coreDBContext.ServiceRequests.Where(x => x.UserId == id).ToList();
-
-            if (a != null)
-            {
-                foreach (var item in a)
-                {
-                    if (item.Status == IdForCanceled || item.Status == IdForRefunded || item.Status == IdForCompleted)
-                    {
-                        dashboardViewModel.serviceHistory.Add(item);
-                    }
-                    else if (item.ServiceStartDate > DateTime.Now)
-                    {
-                        dashboardViewModel.dashboardData.Add(item);
-                    }
-                    else
-                    {
-                        dashboardViewModel.serviceHistory.Add(item);
-                    }
-                    
-                }
-            }
-            return View(dashboardViewModel);
-            
-        }
-
         public IActionResult MySetting()
         {
             var id = int.Parse(HttpContext.Session.GetString("UserId"));

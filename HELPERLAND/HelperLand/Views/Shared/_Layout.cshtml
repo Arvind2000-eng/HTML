@@ -38,14 +38,29 @@
                                 <li class="nav-item">
                                     @if (HttpContextAccessor.HttpContext.Session.GetString("UserName") == null)
                                     {
-                                        <a class="nav-link border-btn" href="#" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#login">Book now</a>
-                                        <partial name="_LoginPartial" />
+                                        if (HttpContextAccessor.HttpContext.Session.GetString("UserTypeId") == "2")
+                                        {
+                                            
+                                        }
+                                        else
+                                        {
+                                            <a class="nav-link border-btn" href="#" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#login">
+                                                Book now
+                                            </a>
+                                            <partial name="_LoginPartial" />
+                                        }
                                     }
                                     else
                                     {
-                                        <a class="nav-link border-btn" href="~/BookingService/BookService">Book now</a>
+                                        if (HttpContextAccessor.HttpContext.Session.GetString("UserTypeId") == "2")
+                                        {
+
+                                        }
+                                        else
+                                        {
+                                            <a class="nav-link border-btn" href="~/BookingService/BookService">Book now</a>
+                                        }
                                     }
-                                
                                 </li>
 
                                 <li class="nav-item">
@@ -74,26 +89,29 @@
                                             <partial name="_LoginPartial" />
                                         </div>
                                     </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link border-btn" href="~/UserTable/HelperRegistration" title="Become a Helper">Become a Helper</a>
+                                    </li>
                                 }
                                 else
                                 {
-                                    <li>
-                                        <div class="vertical_line">
+                                    <li class="vertical-line">
+                                        <div class="" style="height:50px; width:1px; background:#fff; margin:10px 10px 0px 10px;">
                                         </div>
                                     </li>
                                     <li class="notification">
-                                        <div class="align-items-center justify-content-center" id="notification" style="margin:0 10px;">
+                                        <div class="align-items-center justify-content-center" id="notification" style="margin:0 10px; margin-top:20px;">
                                             <a href="#"><img src="~/images/notification-bell-icon/icon-notification.png"></a>
                                         </div>
                                     </li>
-                                    <li>
-                                        <div class="" style="height:50px; width:1px; background:#fff;">
+                                    <li class="vertical-line">
+                                        <div class="" style="height:50px; width:1px; background:#fff;  margin:10px 10px 0px 10px;">
                                         </div>
                                     </li>
                                     <li class="dropdown">
-                                        <a class="nav-link" href="#" id="navbarDropdown1" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <a class="nav-link" href="#" id="navbarDropdown1" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding-top: 0;padding-left: 13px;">
                                             <img src="~/images/profile-logo-man/forma-1.png">
-                                            <img src="~/images/up-arrow/forma-1-copy-14.png" style="margin-left:8px;">
+                                            <img src="~/images/down-arrow-side-by-user-profile/forma-1-copy.png" style="margin-left:8px;">
                                         </a>
                                         <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
                                             @if(HttpContextAccessor.HttpContext.Session.GetString("UserTypeId")==1.ToString())
@@ -110,10 +128,6 @@
                                         </div>
                                     </li>
                                 }
-
-                                <li class="nav-item">
-                                    <a class="nav-link border-btn" href="~/UserTable/HelperRegistration">Become a Helper</a>
-                                </li>
                             </ul>
                         </div>
                     </nav>

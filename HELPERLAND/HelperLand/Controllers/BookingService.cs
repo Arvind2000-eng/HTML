@@ -151,11 +151,13 @@ namespace HelperLand.Controllers
        
         public void SaveScheduleAndPlan(ScheduleAndPlanViewModel model2)
         {
+            var id = int.Parse(HttpContext.Session.GetString("UserId"));
             var b = _coreDBContext.Users.Where(x => x.UserTypeId == 2).ToList();
+            var c = _coreDBContext.ServiceRequests.Where(x => x.UserId == id).ToList();
 
             ServiceRequest request = new ServiceRequest();
-            request.UserId = int.Parse(HttpContext.Session.GetString("UserId")); ;
-            request.ServiceId= 1;
+            request.UserId = id;
+            request.ServiceId= 10000+c.Count+id*10;
             request.ServiceStartDate = model2.ServiceStartDate;
             request.ZipCode=model2.Code;
             request.ServiceHours = model2.ServiceHrs;

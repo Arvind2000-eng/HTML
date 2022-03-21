@@ -3076,10 +3076,10 @@ table.table-bordered thead tr th {
 /*Admin -> User management */
 
 .admin-header {
-    /* position: fixed; */
+    
     padding: 10px 20px 0px 20px;
     background-color: #1fb6ff;
-    height: 80px;
+    
 }
 
 .admin-header
@@ -4523,6 +4523,102 @@ textarea.form-control {
 
 
 
+/************Admin slider*************/
+#a1:checked ~ .list label.a1,
+#a2:checked ~ .list label.a2,
+#a3:checked ~ .list label.a3,
+#a4:checked ~ .list label.a4,
+#a5:checked ~ .list label.a5,
+#a6:checked ~ .list label.a6,
+#a7:checked ~ .list label.a7,
+#a7:checked ~ .list label.a8,
+#a7:checked ~ .list label.a9,
+#a7:checked ~ .list label.a10,
+#a7:checked ~ .list label.a11,
+#a7:checked ~ .list label.a12,
+#a8:checked ~ .list label.a13 {
+    color: #fff;
+}
+
+#a1:checked ~ .list .slider {
+    top: 0;
+}
+#a2:checked ~ .list .slider {
+    top: 60px;
+}
+#a3:checked ~ .list .slider {
+    top: 120px;
+}
+#a4:checked ~ .list .slider {
+    top: 180px;
+}
+#a5:checked ~ .list .slider {
+    top: 240px;
+}
+#a6:checked ~ .list .slider {
+    top: 300px;
+}
+#a7:checked ~ .list .slider {
+    top: 360px;
+}
+#a8:checked ~ .list .slider {
+    top: 420px;
+}
+#a9:checked ~ .list .slider {
+    top: 480px;
+}
+#a10:checked ~ .list .slider {
+    top: 540px;
+}
+#a11:checked ~ .list .slider {
+    top: 600px;
+}
+#a12:checked ~ .list .slider {
+    top: 660px;
+}
+#a13:checked ~ .list .slider {
+    top: 720px;
+}
+
+#a1:checked ~ .text-content .a1,
+#a2:checked ~ .text-content .a2,
+#a3:checked ~ .text-content .a3,
+#a4:checked ~ .text-content .a4,
+#a5:checked ~ .text-content .a5,
+#a6:checked ~ .text-content .a6,
+#a7:checked ~ .text-content .a7,
+#a7:checked ~ .text-content .a8,
+#a7:checked ~ .text-content .a9,
+#a7:checked ~ .text-content .a10,
+#a7:checked ~ .text-content .a11,
+#a7:checked ~ .text-content .a12,
+#a13:checked ~ .text-content .a13 {
+    display: block;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -4537,7 +4633,11 @@ textarea.form-control {
 
 
 
-
+@media (max-width: 768px){
+    .vertical-line{
+        display:none;
+    }
+}
 
 
 

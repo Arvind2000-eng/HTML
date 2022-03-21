@@ -106,7 +106,7 @@ namespace HelperLand.Controllers
                 HttpContext.Session.SetString("UserName", user.FirstName);
                 HttpContext.Session.SetString("UserTypeId", user.UserTypeId.ToString());
 
-                return RedirectToAction("Index", "Customer");
+                return RedirectToAction("MySetting", "Customer");
             }
             else if (user != null && user.Email == loginViewModel.Email && user.Password == loginViewModel.Password && user.UserTypeId == 2)
             {
@@ -115,6 +115,14 @@ namespace HelperLand.Controllers
                 HttpContext.Session.SetString("UserTypeId", user.UserTypeId.ToString());
 
                 return RedirectToAction("Index", "Helper");
+            }
+            else if (user != null && user.Email == loginViewModel.Email && user.Password == loginViewModel.Password && user.UserTypeId == 3)
+            {
+                HttpContext.Session.SetString("UserId", user.UserId.ToString());
+                HttpContext.Session.SetString("UserName", user.FirstName);
+                HttpContext.Session.SetString("UserTypeId", user.UserTypeId.ToString());
+
+                return RedirectToAction("Index", "Admin");
             }
             else
             {
