@@ -76,33 +76,16 @@
                                             <div class="row">
                                             <div class="col-md-6">
                                                 <span class="question">When do you want your helper to be with you?</span>
-                                                <div class="form-group calculator-date-time">
-                                                <div class="input-wrapper">
+                                                <div class="form-group calculator-date-time row justify-content-between">
+                                                    
+                                                <div class="input-wrapper col-5">
                                                     <input asp-for="@Model.scheduleAndPlan.ServiceStartDate" class="form-control" type="date" style="width:150px;"/>
                                                 </div>
-                                                <select asp-for="@Model.scheduleAndPlan.StartTime" class="form-control inline">
-                                                    <option value="8">8:00</option>
-                                                    <option value="8.5">8:30</option>
-                                                    <option value="9">9:00</option>
-                                                    <option value="9.5">9:30</option>
-                                                    <option value="10">10:00</option>
-                                                    <option value="10.5">10:30</option>
-                                                    <option value="11">11:00</option>
-                                                    <option value="11.5">11:30</option>
-                                                    <option value="12">12:00</option>
-                                                    <option value="12.5">12:30</option>
-                                                    <option value="13">13:00</option>
-                                                    <option value="13.5">13:30</option>
-                                                    <option value="14">14:00</option>
-                                                    <option value="14.5">14:30</option>
-                                                    <option value="15">15:00</option>
-                                                    <option value="15.5">15:30</option>
-                                                    <option value="16">16:00</option>
-                                                    <option value="16.5">16:30</option>
-                                                    <option value="17">17:00</option>
-                                                    <option value="17.5">17:30</option>
-                                                    <option value="18">18:00</option>
-                                                </select>
+                                                <div class="col-5">
+                                                    <input asp-for="@Model.scheduleAndPlan.StartTime" type="time" class="form-control" />
+                                                </div>
+
+                                                
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
@@ -371,6 +354,63 @@
                                                 <input id="acceptPay" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#serviceAccepted" type="button" value="Book with costs" disabled />
                                               </div>
 
+                                              <div class="modal fade" id="termsAndConditions">
+                                                    <div class="modal-dialog vertical-align-center">
+                                                        <div class="vertical-alignment-helper">
+                                                            <div class="modal-content">
+                                                                Terms of Service
+                                                                <div class="modal-header">
+                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                                                </div>
+        
+                                                                
+                                                                <div class="modal-body">
+                                                                    <p>
+                                                                        1. Subject of the contract, definitions
+
+                                                                        (1) The platform Helperland Helperland GmbH, Königswinterer Str. 116, 53227 Bonn (hereinafter: provider) offers a mediation platform for cleaning services to customers (hereinafter: customer). The following general terms and conditions apply exclusively to the business relationship between the provider and the customer in the version valid at the time of booking. Deviating general terms and conditions of the customer are not recognized unless the provider expressly agrees to their validity in writing.
+
+                                                                        (2) The customer is a consumer within the meaning of § 13 BGB, insofar as the purpose of the ordered deliveries and services cannot be attributed predominantly to his commercial or independent professional activity. On the other hand, according to § 14 BGB, an entrepreneur is any natural or legal person or partnership with legal capacity who acts in the exercise of their commercial or independent professional activity when concluding the contract.
+
+                                                                        2. Conclusion of contract
+
+                                                                        (1) The customer can use the website www.helperland.de (hereinafter: "website") to order a cleaning service by filling out the booking form. By clicking on the “Book for a fee” button, he submits a binding application to commission the placement of a cleaner. Before sending the booking, the customer can change and view the data at any time. By clicking on the "Book with costs" button, the customer agrees to the validity of the General Terms and Conditions and the provisions on the right of withdrawal and data protection.
+
+                                                                        (2) The provider accepts the customer's offer on behalf of the cleaner. The provider then sends the customer an order confirmation by e-mail, in which the customer's booking is listed again and which the customer can print out using the "Print" function. The contract is concluded when the provider submits the declaration of acceptance (order confirmation) between the customer and the cleaner. The text of the contract is stored in compliance with data protection.
+
+                                                                        (3) All payments by the customer to the cleaner for the payment of the service are made via a licensed payment service provider on the basis of a payment service contract between the payment service provider and the cleaner. The provider brokers this payment service contract, but is not involved in the payment processing process and is not itself a party to the payment service contract.
+
+                                                                        (4) The contract is concluded in German.
+
+                                                                        3. Services
+
+                                                                        (1) The provider provides the customer with a cleaner. The provider sends the customer's booking requests to a specific cleaner if the customer has selected them as a favorite helper. The provider is not liable for the implementation and fulfillment of the contracts for services by the cleaner.
+
+                                                                        (2) If the cleaning staff preferred by the customer does not accept the request within 24 hours, the request will be forwarded to other cleaning staff.
+
+                                                                        (3) The provider takes over the rebooking or cancellation for the customer by notifying the cleaning staff. Customers can manage the bookings themselves through the members' area of ​​the website.
+
+                                                                        (4) The scope of the cleaning service is based on the information on the website and the order confirmation. Additional services are not owed.
+
+                                                                        4. Customer Obligations
+
+                                                                        (1) The customer undertakes to provide the necessary cooperation services in order to enable the provider to carry out his contractual services. Insofar as the customer's cooperation is required or certain prerequisites for the service provision by the provider must be created by the customer, the provider shall inform the customer of this in his offers on the website. These become part of the contract.
+
+                                                                        (2) The provider points out in particular that the mediated cleaner must be given access to the premises to be cleaned.
+
+                                                                        (3) As shown in paragraph 1, the provider is dependent on the cooperation of the customer. If insufficient cooperation on the part of the customer means that the services of the provider can no longer be provided, this does not affect the payment claim of the provider, i.e. the provider is entitled to bill for the services even if no service is provided due to the insufficient cooperation of the customer could.
+
+                                                                        (4) The customer ensures that the provider is informed in advance of possible dangers in the premises (e.g. pets, stored chemicals).
+
+                                                                        (5) The customer undertakes not to commission a commissioned cleaning worker outside of the platform. This also includes the agreement of additional services.</p>
+                                                                    
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                              </div>
+
                                               <div class="modal fade" id="serviceAccepted">
                                                     <div class="modal-dialog vertical-align-center">
                                                         <div class="vertical-alignment-helper">
@@ -414,7 +454,7 @@
                                 Payment Summary
                               </h3>
                               <div class="content">
-                                <span id="date-update">@DateTime.Today</span>
+                                <span id="date-update">@DateTime.Today.Date.Year.ToString("0000")-@DateTime.Today.Date.Month.ToString("00")-@DateTime.Today.Date.Day.ToString("00")</span>
                                 <span id="time-update">08:00</span>
                     
                                 <table>
@@ -425,7 +465,7 @@
                                     </tr>
                                   </thead>
                                   <tbody>
-                                    <tr><td>Basic</td><td>3 Hours.</td></tr>
+                                    <tr><td>Basic</td><td><p class="d-inline" id="BasicHour">3</p> Hours.</td></tr>
                                   </tbody>
                                 </table>
                                 <p><b>Additional Services</b></p>
@@ -456,9 +496,9 @@
                                       <td>30 min.</td>
                                     </tr>
 
-                                    <tr class="total-service-time d-none">
+                                    <tr class="total-service-time">
                                       <td><b>total service time</b></td>
-                                      <td><p><b id = "tsrvedt">2.5</b> <b>Hours.</b></p></td>
+                                      <td><p><b id="tsrvedt">3.0</b> <b>Hours.</b></p></td>
                                     </tr>
                                   </tbody>
                                 </table>
@@ -631,36 +671,6 @@
                 $(".scenario1").addClass("hide");
             });
 
-            //$(".save-billing-address").click(function(){
-            //    var model1 = {
-            //        Street: $('#billingStreet').val(),
-            //        HouseNumber: $('#billingHouseNumber').val(),
-                    
-            //        PostalCode: $('#billingPostalCode').val(),
-            //        City: $('#billingCity').val(),
-            //        Mobile:"23412312"
-            //    }
-                
-            //    $.ajax({
-            //        type: 'POST',
-            //        url: '@Url.Action("SaveBillingAddress", "BookingService")',
-            //        data: model1,
-            //        //dataType: "json",
-            //        success: function() {
-            //            alert("Address Saved !");
-            //            $('#billingStreet').val(null);
-            //            $('#billingHouseNumber').val(null);
-            //            $('#billingCity').val(null);
-            //            $('#billingPostalCode').val(null);
-            //            $('#billingAddress').prop('checked', false);
-            //            $(".invoice-address-form").addClass("hide")
-            //        },
-            //        error: function(e) {
-            //           alert("Error: " + e);
-            //        }
-            //    });
-            //});
-
             $("#addressSave").click(function(){
                 var model = {
                     //Street:"abc",
@@ -713,16 +723,27 @@
                     Total:$('#totalprc').text(),
                     saveHelper:(SaveHelper-1)
                 }
-                //alert(model2.Code);
+
+                //alert(model2.StartTime);
                 $.ajax({
                     type: 'POST',
                     url: '@Url.Action("SaveScheduleAndPlan", "BookingService")',
                     data: model2,
-                    success: function() {
-                        alert("Schedule And Plan Saved");
+                    dataType: "json",
+                    success: function(val1) {
+                        if(val1==2){
+                            alert("Date Shoud be Greater than today !");
+                        }
+                        else if(val1==1){
+                            alert("Time Sould be Greater than current Time !");
+                        }
+                        else{
+                            alert("Schedule And Plan Saved");
+                        }
+                        
                     },
                     error: function(e) {
-                       alert("Error: " + e);
+                       alert("Error in scedule and plan : " + e);
                     }
                 });
 ///////////////End Save Scedule and Plan block//////////////////////
@@ -737,7 +758,7 @@
                     saveadd : (SaveThis-1)
                 }
                 var add=SaveThis-1;
-                alert(add);
+                //alert(add);
                 $.ajax({
                     type: 'POST',
                     url: '@Url.Action("SaveServiceRequestAddress", "BookingService")',
@@ -849,16 +870,6 @@
                 $("#effeprc").text(($("#totalprc").text()*0.8).toFixed(2));
             }
 
-            function grt3check(number) {
-                if (number >= 3.0) {
-                    $(".total-service-time").removeClass("d-none");
-                    $(".total-service-time td p #tsrvedt").text(srvedit);
-                }
-                else {
-                    $(".total-service-time").addClass("d-none");
-                }
-            }
-
 
             var st = $('#@Html.IdFor(x=>x.scheduleAndPlan.StartTime)');
             st.change(function () {
@@ -874,6 +885,15 @@
 
             var st2 = $('#@Html.IdFor(x=>x.scheduleAndPlan.ServiceHrs)');
             st2.change(function () {
+                var i3=Number(st2.val());
+                $("#BasicHour").text(i3);
+                //alert(i3);
+
+                var extrahour=Number(extraServiceCount*0.5);
+                //alert("extra hour="+extrahour);
+                $("#tsrvedt").text(i3+extrahour);   
+                
+
                 var fatchtprc=Number($("#totalprc").text());
                 var excludeextra=fatchtprc-Number(extraServiceCount*9);
                 var thr = st2.val();
@@ -890,7 +910,10 @@
                     servdtl1.removeClass("d-none");
                     $("#cabinetExtra").prop('checked', true);
                     extraServiceCount+=1;
-                    srvedit += 0.5;
+                    
+                    var basichour=Number($("#BasicHour").text());
+                    var ehour=(extraServiceCount-1)*0.5;
+                    srvedit =basichour+ehour + 0.5;
                     cleanprcedtadd();
                         
                 }
@@ -899,11 +922,15 @@
                     servdtl1.addClass("d-none");
                     $("#cabinetExtra").prop('checked', false);
                     extraServiceCount-=1;
-                    srvedit -= 0.5;
+                    
+                    var basichour=Number($("#BasicHour").text());
+                    var ehour=(extraServiceCount+1)*0.5;
+                    srvedit = basichour + ehour - 0.5;
                     cleanprcedtsub();
                 }
+                $(".total-service-time td p #tsrvedt").text(srvedit);
         
-                grt3check(srvedit);
+                
                     
             });
 
@@ -913,7 +940,10 @@
                     servdtl2.removeClass("d-none");
                     $("#fridgeExtra").prop('checked', true);
                     extraServiceCount+=1;
-                    srvedit += 0.5;
+                    
+                    var basichour=Number($("#BasicHour").text());
+                    var ehour=(extraServiceCount-1)*0.5;
+                    srvedit =basichour+ehour + 0.5;
                     cleanprcedtadd();
                         
                 }
@@ -922,10 +952,13 @@
                     servdtl2.addClass("d-none");
                     $("#fridgeExtra").prop('checked', false);
                     extraServiceCount-=1;
-                    srvedit -= 0.5;
+                    
+                    var basichour=Number($("#BasicHour").text());
+                    var ehour=(extraServiceCount+1)*0.5;
+                    srvedit = basichour + ehour - 0.5;
                     cleanprcedtsub();
                 }
-                grt3check(srvedit);
+                $(".total-service-time td p #tsrvedt").text(srvedit);
             });
 
             servimg3.click(function () {
@@ -934,19 +967,25 @@
                     servdtl3.removeClass("d-none");
                     $("#ovenExtra").prop('checked', true);
                     extraServiceCount+=1;
-                    srvedit += 0.5;
+                    
+                    var basichour=Number($("#BasicHour").text());
+                    var ehour=(extraServiceCount-1)*0.5;
+                    srvedit =basichour+ehour + 0.5;
                     cleanprcedtadd();
-                        
+                    
                 }
                 else {
                     service3.css("border", "1px solid #c8c8c8");
                     servdtl3.addClass("d-none");
                     $("#ovenExtra").prop('checked', false);
                     extraServiceCount-=1;
-                    srvedit -= 0.5;
+                    
+                    var basichour=Number($("#BasicHour").text());
+                    var ehour=(extraServiceCount+1)*0.5;
+                    srvedit = basichour + ehour - 0.5;
                     cleanprcedtsub();
                 }
-                grt3check(srvedit);
+                $(".total-service-time td p #tsrvedt").text(srvedit);
             });
 
             servimg4.click(function () {
@@ -955,7 +994,10 @@
                     servdtl4.removeClass("d-none");
                     $("#laundryExtra").prop('checked', true);
                     extraServiceCount+=1;
-                    srvedit += 0.5;
+                    
+                    var basichour=Number($("#BasicHour").text());
+                    var ehour=(extraServiceCount-1)*0.5;
+                    srvedit =basichour+ehour + 0.5;
                     cleanprcedtadd();
                         
                 }
@@ -964,10 +1006,13 @@
                     servdtl4.addClass("d-none");
                     $("#laundryExtra").prop('checked', false);
                     extraServiceCount-=1;
-                    srvedit -= 0.5;
+                    
+                    var basichour=Number($("#BasicHour").text());
+                    var ehour=(extraServiceCount+1)*0.5;
+                    srvedit = basichour + ehour - 0.5;
                     cleanprcedtsub();
                 }
-                grt3check(srvedit);
+                $(".total-service-time td p #tsrvedt").text(srvedit);
             });
 
             servimg5.click(function () {
@@ -976,7 +1021,12 @@
                     servdtl5.removeClass("d-none");
                     $("#windowsExtra").prop('checked', true);
                     extraServiceCount+=1;
-                    srvedit += 0.5;
+                    
+                    var basichour=Number($("#BasicHour").text());
+                    var ehour=(extraServiceCount-1)*0.5;
+                    srvedit =basichour+ehour + 0.5;
+
+                    //alert(srvedit);
                     cleanprcedtadd();
                         
                 }
@@ -985,11 +1035,22 @@
                     servdtl5.addClass("d-none");
                     $("#windowsExtra").prop('checked', false);
                     extraServiceCount-=1;
-                    srvedit -= 0.5;
+                    
+                    var basichour=Number($("#BasicHour").text());
+                    var ehour=(extraServiceCount+1)*0.5;
+                    srvedit = basichour + ehour - 0.5;
+
+                    //alert(srvedit);
                     cleanprcedtsub();
                 }
-                grt3check(srvedit);
+                $(".total-service-time td p #tsrvedt").text(srvedit);
             });
+
+            
+
+
+
+
 
 
             //for payment button enable and disable

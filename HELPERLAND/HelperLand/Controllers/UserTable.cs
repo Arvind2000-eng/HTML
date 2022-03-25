@@ -106,7 +106,7 @@ namespace HelperLand.Controllers
                 HttpContext.Session.SetString("UserName", user.FirstName);
                 HttpContext.Session.SetString("UserTypeId", user.UserTypeId.ToString());
 
-                return RedirectToAction("MySetting", "Customer");
+                return RedirectToAction("Index", "Customer");
             }
             else if (user != null && user.Email == loginViewModel.Email && user.Password == loginViewModel.Password && user.UserTypeId == 2)
             {

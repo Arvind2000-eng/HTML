@@ -3038,6 +3038,10 @@ table.table-bordered thead tr th {
     font-size: 13px;
 }
 
+.status-button-cancelled:after {
+    content: 'Cancelled';
+}
+
 .status-button-cancelled {
     width: 82px;
     height: 22px;
@@ -3217,16 +3221,10 @@ table tr td a {
     text-decoration: none;
 }
 
-.admin-section
-.admin-right-block
-.data-table
 .status-button-active:after {
     content: 'Active';
 }
 
-.admin-section
-.admin-right-block
-.data-table
 .status-button-active {
     width: 58px;
     height: 24px;
@@ -3237,9 +3235,6 @@ table tr td a {
     margin-left: 5px;
 }
 
-.admin-section
-.admin-right-block
-.data-table
 .status-button-inactive {
     width: 62px;
     height: 24px;
@@ -3250,18 +3245,43 @@ table tr td a {
     margin-left: 5px;
 }
 
-.admin-section
-.admin-right-block
-.data-table
 .status-button-inactive:after {
     content: 'Inactive';
+}
+
+.status-button-refunded:after {
+    content: 'Refunded';
+}
+
+.status-button-refunded {
+    width: 58px;
+    height: 24px;
+    background-color: #87866f;
+    text-align: center;
+    color: white;
+    padding-top: 2px;
+    margin-left: 5px;
+}
+
+.status-button-accepted:after {
+    content: 'Accepted';
+}
+
+.status-button-accepted {
+    width: 58px;
+    height: 24px;
+    background-color: #0009ff;
+    text-align: center;
+    color: white;
+    padding-top: 2px;
+    margin-left: 5px;
 }
 
 .dot-button-wrapper {
     width: 36px;
     height: 36px;
     border-radius: 50%;
-    background-color: #f4f4f4;
+    background-color: #6e6868;
     padding-left: 11px;
     padding-bottom: 10px;
     border-style: none;
@@ -3270,6 +3290,7 @@ table tr td a {
 .three-dot-button:after {
     content: '\2807';
     font-size: 25px;
+    color: black;
 }
 
 @media (min-width:1388px) {
@@ -3310,6 +3331,36 @@ table tr td a {
     }
 }
 
+.status-button-active1:after {
+    content: 'Active';
+}
+
+.status-button-active1 {
+    width: 52px;
+    height: 22px;
+    text-align: center;
+    background-color: rgb(103, 182, 68);
+    color: white;
+    font-size: 13px;
+}
+
+.status-button-deactive1:after {
+    content: 'Deactive';
+}
+
+.status-button-deactive1 {
+    width: 62px;
+    height: 22px;
+    text-align: center;
+    background-color: rgb(255, 107, 107);
+    color: white;
+    font-size: 13px;
+}
+
+
+
+
+
 
 
 
@@ -3344,61 +3395,10 @@ table tr td a {
 
 /*Admin -> Service Requests*/
 
-.user-management-2
-.box-3 {
-    width: 110px;
-    height: 46px;
-    padding-left: 10px;
-    border: solid 1px #dedddd;
-    background-color: white;
-}
-
-.user-management-2
-.box-4 {
-    width: 127px;
-    height: 46px;
-    padding-left: 10px;
-    border: solid 1px #dedddd;
-    background-color: white;
-}
-
-.user-management-2
-.box-5 {
-    width: 152px;
-    height: 46px;
-    padding-left: 10px;
-    border: solid 1px #dedddd;
-    background-color: white;
-}
-
-.user-management-2
-.box-6 {
-    width: 120px;
-    height: 46px;
-    padding-left: 10px;
-    border: solid 1px #dedddd;
-    background-color: white;
-}
-
-.user-management-2
-.box-7 {
-    width: 135px;
-    height: 46px;
-    padding-left: 10px;
-    border: solid 1px #dedddd;
-    background-color: white;
-}
-
-.admin-section
-.admin-right-block
-.data-table
 .status-button-new:after {
     content: 'New';
 }
 
-.admin-section
-.admin-right-block
-.data-table
 .status-button-new {
     width: 45px;
     height: 24px;
@@ -3410,16 +3410,11 @@ table tr td a {
     padding-top: 5px;
 }
 
-.admin-section
-.admin-right-block
-.data-table
+
 .status-button-pending:after {
     content: 'Pending';
 }
 
-.admin-section
-.admin-right-block
-.data-table
 .status-button-pending {
     width: 62px;
     height: 24px;
@@ -3431,16 +3426,10 @@ table tr td a {
     padding-top: 5px;
 }
 
-.admin-section
-.admin-right-block
-.data-table
 .status-button-completed:after {
     content: 'Completed';
 }
 
-.admin-section
-.admin-right-block
-.data-table
 .status-button-completed {
     width: 78px;
     height: 24px;
@@ -3696,7 +3685,7 @@ textarea.form-control {
 }
 
 .btn-primary {
-    background: #1d7a8c;
+    background: #6da9b5;
     border: none !important;
     font-size: 16px;
     line-height: 24px;
@@ -4104,7 +4093,7 @@ textarea.form-control {
 .content1 .list {
     display: flex;
     flex-direction: column;
-    margin-right: 50px;
+    
     position: relative;
     color: white;
     background-color: #1d7a8c;
@@ -4170,10 +4159,6 @@ textarea.form-control {
     top: 300px;
 }
 
-#MySetting:checked ~ .list .slider {
-    display:none;
-}
-
 .content1 .text {
     display: none;
 }
@@ -4197,8 +4182,7 @@ textarea.form-control {
 #service-schedule:checked ~ .text-content .service-schedule,
 #favourite-pros:checked ~ .text-content .favourite-pros,
 #invoices:checked ~ .text-content .invoices,
-#notifications:checked ~ .text-content .notifications,
-#MySetting:checked ~ .text-content .MySetting {
+#notifications:checked ~ .text-content .notifications{
     display: block;
 }
 
@@ -4206,8 +4190,7 @@ textarea.form-control {
 #service-schedule:checked ~ .text-content .dashboard,
 #favourite-pros:checked ~ .text-content .dashboard,
 #invoices:checked ~ .text-content .dashboard,
-#notifications:checked ~ .text-content .dashboard,
-#MySetting:checked ~ .text-content .dashboard {
+#notifications:checked ~ .text-content .dashboard{
     display: none;
 }
 .service-header {
@@ -4281,7 +4264,7 @@ textarea.form-control {
     border: 1px solid;
     border-color: #e1e1e1;
     color: #646464;
-    width: 700px;
+    
 }
 
 .table-heading {
@@ -4351,9 +4334,10 @@ textarea.form-control {
 }
 
 .rate-sp {
-    background-color: #6da9b5;
+    background-color: #1d7a8c;
     border-radius: 20px;
     padding: 6px;
+    color:white;
 }
 
 .show {
@@ -4457,8 +4441,7 @@ textarea.form-control {
 #service-schedule1:checked ~ .list label.service-schedule1,
 #service-history1:checked ~ .list label.service-history1,
 #my-ratting1:checked ~ .list label.my-ratting1,
-#block-customer1:checked ~ .list label.block-customer1,
-#HelperSetting1:checked ~ .list label.HelperSetting1 {
+#block-customer1:checked ~ .list label.block-customer1{
     color: #fff;
 }
 
@@ -4490,9 +4473,6 @@ textarea.form-control {
     top: 360px;
 }
 
-#HelperSetting1:checked ~ .list .slider {
-    top: 420px;
-}
 
 #dashboard1:checked ~ .text-content .dashboard1,
 #new-service-request1:checked ~ .text-content .new-service-request1,
@@ -4500,8 +4480,7 @@ textarea.form-control {
 #service-schedule1:checked ~ .text-content .service-schedule1,
 #service-history1:checked ~ .text-content .service-history1,
 #my-ratting1:checked ~ .text-content .my-ratting1,
-#block-customer1:checked ~ .text-content .block-customer1,
-#HelperSetting1:checked ~ .text-content .HelperSetting1 {
+#block-customer1:checked ~ .text-content .block-customer1{
     display: block;
 }
 
@@ -4531,12 +4510,11 @@ textarea.form-control {
 #a5:checked ~ .list label.a5,
 #a6:checked ~ .list label.a6,
 #a7:checked ~ .list label.a7,
-#a7:checked ~ .list label.a8,
-#a7:checked ~ .list label.a9,
-#a7:checked ~ .list label.a10,
-#a7:checked ~ .list label.a11,
-#a7:checked ~ .list label.a12,
-#a8:checked ~ .list label.a13 {
+#a8:checked ~ .list label.a8,
+#a9:checked ~ .list label.a9,
+#a10:checked ~ .list label.a10,
+#a11:checked ~ .list label.a11,
+#a12:checked ~ .list label.a12{
     color: #fff;
 }
 
@@ -4576,9 +4554,7 @@ textarea.form-control {
 #a12:checked ~ .list .slider {
     top: 660px;
 }
-#a13:checked ~ .list .slider {
-    top: 720px;
-}
+
 
 #a1:checked ~ .text-content .a1,
 #a2:checked ~ .text-content .a2,
@@ -4587,12 +4563,11 @@ textarea.form-control {
 #a5:checked ~ .text-content .a5,
 #a6:checked ~ .text-content .a6,
 #a7:checked ~ .text-content .a7,
-#a7:checked ~ .text-content .a8,
-#a7:checked ~ .text-content .a9,
-#a7:checked ~ .text-content .a10,
-#a7:checked ~ .text-content .a11,
-#a7:checked ~ .text-content .a12,
-#a13:checked ~ .text-content .a13 {
+#a8:checked ~ .text-content .a8,
+#a9:checked ~ .text-content .a9,
+#a10:checked ~ .text-content .a10,
+#a11:checked ~ .text-content .a11,
+#a12:checked ~ .text-content .a12 {
     display: block;
 }
 

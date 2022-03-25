@@ -243,10 +243,9 @@ C:\Users\tuser\Desktop\HelperLand\HelperLand\obj\Debug\netcoreapp3.1\Razor\Views
 C:\Users\tuser\Desktop\HelperLand\HelperLand\obj\Debug\netcoreapp3.1\Razor\Views\UserTable\ForgotPassword.cshtml.g.cs
 C:\Users\tuser\Desktop\HelperLand\HelperLand\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ContactUsDataPartial.cshtml.g.cs
 C:\Users\tuser\Desktop\HelperLand\HelperLand\obj\Debug\netcoreapp3.1\Razor\Views\BookingService\BookService.cshtml.g.cs
-C:\Users\tuser\Desktop\HelperLand\HelperLand\obj\Debug\netcoreapp3.1\Razor\Views\HomeController1\Index.cshtml.g.cs
-C:\Users\tuser\Desktop\HelperLand\HelperLand\obj\Debug\netcoreapp3.1\Razor\Views\Customer\MySetting.cshtml.g.cs
-C:\Users\tuser\Desktop\HelperLand\HelperLand\obj\Debug\netcoreapp3.1\Razor\Views\HomeController1\Edit.cshtml.g.cs
-C:\Users\tuser\Desktop\HelperLand\HelperLand\obj\Debug\netcoreapp3.1\Razor\Views\HomeController1\Delete.cshtml.g.cs
 C:\Users\tuser\Desktop\HelperLand\HelperLand\obj\Debug\netcoreapp3.1\Razor\Views\Helper\Index.cshtml.g.cs
 C:\Users\tuser\Desktop\HelperLand\HelperLand\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Index.cshtml.g.cs
 C:\Users\tuser\Desktop\HelperLand\HelperLand\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LayoutAdmin.cshtml.g.cs
+C:\Users\tuser\Desktop\HelperLand\HelperLand\obj\Debug\netcoreapp3.1\Razor\Views\Helper\HelperSetting.cshtml.g.cs
+C:\Users\tuser\Desktop\HelperLand\HelperLand\obj\Debug\netcoreapp3.1\Razor\Views\Customer\Index.cshtml.g.cs
+C:\Users\tuser\Desktop\HelperLand\HelperLand\obj\Debug\netcoreapp3.1\Razor\Views\Customer\UserSetting.cshtml.g.cs

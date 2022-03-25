@@ -17,7 +17,7 @@
 
 <section class="welcome-section">
     <div class="d-flex justify-content-center">
-        <h1 class="welcome-header">Welcome, <span class="welcome-sandip">Sandip !</span></h1>
+        <h1 class="welcome-header">Welcome, <span class="welcome-sandip">@Model.uData.FirstName !</span></h1>
     </div>
 </section>
 <section class="service-section table-responsive">
@@ -30,7 +30,7 @@
             <input type="radio" name="slider" id="service-history1" style="display: none;">
             <input type="radio" name="slider" id="my-ratting1" style="display: none;">
             <input type="radio" name="slider" id="block-customer1" style="display: none;">
-            <input type="radio" name="slider" id="HelperSetting1" style="display: none;">
+            
             <div class="list">
                 <label for="dashboard1" class="dashboard1">
                     <span class="title">Dashboard</span>
@@ -47,7 +47,6 @@
                 <label for="service-history1" class="service-history1">
                     <span class="title">Service History</span>
                 </label>
-                
                 <label for="my-ratting1" class="my-ratting1">
                     <span class="title">My Ratting</span>
                 </label>
@@ -55,10 +54,6 @@
                     <span class="title">Block Customer</span>
                 </label>
                 
-                <label for="HelperSetting1" class="HelperSetting1">
-                    <span class="title">Helper Setting</span>
-                </label>
-
                 <span class="none">
                 </span>
                 <div class="slider"></div>
@@ -78,15 +73,34 @@
                             </thead>
                             <tbody>
                                 @foreach (var item in Model.dashboardData) {
+                                    var endtime = item.ServiceStartDate.TimeOfDay.Hours + item.ServiceHours;
                                     <tr data-bs-toggle="modal" data-bs-target="#row1">
                                         <td>@Html.DisplayFor(modelItem => item.ServiceId)</td>
                                         <td>
                                             <a href="#"><img src="~/images/calendar.png"></a>
-                                            <span class="date">@Html.DisplayFor(modelItem => item.ServiceStartDate)</span>
+                                            <span class="date">@item.ServiceStartDate.ToString("dd/MM/yyyy")</span>
                                             <br>
-                                            <span><img src="/assets/clock-blue.png">@Html.DisplayFor(modelItem => item.ServiceHours) 12:00 - 18:00</span>
+                                            <span><img src="~/images/small-watch-logo/layer-712.png">
+                                                @item.ServiceStartDate.TimeOfDay.Hours.ToString("00"):@item.ServiceStartDate.TimeOfDay.Minutes.ToString("00") - 
+                                                @endtime.ToString("00") : @item.ServiceStartDate.TimeOfDay.Minutes.ToString("00")
+                                                </span>
                                         </td>
-                                        <td></td>
+                                        <td>
+                                            @foreach(var item1 in Model.userBasicData)
+                                            {
+                                                string paddedParam = "".PadRight(30);
+                                                if (item1.ServiceRequestId == item.ServiceRequestId)
+                                                {
+                                                    @Html.DisplayFor(modelItem => item1.FirstName)<text>&nbsp;</text>
+                                                    @Html.DisplayFor(modelItem => item1.LastName)
+                                                    <br />
+                                                    <img src="~/images/small-home-logo/layer-719.png" />@Html.DisplayFor(modelItem => item1.AddressLine1)<text>&nbsp;</text> @Html.DisplayFor(modelItem => item1.AddressLine2)<br />
+                                                    @Html.DisplayFor(modelItem => item1.PostalCode)<text>&nbsp;</text> @Html.DisplayFor(modelItem => item1.City)
+
+                                                    break;
+                                                }
+                                            }
+                                        </td>
                                         <td class="euro">@Html.DisplayFor(modelItem => item.TotalCost) &euro;
                                         </td>
                                         <td>
@@ -168,15 +182,33 @@
                                     a = a + 1;
                                     var serviceNo = "#AcceptService" + a;
                                     
+                                    var endtime = item.ServiceStartDate.TimeOfDay.Hours + item.ServiceHours;
                                     <tr data-bs-toggle="modal" data-bs-target="#row1">
                                         <td>@Html.DisplayFor(modelItem => item.ServiceId)</td>
                                         <td>
                                             <a href="#"><img src="~/images/calendar.png"></a>
-                                            <span class="date">@Html.DisplayFor(modelItem => item.ServiceStartDate)</span>
+                                            <span class="date">@item.ServiceStartDate.ToString("dd/MM/yyyy")</span>
                                             <br>
-                                            <span><img src="/assets/clock-blue.png">@Html.DisplayFor(modelItem => item.ServiceHours) 12:00 - 18:00</span>
+                                            <span><img src="~/images/small-watch-logo/layer-712.png">
+                                                @item.ServiceStartDate.TimeOfDay.Hours.ToString("00"):@item.ServiceStartDate.TimeOfDay.Minutes.ToString("00") - 
+                                                @endtime.ToString("00") : @item.ServiceStartDate.TimeOfDay.Minutes.ToString("00")
+                                                </span>
                                         </td>
-                                        <td></td>
+                                        <td>
+                                            @foreach(var item1 in Model.userBasicData)
+                                            {
+                                                if (item1.ServiceRequestId == item.ServiceRequestId)
+                                                {
+                                                    @Html.DisplayFor(modelItem => item1.FirstName)<text>&nbsp;</text>
+                                                    @Html.DisplayFor(modelItem => item1.LastName)
+                                                    <br />
+                                                    <img src="~/images/small-home-logo/layer-719.png" />@Html.DisplayFor(modelItem => item1.AddressLine1)<text>&nbsp;</text> @Html.DisplayFor(modelItem => item1.AddressLine2)<br />
+                                                    @Html.DisplayFor(modelItem => item1.PostalCode)<text>&nbsp;</text> @Html.DisplayFor(modelItem => item1.City)
+
+                                                    break;
+                                                }
+                                            }
+                                        </td>
                                         <td class="euro">@Html.DisplayFor(modelItem => item.TotalCost) &euro;
                                         </td>
                                         <td>
@@ -264,16 +296,34 @@
                                 @foreach (var item in Model.upcommingService) {
                                     b = b + 1;
                                     var upcomming = "#Upcomming" + b;
-                                    
+                                    var endtime = item.ServiceStartDate.TimeOfDay.Hours + item.ServiceHours;
+
                                     <tr data-bs-toggle="modal" data-bs-target="#row1">
                                         <td>@Html.DisplayFor(modelItem => item.ServiceId)</td>
                                         <td>
                                             <a href="#"><img src="~/images/calendar.png"></a>
-                                            <span class="date">@Html.DisplayFor(modelItem => item.ServiceStartDate)</span>
+                                            <span class="date">@item.ServiceStartDate.ToString("dd/MM/yyyy")</span>
                                             <br>
-                                            <span><img src="/assets/clock-blue.png">@Html.DisplayFor(modelItem => item.ServiceHours) 12:00 - 18:00</span>
+                                            <span><img src="~/images/small-watch-logo/layer-712.png">
+                                                @item.ServiceStartDate.TimeOfDay.Hours.ToString("00"):@item.ServiceStartDate.TimeOfDay.Minutes.ToString("00") - 
+                                                @endtime.ToString("00") : @item.ServiceStartDate.TimeOfDay.Minutes.ToString("00")
+                                                </span>
                                         </td>
-                                        <td></td>
+                                        <td>
+                                            @foreach(var item1 in Model.userBasicData)
+                                            {
+                                                if (item1.ServiceRequestId == item.ServiceRequestId)
+                                                {
+                                                    @Html.DisplayFor(modelItem => item1.FirstName)<text>&nbsp;</text>
+                                                    @Html.DisplayFor(modelItem => item1.LastName)
+                                                    <br />
+                                                    <img src="~/images/small-home-logo/layer-719.png" />@Html.DisplayFor(modelItem => item1.AddressLine1)<text>&nbsp;</text> @Html.DisplayFor(modelItem => item1.AddressLine2)<br />
+                                                    @Html.DisplayFor(modelItem => item1.PostalCode)<text>&nbsp;</text> @Html.DisplayFor(modelItem => item1.City)
+
+                                                    break;
+                                                }
+                                            }
+                                        </td>
                                         <td class="euro">@Html.DisplayFor(modelItem => item.TotalCost) &euro;
                                         </td>
                                         <td></td>
@@ -360,16 +410,32 @@
                         </thead>
                         <tbody>
                             @foreach (var item in Model.serviceHistory) {
+                                var endtime = item.ServiceStartDate.TimeOfDay.Hours + item.ServiceHours;
                                 <tr>
                                     <td>@Html.DisplayFor(modelItem => item.ServiceId)</td>
                                     <td>
                                         <a href="#"><img src="~/images/calendar.png"></a> 
-                                        <span class="date">@Html.DisplayFor(modelItem => item.ServiceStartDate)</span>
+                                        <span class="date">@item.ServiceStartDate.ToString("dd/MM/yyyy")</span>
                                         <br>
-                                        <span><img src="~/images/small-watch-logo/layer-712.png">@Html.DisplayFor(modelItem => item.ServiceStartDate) 12:00 - 18:00</span>
+                                        <span><img src="~/images/small-watch-logo/layer-712.png">
+                                            @item.ServiceStartDate.TimeOfDay.Hours.ToString("00"):@item.ServiceStartDate.TimeOfDay.Minutes.ToString("00") - 
+                                                @endtime.ToString("00") : @item.ServiceStartDate.TimeOfDay.Minutes.ToString("00")
+                                            </span>
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.ServiceStartDate)
+                                        @foreach(var item1 in Model.userBasicData)
+                                        {
+                                            if (item1.ServiceRequestId == item.ServiceRequestId)
+                                            {
+                                                @Html.DisplayFor(modelItem => item1.FirstName)<text>&nbsp;</text>
+                                                @Html.DisplayFor(modelItem => item1.LastName)
+                                                <br />
+                                                <img src="~/images/small-home-logo/layer-719.png" />@Html.DisplayFor(modelItem => item1.AddressLine1)<text>&nbsp;</text> @Html.DisplayFor(modelItem => item1.AddressLine2)<br />
+                                                @Html.DisplayFor(modelItem => item1.PostalCode)<text>&nbsp;</text> @Html.DisplayFor(modelItem => item1.City)
+
+                                                break;
+                                            }
+                                        }
                                     </td>
                                 </tr>
                             }
@@ -411,118 +477,6 @@
                 <div class="block-customer1 text">
                     block-customer
                 </div>
-
-                <div class="HelperSetting1 text">
-                    My setting
-                    <div class="row">
-                        <div class="col">
-                            <nav>
-                                <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                    <button class="nav-link active" id="nav-mydetails-tab" data-bs-toggle="tab"
-                                        data-bs-target="#nav-mydetails" type="button" role="tab"
-                                        aria-controls="nav-mydetails" aria-selected="true">My details
-                                    </button>
-                                    
-                                    <button class="nav-link" id="nav-changpass-tab" data-bs-toggle="tab"
-                                        data-bs-target="#nav-changpass" type="button" role="tab"
-                                        aria-controls="nav-changpass" aria-selected="false">Change password
-                                    </button>
-                                </div>
-                            </nav>
-                            <div class="tab-content" id="nav-tabContent">
-                                <div class="tab-pane fade show active" id="nav-mydetails" role="tabpanel" aria-labelledby="nav-mydetails-tab">
-                                    <form asp-action="EditMyDetail" asp-controller="Helper" method="post">
-                                        <h5>Basic Details</h5>
-                                        <div class="row g-3 mt-2">
-                                            <div class="col">
-                                                <label class="mb-2">First name</label>
-                                                <input asp-for="uData.FirstName" value=@Model.uData.FirstName class="form-control" placeholder="First name" required/>
-                                            </div>
-                                            <div class="col">
-                                                <label class="mb-2">Last name</label>
-                                                <input asp-for="uData.LastName" value=@Model.uData.LastName class="form-control" placeholder="Last name" required/>
-                                            </div>
-                                            <div class="col">
-                                                <label class="mb-2">E-mail Address</label>
-                                                <input asp-for="uData.Email" value=@Model.uData.Email type="email" class="form-control" placeholder="email address" disabled>
-                                            </div>
-                                        </div>
-                                        <div class="row mt-2">
-                                            <div class="col">
-                                                <label for="MobileNumber" class="mb-2">Mobile Number</label>
-                                                <div class="input-group">
-                                                    <span class="input-group-text" id="inputGroupPrepend2">+91</span>
-                                                    <input asp-for="uData.Mobile" value=@Model.uData.Mobile type="text" class="form-control" id="MobileNumber" placeholder="Mobile number" aria-describedby="inputGroupPrepend2" required>
-                                                </div>
-                                            </div>
-                                            <div class="col">
-                                                <label class="mb-2">Birthday</label>
-                                                <input asp-for="uData.DateOfBirth" value=@Model.uData.DateOfBirth type="datetime" id="birthday" class="form-control" required>
-                                            </div>
-                                            <div class="col">
-                                                <label class="mb-2">Nationality</label>
-                                                <input type="text" id="nation" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="">
-                                            <p>Gender</p>
-                                              <input type="radio" id="male" name="gender" value="Male">
-                                              <label for="male">Male</label>
-                                              <input type="radio" id="female" name="gender" value="Female">
-                                              <label for="female">Female</label>
-                                              <input type="radio" id="not" name="gender" value="Not">
-                                              <label for="not">Rather Not to say</label>
-
-                                        </div>
-
-                                        <hr>
-                                        <h5>My Address</h5>
-                                        <div class="row mt-2">
-                                            <div class="col">
-                                                <label class="mb-2">Streat Name</label>
-                                                <input asp-for="HAddress.AddressLine1" type="text" class="form-control" id="streetNameHelper" placeholder="Street Name" required>
-                                            </div>
-                                            <div class="col">
-                                                <label class="mb-2">House Number</label>
-                                                <input asp-for="HAddress.AddressLine2" type="text" id="houseNumberHelper" class="form-control" placeholder="House Number" required>
-                                            </div>
-                                            <div class="col">
-                                                <label class="mb-2">Postal Code</label>
-                                                <input asp-for="HAddress.PostalCode" type="number" id="postalCodeHelper" class="form-control" placeholder="Postal Code" >
-                                            </div>
-                                        </div>
-                                        <div class="row mt-2">
-                                            <div class="col">
-                                                <label class="mb-2">City</label>
-                                                <input asp-for="HAddress.City" type="text" id="cityHelper" class="form-control" placeholder="City" >
-                                            </div>
-                                        </div>
-
-                                        <div class="row mt-2">
-                                            <div class="col">
-                                                <button type="submit" class="export2">Save</button>
-                                            </div>
-                                        </div>
-
-                                    </form>
-                                </div>
-                                
-                                <div class="tab-pane fade" id="nav-changpass" role="tabpanel" aria-labelledby="nav-changpass-tab">
-                                    <form asp-action="ChangePass" asp-controller="Helper" method="post">
-                                        <label class="mb-2 mt-2">Old Password</label>
-                                        <input asp-for="changePassViewModel.OldPassword" class="form-control mb-2" type="password" placeholder="Old Password" required>
-                                        <label class="mb-2">New Password</label>
-                                        <input asp-for="changePassViewModel.Password" class="form-control mb-2" type="password" placeholder="Password" required>
-                                        <label class="mb-2">Confirm Password</label>
-                                        <input asp-for="changePassViewModel.ConfirmPassword" class="form-control mb-2" type="password" placeholder="Confirm Password" required>
-                                        <input type="submit" value="Save" class="export2"/>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
     </div>

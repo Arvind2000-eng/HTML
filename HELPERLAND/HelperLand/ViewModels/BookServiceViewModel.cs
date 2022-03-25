@@ -20,5 +20,22 @@ namespace HelperLand.ViewModels
         public float totalservicetime { get; set; }
         public float extraservicetime { get; set; }
         public float basichrs { get; set; }
+
+
+
+
+
+        public UserState state { get; set; }
+    }
+
+    public class UserState
+    {
+        public int uId { get; set; }
+
+        public string CityName { get; set; }
+
+        public string StateName { get; set; }
+
+        public string PostalCode { get; set; }
     }
 }

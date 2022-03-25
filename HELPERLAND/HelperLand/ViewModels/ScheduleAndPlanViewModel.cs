@@ -13,7 +13,7 @@ namespace HelperLand.ViewModels
         public DateTime ServiceStartDate { get; set; }
 
         
-        public float StartTime { get; set; }
+        public DateTime StartTime { get; set; }
 
         
         public float ServiceHrs { get; set; }

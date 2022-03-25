@@ -13,15 +13,21 @@ namespace HelperLand.Controllers
     {
         public enum status
         {
+            New = 0,
             Completed = 1,
             Canceled = 2,
             Refunded = 3,
-            CanceledFromHelper=4
+            CanceledFromHelper=4,
+            Pending = 5,
+            Accepted=6
         }
+        int IdForNew = (int)status.New;
         int IdForCompleted = (int)status.Completed;
         int IdForCanceled = (int)status.Canceled;
         int IdForRefunded = (int)status.Refunded;
         int IdForCanceledFromHelper = (int)status.CanceledFromHelper;
+        int IdForPending = (int)status.Pending;
+        int IdForAccepted = (int)status.Accepted;
 
         private readonly HelperLand_DatabaseContext _coreDBContext;
         public Helper(HelperLand_DatabaseContext coreDBContext)
@@ -34,8 +40,6 @@ namespace HelperLand.Controllers
             var id = int.Parse(HttpContext.Session.GetString("UserId"));
 
 
-
-            //var id = 1;
             HelperDashBoardViewModel helperDashBoardViewModel=new HelperDashBoardViewModel();
 
             helperDashBoardViewModel.uData = _coreDBContext.Users.Where(x => x.UserId == id).First();
@@ -48,7 +52,7 @@ namespace HelperLand.Controllers
             helperDashBoardViewModel.serviceHistory = new List<ServiceRequest>();
             helperDashBoardViewModel.userAddressData = new List<UserAddress>();
             var a = _coreDBContext.ServiceRequests.Where(x => x.ServiceProviderId == id).ToList();
-            //int? userid = null;
+           
             if (a != null)
             {
                 foreach (var item in a)
@@ -76,21 +80,6 @@ namespace HelperLand.Controllers
                 }
             }
 
-            
-            
-            //helperDashBoardViewModel.acceptService = new List<ServiceRequest>();
-            //var b = _coreDBContext.ServiceRequests.Where(x => x.SpacceptedDate == null).ToList();
-            //var c = b.Where(x => x.ServiceProviderId == id).ToList();
-
-            //if (c != null)
-            //{
-            //    foreach (var item in c)
-            //    {
-            //        helperDashBoardViewModel.acceptService.Add(item);
-
-            //    }
-            //}
-
             helperDashBoardViewModel.upcommingService = new List<ServiceRequest>();
             var d = _coreDBContext.ServiceRequests.Where(x => x.SpacceptedDate != null).ToList();
             var e = d.Where(x => x.ServiceProviderId == id).ToList();
@@ -113,7 +102,60 @@ namespace HelperLand.Controllers
                 }
             }
 
+            var x1 = _coreDBContext.ServiceRequests.ToList();
+            helperDashBoardViewModel.userBasicData=new List<UserBasicData>();
+            
+            foreach (var n in x1)
+            {
+                helperDashBoardViewModel.userBasicData1 = new UserBasicData();
+                helperDashBoardViewModel.userBasicData1.ServiceId = null;
+                helperDashBoardViewModel.userBasicData1.UserId = null;
+                helperDashBoardViewModel.userBasicData1.ServiceRequestId = null;
+                helperDashBoardViewModel.userBasicData1.FirstName = null;
+                helperDashBoardViewModel.userBasicData1.LastName = null;
 
+                helperDashBoardViewModel.userBasicData1.AddressLine1 = null;
+                helperDashBoardViewModel.userBasicData1.AddressLine2 = null;
+                helperDashBoardViewModel.userBasicData1.PostalCode = null;
+                helperDashBoardViewModel.userBasicData1.City = null;
+
+                helperDashBoardViewModel.userBasicData.Add(helperDashBoardViewModel.userBasicData1);
+            }
+
+            for(var i = 0; i < x1.Count; i++)
+            {
+                helperDashBoardViewModel.userBasicData[i].UserId = x1[i].UserId;
+                helperDashBoardViewModel.userBasicData[i].ServiceId = x1[i].ServiceId;
+                helperDashBoardViewModel.userBasicData[i].ServiceRequestId = x1[i].ServiceRequestId;
+
+                var x2 = _coreDBContext.Users.Where(x => x.UserId == x1[i].UserId).First();
+                helperDashBoardViewModel.userBasicData[i].FirstName = x2.FirstName;
+                helperDashBoardViewModel.userBasicData[i].LastName = x2.LastName;
+
+                var x3 = _coreDBContext.ServiceRequestAddresses.Where(x => x.ServiceRequestId == x1[i].ServiceRequestId).First();
+                helperDashBoardViewModel.userBasicData[i].AddressLine1 = x3.AddressLine1;
+                helperDashBoardViewModel.userBasicData[i].AddressLine2 = x3.AddressLine2;
+                helperDashBoardViewModel.userBasicData[i].PostalCode = x3.PostalCode;
+                helperDashBoardViewModel.userBasicData[i].City = x3.City;
+
+                helperDashBoardViewModel.userBasicData.Add(helperDashBoardViewModel.userBasicData[i]);
+
+            }
+            
+
+
+
+
+            return View(helperDashBoardViewModel);
+        }
+
+        public IActionResult HelperSetting()
+        {
+            var id = int.Parse(HttpContext.Session.GetString("UserId"));
+
+            HelperDashBoardViewModel helperDashBoardViewModel = new HelperDashBoardViewModel();
+            helperDashBoardViewModel.uData = _coreDBContext.Users.Where(x => x.UserId == id).First();
+            helperDashBoardViewModel.HAddress = _coreDBContext.UserAddresses.Where(x => x.UserId == id).FirstOrDefault();
 
             return View(helperDashBoardViewModel);
         }
@@ -123,7 +165,6 @@ namespace HelperLand.Controllers
         {
             var id = int.Parse(HttpContext.Session.GetString("UserId"));
             var b = _coreDBContext.ServiceRequests.Where(x => x.ServiceRequestId == helperDashBoardViewModel.acceptServiceno).ToList();
-            
             b[0].SpacceptedDate = DateTime.Now;
             _coreDBContext.SaveChanges();
 
@@ -134,9 +175,7 @@ namespace HelperLand.Controllers
         public IActionResult UpcommingServiceCancel(HelperDashBoardViewModel helperDashBoardViewModel)
         {
             var b = _coreDBContext.ServiceRequests.Where(x => x.ServiceRequestId == helperDashBoardViewModel.upcommingServiceno).ToList();
-
             b[0].Status = 3;
-           
             _coreDBContext.SaveChanges();
 
             return RedirectToAction("Index", "Helper");
@@ -196,5 +235,7 @@ namespace HelperLand.Controllers
 
             return RedirectToAction("Index", "Helper");
         }
+
+
     }
 }

@@ -110,11 +110,13 @@
                                             <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
                                                 @if(HttpContextAccessor.HttpContext.Session.GetString("UserTypeId")==1.ToString())
                                                 {
-                                                    <a asp-action="MySetting" asp-controller="Customer" class="dropdown-item">My Setting</a>
+                                                    <a asp-action="Index" asp-controller="Customer" class="dropdown-item">DashBoard</a>
+                                                    <a asp-action="UserSetting" asp-controller="Customer" class="dropdown-item">My Setting</a>
                                                 }
                                                 else
                                                 {
-                                                    <a asp-action="Index" asp-controller="Helper" class="dropdown-item">My Setting</a>
+                                                    <a asp-action="Index" asp-controller="Helper" class="dropdown-item">Dashboard</a>
+                                                    <a asp-action="HelperSetting" asp-controller="Helper" class="dropdown-item">My Setting</a>
                                                 }
 
                                                 <a class="dropdown-item" asp-action="Logout" asp-controller="UserTable">Logout</a>

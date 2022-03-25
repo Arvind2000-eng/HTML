@@ -1,0 +1,140 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Service History";
+    
+
+    var a=0;
+    var a1 = 0;
+
+    var b = 0;
+    var b1 = 0;
+
+}
+
+@model HelperLand.ViewModels.HelperDashBoardViewModel
+
+<section class="welcome-section">
+    <div class="d-flex justify-content-center">
+        <h1 class="welcome-header">Welcome, <span class="welcome-sandip">@Model.uData.FirstName</span></h1>
+    </div>
+</section>
+<section class="table-responsive">
+    <div class="container d-flex justify-content-center">
+        <div class="table-responsive">
+            <div class="">
+                My setting
+                <div class="row">
+                    <div class="col">
+                        <nav>
+                            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                <button class="nav-link active" id="nav-mydetails-tab" data-bs-toggle="tab"
+                                    data-bs-target="#nav-mydetails" type="button" role="tab"
+                                    aria-controls="nav-mydetails" aria-selected="true">My details
+                                </button>
+                                    
+                                <button class="nav-link" id="nav-changpass-tab" data-bs-toggle="tab"
+                                    data-bs-target="#nav-changpass" type="button" role="tab"
+                                    aria-controls="nav-changpass" aria-selected="false">Change password
+                                </button>
+                            </div>
+                        </nav>
+                        <div class="tab-content" id="nav-tabContent">
+                            <div class="tab-pane fade show active" id="nav-mydetails" role="tabpanel" aria-labelledby="nav-mydetails-tab">
+                                <form asp-action="EditMyDetail" asp-controller="Helper" method="post">
+                                    <h5>Basic Details</h5>
+                                    <div class="row g-3 mt-2">
+                                        <div class="col">
+                                            <label class="mb-2">First name</label>
+                                            <input asp-for="uData.FirstName" value=@Model.uData.FirstName class="form-control" placeholder="First name" required/>
+                                        </div>
+                                        <div class="col">
+                                            <label class="mb-2">Last name</label>
+                                            <input asp-for="uData.LastName" value=@Model.uData.LastName class="form-control" placeholder="Last name" required/>
+                                        </div>
+                                        <div class="col">
+                                            <label class="mb-2">E-mail Address</label>
+                                            <input asp-for="uData.Email" value=@Model.uData.Email type="email" class="form-control" placeholder="email address" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-2">
+                                        <div class="col">
+                                            <label for="MobileNumber" class="mb-2">Mobile Number</label>
+                                            <div class="input-group">
+                                                <span class="input-group-text" id="inputGroupPrepend2">+91</span>
+                                                <input asp-for="uData.Mobile" value=@Model.uData.Mobile type="text" class="form-control" id="MobileNumber" placeholder="Mobile number" aria-describedby="inputGroupPrepend2" required>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <label class="mb-2">Birthday</label>
+                                            <input asp-for="uData.DateOfBirth" value=@Model.uData.DateOfBirth type="datetime" id="birthday" class="form-control" required>
+                                        </div>
+                                        <div class="col">
+                                            <label class="mb-2">Nationality</label>
+                                            <input type="text" id="nation" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="">
+                                        <p>Gender</p>
+                                            <input type="radio" id="male" name="gender" value="Male">
+                                            <label for="male">Male</label>
+                                            <input type="radio" id="female" name="gender" value="Female">
+                                            <label for="female">Female</label>
+                                            <input type="radio" id="not" name="gender" value="Not">
+                                            <label for="not">Rather Not to say</label>
+
+                                    </div>
+
+                                    <hr>
+                                    <h5>My Address</h5>
+                                    <div class="row mt-2">
+                                        <div class="col">
+                                            <label class="mb-2">Streat Name</label>
+                                            <input asp-for="HAddress.AddressLine1" type="text" class="form-control" id="streetNameHelper" placeholder="Street Name" required>
+                                        </div>
+                                        <div class="col">
+                                            <label class="mb-2">House Number</label>
+                                            <input asp-for="HAddress.AddressLine2" type="text" id="houseNumberHelper" class="form-control" placeholder="House Number" required>
+                                        </div>
+                                        <div class="col">
+                                            <label class="mb-2">Postal Code</label>
+                                            <input asp-for="HAddress.PostalCode" type="number" id="postalCodeHelper" class="form-control" placeholder="Postal Code" >
+                                        </div>
+                                    </div>
+                                    <div class="row mt-2">
+                                        <div class="col">
+                                            <label class="mb-2">City</label>
+                                            <input asp-for="HAddress.City" type="text" id="cityHelper" class="form-control" placeholder="City" >
+                                        </div>
+                                    </div>
+
+                                    <div class="row mt-2">
+                                        <div class="col">
+                                            <button type="submit" class="export2">Save</button>
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </div>
+                                
+                            <div class="tab-pane fade" id="nav-changpass" role="tabpanel" aria-labelledby="nav-changpass-tab">
+                                <form asp-action="ChangePass" asp-controller="Helper" method="post">
+                                    <label class="mb-2 mt-2">Old Password</label>
+                                    <input asp-for="changePassViewModel.OldPassword" class="form-control mb-2" type="password" placeholder="Old Password" required>
+                                    <label class="mb-2">New Password</label>
+                                    <input asp-for="changePassViewModel.Password" class="form-control mb-2" type="password" placeholder="Password" required>
+                                    <label class="mb-2">Confirm Password</label>
+                                    <input asp-for="changePassViewModel.ConfirmPassword" class="form-control mb-2" type="password" placeholder="Confirm Password" required>
+                                    <input type="submit" value="Save" class="export2"/>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+        </div>
+    </div>
+</section>

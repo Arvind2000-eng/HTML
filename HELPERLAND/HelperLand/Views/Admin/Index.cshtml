@@ -3,9 +3,32 @@
 *@
 @{
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+
+    var a = 0;
+    var b = 0;
 }
 
 @model HelperLand.ViewModels.AdminViewModel
+
+<header class="admin-header">
+    <div class="admin-container container">
+        <div class="admin-container-left-block">
+            <p class="">Helperland</p>
+        </div>
+
+        <div class="admin-container-right-block">
+            <a class="profile-photo" href="#">
+                <img src="../images/profile-logo-man/forma-1.png">
+            </a>
+            <a href="#">
+                @Model.AdminData.FirstName @Model.AdminData.LastName
+            </a>
+            <a asp-action="Logout" asp-controller="UserTable">
+                <img class="power-button" src="../images/power-icon-png-19.png">
+            </a>
+        </div>
+    </div>
+</header>
 
 <section class="admin-section table-responsive">
     <div class="container d-flex justify-content-start">
@@ -38,7 +61,7 @@
                     <span class="title">Escalation Management</span>
                 </label>
                 <label for="a5" class="a5">
-                    <span class="title">Service Requests</span>
+                    <span class="title">Service_Requests</span>
                 </label>
                 <label for="a6" class="a6">
                     <span class="title">Service Providers</span>
@@ -71,6 +94,7 @@
 
             <div class="text-content">
                 <div class="a1 text">
+                    Service Managemrnt
                     <div class="table-responsive mt-3">
                         <table class="table">
                             <thead>
@@ -157,7 +181,7 @@
                 </div>
 
                 <div class="a2 text">
-                    new service request
+                    Role Management
                     <div class="table-responsive mt-3">
                         <table class="table">
                             <thead>
@@ -248,7 +272,7 @@
                 </div>
 
                 <div class="a3 text">
-                    upcomming service
+                    Coupen Code Management
                     <div class="table-responsive mt-3">
                         <table class="table">
                             <thead>
@@ -340,38 +364,266 @@
                 </div>
 
                 <div class="a4 text">
-                    service schedule
+                    Escalation Management
                 </div>
 
                 <div class="a5 text">
-                    service history
-                    <span class="service-header">Service History</span>
-                    <span class="export">Export</span>
-                    <table class="table">
-                        <thead>
-                            <tr class="table-heading">
-                                <th scope="col">Service Id</th>
-                                <th scope="col">Service Date</th>
-                                <th scope="col">Customer Details</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            
-                                <tr>
-                                    <td></td>
-                                    <td>
-                                        <a href="#"><img src="~/images/calendar.png"></a> 
-                                        <span class="date"></span>
-                                        <br>
-                                        <span><img src="~/images/small-watch-logo/layer-712.png">12:00 - 18:00</span>
-                                    </td>
-                                    <td>
-                                        
-                                    </td>
+                    service Requests
+                    <div class="table-responsive mt-3">
+                        <div class="user-management-2 d-flex flex-row my-3 flex-wrap">
+                            <div class="m-1">
+                                <input class="form-control" type="text" placeholder="Sevice ID">
+                            </div>
+                            <div class="m-1">
+                                <select class="form-control">
+                                    <option value="0" selected disabled hidden>Costomer</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                </select>
+                            </div>
+                            <div class="m-1">
+                                <select class="form-control" name="service-provider" id="service-provider">
+                                    <option value="none" selected disabled hidden>Service Provider</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                </select>
+                            </div>
+                            <div class="m-1">
+                                <select class="form-control" name="status" id="status">
+                                    <option value="0" selected disabled hidden>Status</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                </select>
+                            </div>
+                            <div class="m-1">
+                                <input class="form-control" type="date" id="from-date" placeholder="From Date">
+                            </div>
+                            <div class="m-1">
+                                <input class="form-control" type="date" id="to-date" placeholder="To Date">
+                            </div>
+                            <div class="m-1">
+                                <button class="form-control" id="search-inside-user-management">Search</button>
+                            </div>
+                            <div class="m-1">
+                                <button class="form-control" id="clear-inside-user-management">clear</button>
+                            </div>
+                        </div>
+
+                        <table class="table">
+                            <thead>
+                                <tr class="table-heading">
+                                    <th scope="col">Service Id</th>
+                                    <th scope="col">Service Date</th>
+                                    <th scope="col">Customer details</th>
+                                    <th scope="col">Service Provider</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col" class="text-center">Action</th>
                                 </tr>
-                            
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.serviceRequest) {
+                                    b = b + 1;
+                                    var b1 = "dropdown" + b;
+
+                                    var endtime = item.ServiceStartDate.TimeOfDay.Hours + item.ServiceHours;
+                                    <tr>
+                                        <td>@Html.DisplayFor(modelItem => item.ServiceId)</td>
+                                        <td>
+                                            <a href="#"><img src="~/images/small-calender-logo/calculator.png"></a>
+                                            <span class="date">@item.ServiceStartDate.ToString("dd/MM/yyyy")</span>
+                                            <br>
+                                            <span><img src="~/images/small-watch-logo/layer-712.png">
+                                                @item.ServiceStartDate.TimeOfDay.Hours.ToString("00"):@item.ServiceStartDate.TimeOfDay.Minutes.ToString("00") - 
+                                                @endtime.ToString("00"):@item.ServiceStartDate.TimeOfDay.Minutes.ToString("00")
+                                            </span>
+                                        </td>
+                                        <td>
+                                            @foreach(var item1 in Model.userBasicDataAdmin)
+                                            {
+                                                if (item1.ServiceRequestId == item.ServiceRequestId)
+                                                {
+                                                    @Html.DisplayFor(modelItem => item1.FirstName)<text>&nbsp;</text>
+                                                    @Html.DisplayFor(modelItem => item1.LastName)
+                                                    <br />
+                                                    <img src="~/images/small-home-logo/layer-719.png" />@Html.DisplayFor(modelItem => item1.AddressLine1)<text>&nbsp;</text> @Html.DisplayFor(modelItem => item1.AddressLine2)<br />
+                                                    @Html.DisplayFor(modelItem => item1.PostalCode)<text>&nbsp;</text> @Html.DisplayFor(modelItem => item1.City)
+
+                                                    break;
+                                                }
+                                            }
+                                        </td>
+                                        <td>
+                                            <div class="d-flex">
+                                                <div class="hate-circle">
+                                                    <img src="~/images/black-white-hat-logo/forma-1.png">
+                                                </div>
+                                                <div class="hate-circle-writting">
+                                                    @Html.DisplayFor(modelItem => item.ServiceProvider.FirstName) @Html.DisplayFor(modelItem => item.ServiceProvider.LastName)
+                                                        
+                                                    @foreach(var item1 in Model.rattingdataList)
+                                                    {
+                                                        if (item1.serviceProviderId == item.ServiceProviderId)
+                                                        {
+                                                        @*<p>@item1.totalRatting</p>*@
+                                                        if (item1.totalRatting >= 4.5)
+                                                        {
+                                                            <br>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                        }
+                                                        else if (item1.totalRatting >= 3.5)
+                                                        {
+                                                            <br>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star unchecked"></span>
+                                                        }
+                                                        else if (item1.totalRatting >= 2.5)
+                                                        {
+                                                            <br>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star unchecked"></span>
+                                                            <span class="fa fa-star unchecked"></span>
+                                                        }
+                                                        else if (item1.totalRatting >= 1.5)
+                                                        {
+                                                            <br>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star unchecked"></span>
+                                                            <span class="fa fa-star unchecked"></span>
+                                                            <span class="fa fa-star unchecked"></span>
+                                                        }
+                                                        else if (item1.totalRatting >= 0.5)
+                                                        {
+                                                            <br>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star unchecked"></span>
+                                                            <span class="fa fa-star unchecked"></span>
+                                                            <span class="fa fa-star unchecked"></span>
+                                                            <span class="fa fa-star unchecked"></span>
+                                                        }
+                                                        else
+                                                        {
+                                                            <br>
+                                                            <span class="fa fa-star unchecked"></span>
+                                                            <span class="fa fa-star unchecked"></span>
+                                                            <span class="fa fa-star unchecked"></span>
+                                                            <span class="fa fa-star unchecked"></span>
+                                                            <span class="fa fa-star unchecked"></span>
+                                                        }
+                                                    }
+                                                    }
+                                                    
+                                                </div>
+                                            </div>
+                                            
+                                        </td>
+                                        <td>
+                                            @if (item.Status == 0)
+                                            {
+                                                <div class="status-button-new">
+                                                </div>
+                                            }
+                                            else if(item.Status==1)
+                                            {
+                                                <div class="status-button-completed">
+                                                </div>
+                                            }
+                                            else if(item.Status==5)
+                                            {
+                                                <div class="status-button-pending">
+                                                </div>
+                                            }
+                                            else if(item.Status==2 || item.Status==4)
+                                            {
+                                                <div class="status-button-cancelled">
+                                                </div>
+                                            }
+                                            else if (item.Status == 3)
+                                            {
+                                                <div class="status-button-refunded">
+                                                </div>
+                                            }
+                                            else if (item.Status == 6)
+                                            {
+                                                <div class="status-button-accepted">
+                                                </div>
+                                            }
+                                            
+                                        </td>
+                                        <td>
+                                            <div class=@b1>
+                                                @if (item.Status == Model.IdForCanceled)
+                                                {
+                                                    <form asp-action="ActiveOrDeactiveUser" asp-controller="Admin" method="post">
+                                                    <div class="three-dot-button" data-bs-toggle="dropdown">
+                                                    </div>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a class="dropdown-item" href="#">Refund</a></li>
+                                                        <li><a class="dropdown-item" href="#">Escalate</a></li>
+                                                        <li><a class="dropdown-item" href="#">History Log</a></li>
+                                                        <li><a class="dropdown-item" href="#">Download Invoice</a></li>
+                                                    </ul>
+                                                    <input asp-for="ServiceIdForAction" value=@item.ServiceId class="d-none">
+                                                    </form>
+                                                }
+                                                else if (item.Status == Model.IdForPending)
+                                                {
+                                                    <form asp-action="ActiveOrDeactiveUser" asp-controller="Admin" method="post">
+                                                    <div class="three-dot-button" data-bs-toggle="dropdown">
+                                                    </div>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a class="dropdown-item" href="#">Edit & Reschedule</a></li>
+                                                        <li><a class="dropdown-item" href="#">Refund</a></li>
+                                                        <li><a class="dropdown-item" href="#">Cancel</a></li>
+                                                        <li><a class="dropdown-item" href="#">Change SP</a></li>
+                                                        <li><a class="dropdown-item" href="#">Escalate</a></li>
+                                                        <li><a class="dropdown-item" href="#">History Log</a></li>
+                                                        <li><a class="dropdown-item" href="#">Download Invoice</a></li>
+                                                    </ul>
+                                                    <input asp-for="ServiceIdForAction" value=@item.ServiceId class="d-none">
+                                                    </form>
+                                                }
+                                                else if (item.Status == Model.IdForNew)
+                                                {
+                                                    <form asp-action="ActiveOrDeactiveUser" asp-controller="Admin" method="post">
+                                                    <div class="three-dot-button" data-bs-toggle="dropdown">
+                                                    </div>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a class="dropdown-item" href="#">Edit & Reschedule</a></li>
+                                                        <li><a class="dropdown-item" href="#">Cancel SR by Cust</a></li>
+                                                        <li><a class="dropdown-item" href="#">Inquiry</a></li>
+                                                        <li><a class="dropdown-item" href="#">History Log</a></li>
+                                                        <li><a class="dropdown-item" href="#">Download Invoice</a></li>
+                                                        <li><a class="dropdown-item" href="#">Other Transactions</a></li>
+                                                    </ul>
+                                                    <input asp-for="ServiceIdForAction" value=@item.ServiceId class="d-none">
+                                                    </form>
+                                                }
+
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                                
+                            </tbody>
+                        </table>
+                        
+                    </div>
+
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
 
                     <div class="d-flex flex-row">
                         <div class="show">Show</div>
@@ -387,7 +639,8 @@
                             </ul>
                         </div>
                         <span class="show">entries</span>
-                        <span class="show">Total Record: 55</span>
+                        <span class="show">Total Record: @Model.totalServiceRequest</span>
+
                         <div class="d-flex justify-content-end">
                             <a href="#"><i class="fa fa-step-backward chng-arw"></i></a>
                             <a href="#"><i class="fa fa-angle-left chng-arw"></i></a>
@@ -402,7 +655,7 @@
                 </div>
 
                 <div class="a6 text">
-                    my-ratting
+                    Service Providers
                 </div>
 
                 <div class="a7 text">
@@ -411,39 +664,82 @@
                         <table class="table">
                             <thead>
                                 <tr class="table-heading">
-                                    <th scope="col">Service Id</th>
-                                    <th scope="col">Service Date</th>
-                                    <th scope="col">Customer details</th>
-                                    <th scope="col">Service Provider</th>
-                                    <th scope="col">Status</th>
-                                    <th scope="col" class="text-center">Action</th>
+                                    <th scope="col">User Name</th>
+                                    <th scope="col">User Type</th>
+                                    <th scope="col">Role</th>
+                                    <th scope="col">Postal Code</th>
+                                    <th scope="col">City</th>
+                                    <th scope="col">Radius</th>
+                                    <th scope="col">User Status</th>
+                                    <th scope="col" class="text-center">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach (var item in Model.serviceRequest) {
+                                @foreach (var item in Model.userData) {
                                     <tr>
-                                        <td>@Html.DisplayFor(modelItem => item.ServiceId)</td>
-                                        <td>
-                                            <a href="#"><img src="~/images/calendar.png"></a>
-                                            <span class="date">@Html.DisplayFor(modelItem => item.ServiceStartDate)</span>
-                                            <br>
-                                            <span><img src="/assets/clock-blue.png">@Html.DisplayFor(modelItem => item.ServiceHours)12:00 - 18:00</span>
-                                        </td>
+                                        <td>@Html.DisplayFor(modelItem => item.FirstName)</td>
+                                        @if(item.UserTypeId==1)
+                                        {
+                                            <td>Customer</td>
+                                        }
+                                        else if(item.UserTypeId==2)
+                                        {
+                                            <td>Service Provider</td>
+                                        }
+                                        else if(item.UserTypeId==3)
+                                        {
+                                            <td>Admin</td>
+                                        }
                                         <td></td>
+                                        <td>@item.ZipCode</td>
+                                        <td>@Model.cityData[a].CityName</td>
+                                        <td>Radius</td>
+                                        
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.ServiceProvider)
+                                            @if (@item.IsActive)
+                                            {
+                                                <div class="status-button-active1"></div>
+                                            }
+                                            else
+                                            {
+                                                <div class="status-button-deactive1"></div>
+                                            }
                                         </td>
+                                        
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.Status)
-                                        </td>
-                                        <td>
-                                            <button class="" data-bs-toggle="modal" data-bs-target=""></button>
+                                            @if (item.IsActive == true)
+                                            {
+                                                <form asp-action="ActiveOrDeactiveUser" asp-controller="Admin" method="post">
+                                                <div data-bs-toggle="dropdown" class="three-dot-button"></div>
+                                                <ul class="dropdown-menu">
+                                                    <li><a class="dropdown-item" href="#">Edit</a></li>
+                                                    <li><button type="submit" class="dropdown-item">Deactive</button></li>
+                                                    <li><a class="dropdown-item" href="#">Service History</a></li>
+                                                </ul>
+                                                <input asp-for="UserIdForAD" value=@item.UserId class="d-none">
+                                                </form>
+                                            }
+                                            else if (item.IsActive == false)
+                                            {
+                                                <form asp-action="ActiveOrDeactiveUser" asp-controller="Admin" method="post">
+                                                <div data-bs-toggle="dropdown" class="three-dot-button"></div>
+                                                <ul class="dropdown-menu">
+                                                    <li><a class="dropdown-item" href="#">Edit</a></li>
+                                                    <li><button type="submit" class="dropdown-item">Active</button></li>
+                                                    <li><a class="dropdown-item" href="#">Service History</a></li>
+                                                </ul>
+                                                <input asp-for="UserIdForAD" value=@item.UserId class="d-none">
+                                                </form>
+                                            }
+                                            
                                         </td>
                                     </tr>
+                                    a = a + 1;
                                 }
                                 
                             </tbody>
                         </table>
+                        
                         <form asp-action="CancelService" asp-controller="Customer" method="post">
                         
                             <div class="modal fade" id="" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -497,7 +793,7 @@
                 </div>
 
                 <div class="a8 text">
-                    My Setting
+                    Finance Module
                     <div class="row">
                         <div class="col">
                             <nav>
@@ -608,23 +904,23 @@
                 </div>
 
                 <div class="a9 text">
-                    block-customer
+                    Zip Code Management
                 </div>
 
                 <div class="a10 text">
-                    block-customer
+                    Rating Management
                 </div>
 
                 <div class="a11 text">
-                    block-customer
+                    Inquiry Management
                 </div>
 
                 <div class="a12 text">
-                    block-customer
+                    Newsletter Management
                 </div>
 
                 <div class="a13 text">
-                    block-customer
+                    Content Management
                 </div>
             </div>
         </div>

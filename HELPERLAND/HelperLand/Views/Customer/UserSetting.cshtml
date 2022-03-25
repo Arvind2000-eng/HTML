@@ -1,0 +1,269 @@
+﻿@*@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Service History";
+    var a = 0;
+    var b = 0;
+    var d = 0;
+    var CancelId = 0;
+    var CancelId1 = 0;
+
+}
+
+@model HelperLand.ViewModels.DashboardViewModel
+
+<section class="welcome-section">
+    <div class="d-flex justify-content-center">
+        <h1 class="welcome-header">Welcome, <span class="welcome-sandip">@Model.userData[0].FirstName !</span></h1>
+    </div>
+</section>
+<section class="service-section table-responsive">
+    <div class="container container-fluid d-flex justify-content-center">
+        <div class="table-responsive">
+            <div class="MySetting text">
+                <div class="row">
+                    <div class="col">
+                        <nav>
+                            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                <button class="nav-link active" id="nav-mydetails-tab" data-bs-toggle="tab"
+                                    data-bs-target="#nav-mydetails" type="button" role="tab"
+                                    aria-controls="nav-mydetails" aria-selected="true">My details
+                                </button>
+                                <button class="nav-link" id="nav-myaddress-tab" data-bs-toggle="tab"
+                                    data-bs-target="#nav-myaddress" type="button" role="tab"
+                                    aria-controls="nav-myaddress" aria-selected="false">My addresses
+                                </button>
+                                <button class="nav-link" id="nav-changpass-tab" data-bs-toggle="tab"
+                                    data-bs-target="#nav-changpass" type="button" role="tab"
+                                    aria-controls="nav-changpass" aria-selected="false">Change password
+                                </button>
+                            </div>
+                        </nav>
+                        <div class="tab-content" id="nav-tabContent">
+                            <div class="tab-pane fade show active" id="nav-mydetails" role="tabpanel" aria-labelledby="nav-mydetails-tab">
+                                <form asp-action="EditMyDetail" asp-controller="Customer" method="post">
+                                    <div class="row g-3 mt-2">
+                                        <div class="col">
+                                            <label class="mb-2">First name</label>
+                                            <input asp-for="uData.FirstName" value="@Model.userData[0].FirstName" class="form-control" placeholder="First name" required/>
+                                        </div>
+                                        <div class="col">
+                                            <label class="mb-2">Last name</label>
+                                            <input asp-for="uData.LastName" value="@Model.userData[0].LastName" class="form-control" placeholder="Last name" required/>
+                                        </div>
+                                        <div class="col">
+                                            <label class="mb-2">E-mail Address</label>
+                                            <input value="@Model.userData[0].Email" type="email" class="form-control" placeholder="email address" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-2">
+                                        <div class="col">
+                                            <label for="MobileNumber" class="mb-2">Mobile Number</label>
+                                            <div class="input-group">
+                                                <span class="input-group-text" id="inputGroupPrepend2">+91</span>
+                                                <input asp-for="uData.Mobile" value="@Model.userData[0].Mobile" type="text" class="form-control" id="MobileNumber" placeholder="Mobile number"
+                                                    aria-describedby="inputGroupPrepend2" required>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <label class="mb-2">Birthday</label>
+                                            <input asp-for="uData.DateOfBirth" type="datetime" value="@Model.userData[0].DateOfBirth" id="birthday" class="form-control" required>
+                                        </div>
+                                    </div>
+                                    <hr>
+
+                                    <div class="row mt-2">
+                                        <div class="col-lg-4">
+                                            <label for="cars" class="mb-2">My Preferred Language</label>
+                                            <select name="cars" id="cars" class="form-control">
+                                                <option value="English">English</option>
+                                                <option value="Hindi">Hindi</option>
+                                                <option value="Gujarati">Gujarati</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-2">
+                                        <div class="col">
+                                            <button type="submit" class="export2">Save</button>
+                                        </div>
+                                    </div>
+
+
+
+                                </form>
+                            </div>
+                            <div class="tab-pane fade" id="nav-myaddress" role="tabpanel" aria-labelledby="nav-myaddress-tab">
+                                <table class="table mt-3">
+                                    <thead>
+                                        <tr class="table-heading">
+                                            <th scope="col">Addresses</th>
+                                            <th scope="col">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model.userAddressData) {
+                                            a = a + 1;
+                                            var c = "#editIcon" + a;
+                                            var e = "#delete" + a;
+                                            <tr>
+                                            <td><b>Address: </b>@Html.DisplayFor(modelItem => item.AddressLine1) @Html.DisplayFor(modelItem => item.AddressLine2),
+                                                @Html.DisplayFor(modelItem => item.PostalCode)<br /><b>Phone Number</b>@Html.DisplayFor(modelItem => item.Mobile)</td>
+                                            <td><img src="~/images/edit-icon.png" data-bs-target=@c data-bs-toggle="modal"> 
+                                                    <img data-bs-target=@e data-bs-toggle="modal" src="~/images/delete-icon.png">
+                                            </td>
+
+                                        </tr>
+                                        }
+
+                                    </tbody>
+                                </table>
+                                <span class="export2">Add New Address</span>
+                                    
+                                @foreach (var item in Model.userAddressData)
+                                {
+                                    d=d+1;
+                                    var f = "delete" + d;
+                                    <div class="modal fade" id=@f data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">
+                                                    Delete Address
+                                                </h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <form asp-action="DeleteMyAddress" asp-controller="Customer">
+                                                <div class="modal-body">
+                                                    <div class="row mt-2">
+                                                        Are you Sure To Delete Address
+                                                    </div>
+                                                </div>
+                                                <button type="submit" class="btn btn-primary editBtn m-3">Delete</button>
+
+                                                <input asp-for="EditPerticularAddress" value=@(d-1) class=""/>
+
+                                            </form>
+
+                                        </div>
+                                        </div>
+                                    </div>
+                                        
+                                }
+
+
+                                @foreach (var item in Model.userAddressData) {
+                                b = b + 1;
+                                var c = "editIcon" + b;
+                                <div class="modal fade" id=@c data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">
+                                                    Edit Address
+                                                </h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+                                            </div>
+                                            <form asp-action="EditMyAddress" asp-controller="Customer">
+                                                <div class="modal-body">
+                                                        <div class="row g-3 mt-2">
+                                                        <div class="col">
+                                                            <label class="mb-2">Street name</label>
+                                                            <input asp-for="userAddress1.AddressLine1" value="@Model.userAddressData[b-1].AddressLine1" type="text" class="form-control" placeholder="Street name"/>
+                                                        </div>
+                                                        <div class="col">
+                                                            <label class="mb-2">House number</label>
+                                                            <input asp-for="userAddress1.AddressLine2" value="@Model.userAddressData[b-1].AddressLine2" type="number" class="form-control" placeholder="House number"/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mt-2">
+                                                        <div class="col">
+                                                            <label class="mb-2">Postal Code</label>
+                                                            <input asp-for="userAddress1.PostalCode" value="@Model.userAddressData[b-1].PostalCode" class="form-control" type="number" placeholder="Postal code">
+                                                        </div>
+                                                        <div class="col">
+                                                            <label class="mb-2">City</label>
+                                                            <input asp-for="userAddress1.City" value="@Model.userAddressData[b-1].City" type="text" class="form-control" placeholder="City">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row mt-2">
+                                                        <div class="col-lg-6">
+                                                            <label class="mb-2">Mobile Number</label>
+
+                                                            <div class="input-group">
+                                                                <span class="input-group-text" id="inputGroupPrepend2">+91</span>
+                                                                <input asp-for="userAddress1.Mobile" value="@Model.userAddressData[b-1].Mobile" type="text" class="form-control" placeholder="Mobile number" required>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                       
+                                                </div>
+                                                <button type="submit" class="btn btn-primary editBtn m-3">Edit</button>
+
+                                                <input asp-for="EditPerticularAddress" value=@(b-1) class="d-none"/>
+
+                                            </form>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                }
+                            </div>
+                                 
+                            <div class="tab-pane fade" id="nav-changpass" role="tabpanel"
+                                aria-labelledby="nav-changpass-tab">
+                                <form asp-action="ChangePass" asp-controller="Customer" method="post">
+                                    <label for="Old Password" class="mb-2 mt-2">Old Password</label>
+                                    <input asp-for="changePassViewModel.OldPassword" class="form-control mb-2" type="password" placeholder="Old Password">
+                                    <label for="New Password" class="mb-2">New Password</label>
+                                    <input asp-for="changePassViewModel.Password" class="form-control mb-2" type="password" placeholder="Password">
+                                    <label for="Confirm Password" class="mb-2">Confirm Password</label>
+                                    <input asp-for="changePassViewModel.ConfirmPassword" class="form-control mb-2" type="password" placeholder="Confirm Password">
+                                    <button class="export2">Save</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="modal fade" id="row1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Service Details </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>05/10/2022</p>
+                    <p>Duration: 3.5 Hrs</p>
+                    <hr>
+                    <p>Service Id: 8485</p>
+                    <p>Extras: Inside Cabinets</p>
+                    <p>Net Amount:</p>
+                    <hr>
+                    <p>Service Address:</p>
+                    <p>Building Address:</p>
+                    <p>Phone:</p>
+                    <p>Email:</p>
+                    <hr>
+                    <p>Comments:</p>
+                    <hr>
+                </div>
+
+                <div class="modal-footer">
+                    <button class="btn btn-primary export" data-bs-toggle="modal" data-bs-target="#Reschedule">Reschedule</button>
+                    <button class="btn btn-danger export1" data-bs-toggle="modal" data-bs-target="#Cancle">Cancelled
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+</section>

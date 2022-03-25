@@ -13,15 +13,22 @@ namespace HelperLand.Controllers
     {
         public enum status
         {
+            New = 0,
             Completed = 1,
             Canceled = 2,
-            Refunded = 3
+            Refunded = 3,
+            CanceledFromHelper = 4,
+            Pending = 5,
+            Accepted = 6
         }
+        int IdForNew = (int)status.New;
         int IdForCompleted = (int)status.Completed;
         int IdForCanceled = (int)status.Canceled;
         int IdForRefunded = (int)status.Refunded;
-        //private LearnASPNETMVCWithRealAppsEntities db = new LearnASPNETMVCWithRealAppsEntities();
-
+        int IdForCanceledFromHelper = (int)status.CanceledFromHelper;
+        int IdForPending = (int)status.Pending;
+        int IdForAccepted = (int)status.Accepted;
+       
         private readonly HelperLand_DatabaseContext _coreDBContext;
         public Customer(HelperLand_DatabaseContext coreDBContext)
         {
@@ -29,10 +36,10 @@ namespace HelperLand.Controllers
         }
 
 
-        public IActionResult MySetting()
+        public IActionResult Index()
         {
             var id = int.Parse(HttpContext.Session.GetString("UserId"));
-            //var id = 1;
+            
             DashboardViewModel dashboardViewModel = new DashboardViewModel();
             dashboardViewModel.dashboardData = new List<ServiceRequest>();
             dashboardViewModel.serviceHistory = new List<ServiceRequest>();
@@ -81,18 +88,93 @@ namespace HelperLand.Controllers
                 }
             }
 
+            var e=_coreDBContext.Ratings.ToList();
+            dashboardViewModel.ratingDataTable = new List<Rating>();
+            if(e != null)
+            {
+                int i = 0;
+                foreach(var item in e)
+                {
+
+                    dashboardViewModel.ratingDataTable.Add(item);
+                    i++;
+                }
+            }
+
+            dashboardViewModel.userDataAll = new List<User>();
+            var d = _coreDBContext.Users.ToList();
+            if (d != null)
+            {
+                foreach (var item in d)
+                {
+                    dashboardViewModel.userDataAll.Add(item);
+                }
+            }
+
 
             return View(dashboardViewModel);
 
         }
 
 
-        public void MyDetails()
+
+        public IActionResult UserSetting()
         {
             var id = int.Parse(HttpContext.Session.GetString("UserId"));
-            var a = _coreDBContext.Users.Where(x => x.UserId == id).ToList();
 
+            DashboardViewModel dashboardViewModel = new DashboardViewModel();
+            dashboardViewModel.dashboardData = new List<ServiceRequest>();
+            dashboardViewModel.serviceHistory = new List<ServiceRequest>();
+
+            dashboardViewModel.userData = _coreDBContext.Users.Where(x => x.UserId == id).ToList();
+            var a = _coreDBContext.ServiceRequests.Where(x => x.UserId == id).ToList();
+
+            if (a != null)
+            {
+                foreach (var item in a)
+                {
+                    if (item.Status == IdForCanceled || item.Status == IdForRefunded || item.Status == IdForCompleted)
+                    {
+                        dashboardViewModel.serviceHistory.Add(item);
+                    }
+                    else if (item.ServiceStartDate > DateTime.Now)
+                    {
+                        dashboardViewModel.dashboardData.Add(item);
+                    }
+                    else
+                    {
+                        dashboardViewModel.serviceHistory.Add(item);
+                    }
+
+                }
+            }
+
+
+            var b = _coreDBContext.Users.Where(x => x.UserId == id).ToList();
+            dashboardViewModel.userData = new List<User>();
+            if (b != null)
+            {
+                foreach (var item in b)
+                {
+                    dashboardViewModel.userData.Add(item);
+                }
+            }
+
+            var c = _coreDBContext.UserAddresses.Where(x => x.UserId == id).ToList();
+            dashboardViewModel.userAddressData = new List<UserAddress>();
+            if (c != null)
+            {
+                foreach (var item in c)
+                {
+                    dashboardViewModel.userAddressData.Add(item);
+                }
+            }
+
+
+            return View(dashboardViewModel);
         }
+
+       
 
         [HttpPost]
         public IActionResult ChangePass(DashboardViewModel dashboardViewModel)
@@ -106,7 +188,7 @@ namespace HelperLand.Controllers
                 _coreDBContext.SaveChanges();
             }
 
-            return RedirectToAction("MySetting", "Customer");
+            return RedirectToAction("UserSetting", "Customer");
 
         }
 
@@ -125,7 +207,7 @@ namespace HelperLand.Controllers
 
             _coreDBContext.SaveChanges();
 
-            return RedirectToAction("MySetting","Customer");
+            return RedirectToAction("UserSetting","Customer");
 
         }
 
@@ -142,7 +224,7 @@ namespace HelperLand.Controllers
             
             _coreDBContext.SaveChanges();
 
-            return RedirectToAction("MySetting", "Customer");
+            return RedirectToAction("UserSetting", "Customer");
         }
 
 
@@ -155,7 +237,7 @@ namespace HelperLand.Controllers
 
             _coreDBContext.SaveChanges();
 
-            return RedirectToAction("MySetting", "Customer");
+            return RedirectToAction("UserSetting", "Customer");
         }
 
         public IActionResult CancelService(DashboardViewModel dashboardViewModel)
@@ -166,7 +248,41 @@ namespace HelperLand.Controllers
             c[0].Status = IdForCanceled;
 
             _coreDBContext.SaveChanges();
-            return RedirectToAction("MySetting", "Customer");
+            return RedirectToAction("Index", "Customer");
+        }
+
+        public IActionResult RateSP(DashboardViewModel dashboardViewModel)
+        {
+            var id = int.Parse(HttpContext.Session.GetString("UserId"));
+            var ServiceRequestId = dashboardViewModel.rating.servreqid;
+            Models.Rating r =new Models.Rating();
+            r.ServiceRequestId = ServiceRequestId;
+            r.RatingFrom = id;
+            r.RatingTo = dashboardViewModel.rating.serproid;
+            r.RatingDate = DateTime.Now;
+            r.OnTimeArrival = dashboardViewModel.rating.OnTimeArrival;
+            r.Friendly = dashboardViewModel.rating.Friendly;
+            r.QualityOfService = dashboardViewModel.rating.QuantityOfService;
+            r.Ratings = (r.OnTimeArrival + r.Friendly + r.QualityOfService) / 3;
+            r.Comments= dashboardViewModel.rating.comments;
+
+            _coreDBContext.Ratings.Add(r);
+            _coreDBContext.SaveChanges();
+            return RedirectToAction("Index", "Customer");
+        }
+
+        public IActionResult ServiceReschedule(DashboardViewModel dashboardViewModel)
+        {
+            var id = int.Parse(HttpContext.Session.GetString("UserId"));
+            var c = _coreDBContext.ServiceRequests.Where(x => x.ServiceRequestId == dashboardViewModel.ress.serviceRequestId).First();
+            if(c!= null)
+            {
+                c.ModifiedBy = id;
+                c.ModifiedDate= DateTime.Now;
+                c.ServiceStartDate = dashboardViewModel.ress.newDate.Date + dashboardViewModel.ress.newTime.TimeOfDay;
+                _coreDBContext.SaveChanges();
+            }
+            return RedirectToAction("Index", "Customer");
         }
     }
 }
