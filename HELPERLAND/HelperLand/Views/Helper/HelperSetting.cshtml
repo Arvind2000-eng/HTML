@@ -48,14 +48,17 @@
                                         <div class="col">
                                             <label class="mb-2">First name</label>
                                             <input asp-for="uData.FirstName" value=@Model.uData.FirstName class="form-control" placeholder="First name" required/>
+                                            <span asp-validation-for="uData.FirstName" class="text-danger"></span>
                                         </div>
                                         <div class="col">
                                             <label class="mb-2">Last name</label>
                                             <input asp-for="uData.LastName" value=@Model.uData.LastName class="form-control" placeholder="Last name" required/>
+                                            <span asp-validation-for="uData.LastName" class="text-danger"></span>
                                         </div>
                                         <div class="col">
                                             <label class="mb-2">E-mail Address</label>
                                             <input asp-for="uData.Email" value=@Model.uData.Email type="email" class="form-control" placeholder="email address" disabled>
+                                            <span asp-validation-for="uData.Email" class="text-danger"></span>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
@@ -63,12 +66,14 @@
                                             <label for="MobileNumber" class="mb-2">Mobile Number</label>
                                             <div class="input-group">
                                                 <span class="input-group-text" id="inputGroupPrepend2">+91</span>
-                                                <input asp-for="uData.Mobile" value=@Model.uData.Mobile type="text" class="form-control" id="MobileNumber" placeholder="Mobile number" aria-describedby="inputGroupPrepend2" required>
+                                                <input asp-for="uData.Mobile" value=@Model.uData.Mobile type="text" class="form-control" id="MobileNumber" placeholder="Mobile number" required>
+                                                <span asp-validation-for="uData.Mobile" class="text-danger"></span>
                                             </div>
                                         </div>
                                         <div class="col">
                                             <label class="mb-2">Birthday</label>
                                             <input asp-for="uData.DateOfBirth" value=@Model.uData.DateOfBirth type="datetime" id="birthday" class="form-control" required>
+                                            <span asp-validation-for="uData.DateOfBirth" class="text-danger"></span>
                                         </div>
                                         <div class="col">
                                             <label class="mb-2">Nationality</label>
@@ -77,35 +82,37 @@
                                     </div>
                                     <div class="">
                                         <p>Gender</p>
-                                            <input type="radio" id="male" name="gender" value="Male">
-                                            <label for="male">Male</label>
-                                            <input type="radio" id="female" name="gender" value="Female">
-                                            <label for="female">Female</label>
-                                            <input type="radio" id="not" name="gender" value="Not">
-                                            <label for="not">Rather Not to say</label>
-
+                                        <input type="radio" id="male" name="gender" value="Male">
+                                        <label for="male">Male</label>
+                                        <input type="radio" id="female" name="gender" value="Female">
+                                        <label for="female">Female</label>
+                                        <input type="radio" id="not" name="gender" value="Not">
+                                        <label for="not">Rather Not to say</label>
                                     </div>
-
                                     <hr>
                                     <h5>My Address</h5>
                                     <div class="row mt-2">
                                         <div class="col">
                                             <label class="mb-2">Streat Name</label>
                                             <input asp-for="HAddress.AddressLine1" type="text" class="form-control" id="streetNameHelper" placeholder="Street Name" required>
+                                            <span asp-validation-for="HAddress.AddressLine1" class="text-danger"></span>
                                         </div>
                                         <div class="col">
                                             <label class="mb-2">House Number</label>
                                             <input asp-for="HAddress.AddressLine2" type="text" id="houseNumberHelper" class="form-control" placeholder="House Number" required>
+                                            <span asp-validation-for="HAddress.AddressLine2" class="text-danger"></span>
                                         </div>
                                         <div class="col">
                                             <label class="mb-2">Postal Code</label>
                                             <input asp-for="HAddress.PostalCode" type="number" id="postalCodeHelper" class="form-control" placeholder="Postal Code" >
+                                            <span asp-validation-for="HAddress.PostalCode" class="text-danger"></span>
                                         </div>
                                     </div>
                                     <div class="row mt-2">
                                         <div class="col">
                                             <label class="mb-2">City</label>
                                             <input asp-for="HAddress.City" type="text" id="cityHelper" class="form-control" placeholder="City" >
+                                            <span asp-validation-for="HAddress.City" class="text-danger"></span>
                                         </div>
                                     </div>
 
@@ -122,13 +129,30 @@
                                 <form asp-action="ChangePass" asp-controller="Helper" method="post">
                                     <label class="mb-2 mt-2">Old Password</label>
                                     <input asp-for="changePassViewModel.OldPassword" class="form-control mb-2" type="password" placeholder="Old Password" required>
+                                    <span asp-validation-for="changePassViewModel.OldPassword" class="text-danger"></span>
+                                    <br />
                                     <label class="mb-2">New Password</label>
-                                    <input asp-for="changePassViewModel.Password" class="form-control mb-2" type="password" placeholder="Password" required>
+                                    <input asp-for="changePassViewModel.Password" id="psw-user" class="form-control mb-2" type="password" placeholder="Password" required>
+                                    <span asp-validation-for="changePassViewModel.Password" class="text-danger"></span>
+                                    <br />
+                                    <div class="row">
+                                        <div id="message">
+                                              <h6>Password must contain the following:</h6>
+                                              <p id="letter" class="invalid1">A <b>lowercase</b> letter</p>
+                                              <p id="capital" class="invalid1">A <b>capital (uppercase)</b> letter</p>
+                                              <p id="number" class="invalid1">A <b>number</b></p>
+                                              <p id="spesymb" class="invalid1">A <b>Special</b> Symbole like !@@#$%^&*()\-_+.=<>,?/:;|~{}</p>
+                                              <p id="length" class="invalid1">Minimum <b>8 characters</b></p>
+                                        </div>
+                                    </div>
                                     <label class="mb-2">Confirm Password</label>
                                     <input asp-for="changePassViewModel.ConfirmPassword" class="form-control mb-2" type="password" placeholder="Confirm Password" required>
-                                    <input type="submit" value="Save" class="export2"/>
+                                    <span asp-validation-for="changePassViewModel.ConfirmPassword" class="text-danger"></span>
+                                    <br />
+                                    <input type="submit" value="Save" class="export2" />
                                 </form>
                             </div>
+                            
                         </div>
                     </div>
                 </div>

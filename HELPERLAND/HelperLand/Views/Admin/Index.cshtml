@@ -66,41 +66,46 @@
                                 <input class="form-control" type="email" id="Cemail" placeholder="Email">
                             </div>
                             <div class="m-1">
-                                <select class="form-control" id="Ccustomer">
+                                <input class="form-control" type="text" id="Ccustomer" placeholder="Customer"/>
+                                @*<select class="form-control" id="Ccustomer">
                                     <option value="0" selected disabled hidden>Select Customer</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
-                                </select>
+                                </select>*@
                             </div>
                             
                             </div>
                            <div class="user-management-2 d-flex flex-row my-3 flex-wrap">
                                <div class="m-1">
-                                <select class="form-control" name="service-provider" id="Cserviceprovider">
-                                    <option value="0" selected disabled hidden>Select Service Provider</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                </select>
-                            </div>
-                            <div class="m-1">
-                                <select class="form-control" id="Cstatus">
-                                    <option value="0" selected disabled hidden>Select Status</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                </select>
-                            </div>
-                            <div class="m-1">
-                                <select class="form-control" id="Csppaymentstatus">
-                                    <option value="0" selected disabled hidden>SP payment Status</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                </select>
-                            </div>
-                            <div class="m-1">
-                                <input type="checkbox" id="cbhasissue" />
-                                <label for="cbhasissue">Has Issue</label>
-                            </div>
-                            
+                                   <input class="form-control" type="text" id="Cserviceprovider" placeholder="Service Provider" />
+                                    @*<select class="form-control" name="service-provider" id="Cserviceprovider">
+                                        <option value="0" selected disabled hidden>Select Service Provider</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                    </select>*@
+                                </div>
+                                <div class="m-1">
+                                    <input class="form-control" type="text" id="Cstatus" placeholder="Status" />
+                                    @*<select class="form-control" id="Cstatus">
+                                        <option value="0" selected disabled hidden>Select Status</option>
+                                        <option value="1">New</option>
+                                        <option value="2">Cancel</option>
+                                        <option value="3">Accept</option>
+                                        <option value="4">Comleted</option>
+                                    </select>*@
+                                </div>
+                                <div class="m-1">
+                                    <input class="form-control" type="text" id="Csppaymentstatus" placeholder="SP Payment Status" />
+                                    @*<select class="form-control" id="Csppaymentstatus">
+                                        <option value="0" selected disabled hidden>SP payment Status</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                    </select>*@
+                                </div>
+                                <div class="m-1">
+                                    <input type="checkbox" id="cbhasissue" />
+                                    <label for="cbhasissue">Has Issue</label>
+                                </div>
                         </div>
                         <div class="user-management-2 d-flex flex-row my-3 flex-wrap">
                             <div class="m-1">
@@ -121,7 +126,7 @@
                         <table class="table" id="serviceRequestTable">
                             <thead>
                                 <tr class="table-heading">
-                                    <th scope="col">Service Id</th>
+                                    <th id="serviceId" scope="col">Service Id</th>
                                     <th scope="col">Service Date</th>
                                     <th scope="col">Customer details</th>
                                     <th scope="col">Service Provider</th>
@@ -136,7 +141,7 @@
 
                                     var endtime = item.ServiceStartDate.TimeOfDay.Hours + item.ServiceHours;
                                     <tr>
-                                        <td id="serviceId">@Html.DisplayFor(modelItem => item.ServiceId)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.ServiceId)</td>
                                         <td>
                                             <a href="#"><img src="~/images/small-calender-logo/calculator.png"></a>
                                             <span class="date">@item.ServiceStartDate.ToString("dd/MM/yyyy")</span>
@@ -399,40 +404,6 @@
                             </form>
                         }
                     </div>
-
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-
-                    <div class="d-flex flex-row">
-                        <div class="show">Show</div>
-                        <div class="dropdown">
-                            <button class="btn btn-secondary button-dd dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">10
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                <li><a class="dropdown-item" href="#">20</a></li>
-                                <li><a class="dropdown-item" href="#">30</a></li>
-                                <li><a class="dropdown-item" href="#">40</a></li>
-                                <li><a class="dropdown-item" href="#">50</a></li>
-                                <li><a class="dropdown-item" href="#">55</a></li>
-                            </ul>
-                        </div>
-                        <span class="show">entries</span>
-                        <span class="show">Total Record: @Model.totalServiceRequest</span>
-
-                        <div class="d-flex justify-content-end">
-                            <a href="#"><i class="fa fa-step-backward chng-arw"></i></a>
-                            <a href="#"><i class="fa fa-angle-left chng-arw"></i></a>
-                            <span class="chng-num"><a href="#">1</a></span>
-                            <span class="chng-num"><a href="#">2</a></span>
-                            <span class="chng-num"><a href="#">3</a></span>
-                            <span class="chng-num"><a href="#">4</a></span>
-                            <a href="#"><i class="fa fa-angle-right chng-arw"></i></a>
-                            <a href="#"><i class="fa fa-step-forward chng-arw"></i></a>
-                        </div>
-                    </div>
                 </div>
 
 
@@ -453,25 +424,26 @@
 
                         <div class="d-flex flex-row flex-wrap mt-3" style="max-width:1000px;">
                             <div class="m-1">
-                                <input class="form-control" type="text" id="UMusername" placeholder="User name">
+                                <input class="form-control" type="search" id="UMusername" placeholder="User name">
                             </div>
                             <div class="m-1">
-                                <select class="form-control" name="service-provider" id="UMusertype">
-                                    <option value="0" selected disabled hidden>Service Provider</option>
+                                <input class="form-control" type="search" id="UMusertype" placeholder="User Type">
+                                @*<select class="form-control" typeof="search" name="" id="UMusertype">
+                                    <option value="0" selected disabled hidden>User Type</option>
                                     <option value="1">User</option>
                                     <option value="2">Helper</option>
                                     <option value="3">Admin</option>
-                                </select>
+                                </select>*@
                             
                             </div>
-                            <div class="m-1">
+                            @*<div class="m-1">
                                 <input class="form-control" type="text" id="UMphonenumber" placeholder="Phone number">
-                            </div>
+                            </div>*@
                             <div class="m-1">
                                 <input class="form-control" type="text" id="UMzipcode" placeholder="Zip code">
                             </div>
                             <div class="m-1">
-                                <input class="form-control" type="email" id="UMemail" placeholder="Email">
+                                <input class="form-control" type="text" id="UMCity" placeholder="Email">
                             </div>
                             <div class="m-1">
                                 <button class="form-control btn btn-primary" id="search-inside-user-management" style="padding-left:60px;padding-right:60px;">Search</button>
@@ -482,7 +454,7 @@
                         </div>
 
                         <div class="mt-3">
-                            <table class="table">
+                            <table class="table" id="userManagementTable">
                                 <thead>
                                     <tr class="table-heading">
                                         <th scope="col">User Name</th>
@@ -498,7 +470,7 @@
                                 <tbody>
                                     @foreach (var item in Model.userData) {
                                         <tr>
-                                            <td>@Html.DisplayFor(modelItem => item.FirstName)</td>
+                                            <td id="UserName">@Html.DisplayFor(modelItem => item.FirstName)</td>
                                             @if(item.UserTypeId==1)
                                             {
                                                 <td>Customer</td>
@@ -585,33 +557,6 @@
                             </form>
                         </div>
                     </div>
-                    <div class="d-flex flex-row">
-                        <div class="show">Show</div>
-                        <div class="dropdown">
-                            <button class="btn btn-secondary button-dd dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">10
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                <li><a class="dropdown-item" href="#">20</a></li>
-                                <li><a class="dropdown-item" href="#">30</a></li>
-                                <li><a class="dropdown-item" href="#">40</a></li>
-                                <li><a class="dropdown-item" href="#">50</a></li>
-                                <li><a class="dropdown-item" href="#">55</a></li>
-                            </ul>
-                        </div>
-                        <span class="show">entries</span>
-                        <span class="show">Total Record: @Model.totalUsers</span>
-
-                        <div class="d-flex justify-content-end">
-                            <a href="#"><i class="fa fa-step-backward chng-arw"></i></a>
-                            <a href="#"><i class="fa fa-angle-left chng-arw"></i></a>
-                            <span class="chng-num"><a href="#">1</a></span>
-                            <span class="chng-num"><a href="#">2</a></span>
-                            <span class="chng-num"><a href="#">3</a></span>
-                            <span class="chng-num"><a href="#">4</a></span>
-                            <a href="#"><i class="fa fa-angle-right chng-arw"></i></a>
-                            <a href="#"><i class="fa fa-step-forward chng-arw"></i></a>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -624,7 +569,7 @@
 
             $("#clear-inside-user-management").click(function(){
                 $("#UMusername").val(null);
-                $("#UMusertype").val(0);
+                $("#UMusertype").val(null);
                 $("#UMphonenumber").val(null);
                 $("#UMzipcode").val(null);
                 $("#UMemail").val(null);
@@ -635,33 +580,89 @@
                 $("#Cserviceid").val(null);
                 $("#Cpostalcode").val(null);
                 $("#Cemail").val(null);
-                $("#Ccustomer").val(0);
-                $("#Cserviceprovider").val(0);
-                $("#Cstatus").val(0);
-                $("#Csppaymentstatus").val(0);
+                $("#Ccustomer").val(null);
+                $("#Cserviceprovider").val(null);
+                $("#Cstatus").val(null);
+                $("#Csppaymentstatus").val(null);
                 $("#cbhasissue").prop('checked',false);
                 $("#Cfromdate").val("");
                 $("#Ctodate").val("");
-                //alert("ok");
+
             });
             
-
-            const table2=$('#serviceRequestTable').Datatable();
+            $('#serviceRequestTable').DataTable({"dom": 'rt<"bottom"lip><"clear">'});
+            const table1=$('#serviceRequestTable').DataTable();
             $('#search-inside-service-request').click(function(){
-                alert("ok");
+                //alert("ok");
+                var serviceId =$("#Cserviceid").val();
+                var pcode=$("#Cpostalcode").val();
+                var Email=$("#Cemail").val();
+                var customer=$("#Ccustomer").val();
+                var serviceProvider=$("#Cserviceprovider").val();
+                var hasissue=$("#cbhasissue").prop('ckecked');
                 
-                //alert("after table");
-                //var serviceId =$("#serviceId").val();
-                //var status=$("#status").val();
-                //console.log(table2.column([4]).data());
-                //if(serviceId !=null)
-                //{
-                //    table2.column([4]).search(serviceId).draw();
-                //}
-                //if(status != 'Status')
-                //{
-                //    table2.column([0]).search(status).draw();
-                //}
+                if(serviceId !=null)
+                {
+                    console.log(serviceId);
+                    table1.column([0]).search(serviceId).draw();
+                }
+                if(pcode !=null)
+                {
+                    console.log(pcode);
+                    table1.column([2]).search(pcode).draw();
+                }
+                if(Email != null)
+                {
+                    console.log(Email);
+                }
+                if(customer != null)
+                {
+                    console.log(customer);
+                    table1.column([2]).search(customer).draw();
+                }
+                if(serviceProvider != null)
+                {
+                    console.log(serviceProvider);
+                    table1.column([3]).search(serviceProvider).draw();
+                }
+                if(Cstatus!=null)
+                {
+                    //console.log(Cstatus);
+                    //table1.column([4]).search(Cstatus).draw();
+                }
+                if(hasissue==true)
+                {
+                    console.log(hasissue);
+                }
+            });
+
+            $('#userManagementTable').DataTable({"dom": 'rt<"bottom"lip><"clear">'});
+            const table2=$('#userManagementTable').DataTable();
+            $('#search-inside-user-management').click(function(){
+                var UName =$("#UserName").val();
+                var UMPN=$("#UMphonenumber").val();
+                var UMPC=$("#UMzipcode").val();
+                var City=$("#UMCity").val();
+                var UserType=$("#UMusertype").val();
+                
+                if(UName !=null)
+                {
+                    table2.column([0]).search(UName).draw();
+                }
+                
+                if(UMPN != null){
+                    
+                }
+                if(UMPC != null){
+                    table2.column([3]).search(UMPC).draw();
+                }
+                if(City != null){
+                    table2.column([4]).search(City).draw();
+                }
+                if(UserType != null){
+                    console.log(UserType);
+                    table2.column([1]).search(UserType).draw();
+                }
             });
 
         });
