@@ -27,5 +27,11 @@ namespace HelperLand.ViewModels
         public float Total { get; set; }
 
         public int saveHelper { get; set; }
+
+        public bool IdForCabinet { get; set; }
+        public bool IdForFridge { get; set; }
+        public bool IdForOven { get; set; }
+        public bool IdForLaundry { get; set; }
+        public bool IdForWindows { get; set; }
     }
 }

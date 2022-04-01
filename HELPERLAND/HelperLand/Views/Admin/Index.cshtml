@@ -6,6 +6,8 @@
 
     var a = 0;
     var b = 0;
+
+    var row1 = 0;
 }
 
 @model HelperLand.ViewModels.AdminViewModel
@@ -32,384 +34,91 @@
 
 <section class="admin-section table-responsive">
     <div class="container d-flex justify-content-start">
-        <div class="content1 table-responsive">
+        <div class="content1 mt-3">
             <input type="radio" name="slider" checked id="a1" style="display: none;">
             <input type="radio" name="slider" id="a2" style="display: none;">
-            <input type="radio" name="slider" id="a3" style="display: none;">
-            <input type="radio" name="slider" id="a4" style="display: none;">
-            <input type="radio" name="slider" id="a5" style="display: none;">
-            <input type="radio" name="slider" id="a6" style="display: none;">
-            <input type="radio" name="slider" id="a7" style="display: none;">
-            <input type="radio" name="slider" id="a8" style="display: none;">
-            <input type="radio" name="slider" id="a9" style="display: none;">
-            <input type="radio" name="slider" id="a10" style="display: none;">
-            <input type="radio" name="slider" id="a11" style="display: none;">
-            <input type="radio" name="slider" id="a12" style="display: none;">
-            <input type="radio" name="slider" id="a13" style="display: none;">
-
-            <div class="list">
+            <div class="list" style="float:left;">
                 <label for="a1" class="a1">
-                    <span class="title">Service Management</span>
+                    <span class="title">Service Requests</span>
                 </label>
                 <label for="a2" class="a2">
-                    <span class="title">Role Management</span>
-                </label>
-                <label for="a3" class="a3">
-                    <span class="title">Coupon Code Management</span>
-                </label>
-                <label for="a4" class="a4">
-                    <span class="title">Escalation Management</span>
-                </label>
-                <label for="a5" class="a5">
-                    <span class="title">Service_Requests</span>
-                </label>
-                <label for="a6" class="a6">
-                    <span class="title">Service Providers</span>
-                </label>
-                <label for="a7" class="a7">
                     <span class="title">User Management</span>
                 </label>
-                <label for="a8" class="a8">
-                    <span class="title">Finance Module</span>
-                </label>
-                <label for="a9" class="a9">
-                    <span class="title">Zip Code Management</span>
-                </label>
-                <label for="a10" class="a10">
-                    <span class="title">Rating Management</span>
-                </label>
-                <label for="a11" class="a11">
-                    <span class="title">Inquiry Management</span>
-                </label>
-                <label for="a12" class="a12">
-                    <span class="title">Newsletter Management</span>
-                </label>
-                <label for="a13" class="a13">
-                    <span class="title">Content Management</span>
-                </label>
-
+                
                 <span class="none"></span>
                 <div class="slider"></div>
             </div>
 
-            <div class="text-content">
+            <div class="text-content" style="margin-left:10px;">
                 <div class="a1 text">
-                    Service Managemrnt
-                    <div class="table-responsive mt-3">
-                        <table class="table">
-                            <thead>
-                                <tr class="table-heading">
-                                    <th scope="col">Service Id</th>
-                                    <th scope="col">Service Date</th>
-                                    <th scope="col">Customer details</th>
-                                    <th scope="col">Payment</th>
-                                    <th scope="col" class="text-center">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                
-                                    <tr data-bs-toggle="modal" data-bs-target="#row1">
-                                        <td></td>
-                                        <td>
-                                            <a href="#"><img src="~/images/calendar.png"></a>
-                                            <span class="date"></span>
-                                            <br>
-                                            <span><img src="/assets/clock-blue.png">12:00 - 18:00</span>
-                                        </td>
-                                        <td></td>
-                                        <td class="euro"> &euro;
-                                        </td>
-                                        <td>
-                                            <button class="btn btn-primary export" data-bs-toggle="modal" data-bs-target=""></button>
-
-                                        </td>
-                                    </tr>
-                                
-                                
-                            </tbody>
-                        </table>
-                        <form asp-action="CancelService" asp-controller="Customer" method="post">
-                        
-                            <div class="modal fade" id="" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title">Cancle Service Request </h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <p>Why you want to cancle the service request</p>
-                                            <div class="form-floating">
-                                                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
-                                            </div>
-                                        </div>
-                                        <input  />
-                                        <button type="submit" class="btn btn-primary export m-3">Cancle Now</button>
-                                    </div>
-                                </div>
+                    <div class="table-responsive">
+                        <div>
+                            <h5>Service Requests</h5>
+                        </div>
+                        <div class="d-flex flex-row my-3 flex-wrap">
+                            <div class="m-1">
+                                <input class="form-control" type="text" id="Cserviceid" placeholder="Sevice ID">
                             </div>
-                        
-                        </form>
-                    </div>
-                    <div class="d-flex flex-row">
-                        <div class="show">Show</div>
-                        <div class="dropdown">
-                            <button class="btn btn-secondary button-dd dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">10
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                <li><a class="dropdown-item" href="#">20</a></li>
-                                <li><a class="dropdown-item" href="#">30</a></li>
-                                <li><a class="dropdown-item" href="#">40</a></li>
-                                <li><a class="dropdown-item" href="#">50</a></li>
-                                <li><a class="dropdown-item" href="#">55</a></li>
-                            </ul>
-                        </div>
-                        <span class="show">entries</span>
-                        <span class="show">Total Record: 55</span>
-
-                        <div class="d-flex justify-content-end">
-                            <a href="#"><i class="fa fa-step-backward chng-arw"></i></a>
-                            <a href="#"><i class="fa fa-angle-left chng-arw"></i></a>
-                            <span class="chng-num"><a href="#">1</a></span>
-                            <span class="chng-num"><a href="#">2</a></span>
-                            <span class="chng-num"><a href="#">3</a></span>
-                            <span class="chng-num"><a href="#">4</a></span>
-                            <a href="#"><i class="fa fa-angle-right chng-arw"></i></a>
-                            <a href="#"><i class="fa fa-step-forward chng-arw"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="a2 text">
-                    Role Management
-                    <div class="table-responsive mt-3">
-                        <table class="table">
-                            <thead>
-                                <tr class="table-heading">
-                                    <th scope="col">Service Id</th>
-                                    <th scope="col">Service Date</th>
-                                    <th scope="col">Customer details</th>
-                                    <th scope="col">Payment</th>
-                                    <th scope="col" class="text-center">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                
-                                    
-                                    <tr data-bs-toggle="modal" data-bs-target="#row1">
-                                        <td></td>
-                                        <td>
-                                            <a href="#"><img src="~/images/calendar.png"></a>
-                                            <span class="date"></span>
-                                            <br>
-                                            <span><img src="/assets/clock-blue.png">12:00 - 18:00</span>
-                                        </td>
-                                        <td></td>
-                                        <td class="euro"> &euro;
-                                        </td>
-                                        <td>
-                                            <button class="btn btn-primary export" data-bs-toggle="modal" data-bs-target="" >Accept</button>
-
-                                        </td>
-                                    </tr>
-                                
-                                
-                            </tbody>
-                        </table>
-                        
-                        
-                            <form asp-action="NewServiceRequestAccept" asp-controller="Helper" method="post">
+                            <div class="m-1">
+                                <input class="form-control" type="text" id="Cpostalcode" placeholder="Postal Code">
+                            </div>
+                            <div class="m-1">
+                                <input class="form-control" type="email" id="Cemail" placeholder="Email">
+                            </div>
+                            <div class="m-1">
+                                <select class="form-control" id="Ccustomer">
+                                    <option value="0" selected disabled hidden>Select Customer</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                </select>
+                            </div>
                             
-                                    <div class="modal fade" id="" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title">Cancle Service Request </h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <p>Why you want to cancle the service request</p>
-                                                    <div class="form-floating">
-                                                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
-                                                    </div>
-                                                </div>
-                                                <input value="" />
-                                                <button type="submit" class="btn btn-primary export m-3">Accept</button>
-                                            </div>
-                                        </div>
-                                    </div>
+                            </div>
+                           <div class="user-management-2 d-flex flex-row my-3 flex-wrap">
+                               <div class="m-1">
+                                <select class="form-control" name="service-provider" id="Cserviceprovider">
+                                    <option value="0" selected disabled hidden>Select Service Provider</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                </select>
+                            </div>
+                            <div class="m-1">
+                                <select class="form-control" id="Cstatus">
+                                    <option value="0" selected disabled hidden>Select Status</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                </select>
+                            </div>
+                            <div class="m-1">
+                                <select class="form-control" id="Csppaymentstatus">
+                                    <option value="0" selected disabled hidden>SP payment Status</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                </select>
+                            </div>
+                            <div class="m-1">
+                                <input type="checkbox" id="cbhasissue" />
+                                <label for="cbhasissue">Has Issue</label>
+                            </div>
                             
-                            </form>
-                    </div>
-
-                    <div class="d-flex flex-row">
-                        <div class="show">Show</div>
-                        <div class="dropdown">
-                            <button class="btn btn-secondary button-dd dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">10
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                <li><a class="dropdown-item" href="#">20</a></li>
-                                <li><a class="dropdown-item" href="#">30</a></li>
-                                <li><a class="dropdown-item" href="#">40</a></li>
-                                <li><a class="dropdown-item" href="#">50</a></li>
-                                <li><a class="dropdown-item" href="#">55</a></li>
-                            </ul>
                         </div>
-                        <span class="show">entries</span>
-                        <span class="show">Total Record: 55</span>
-
-                        <div class="d-flex justify-content-end">
-                            <a href="#"><i class="fa fa-step-backward chng-arw"></i></a>
-                            <a href="#"><i class="fa fa-angle-left chng-arw"></i></a>
-                            <span class="chng-num"><a href="#">1</a></span>
-                            <span class="chng-num"><a href="#">2</a></span>
-                            <span class="chng-num"><a href="#">3</a></span>
-                            <span class="chng-num"><a href="#">4</a></span>
-                            <a href="#"><i class="fa fa-angle-right chng-arw"></i></a>
-                            <a href="#"><i class="fa fa-step-forward chng-arw"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="a3 text">
-                    Coupen Code Management
-                    <div class="table-responsive mt-3">
-                        <table class="table">
-                            <thead>
-                                <tr class="table-heading">
-                                    <th scope="col">Service Id</th>
-                                    <th scope="col">Service Date</th>
-                                    <th scope="col">Customer details</th>
-                                    <th scope="col">Payment</th>
-                                    <th scope="col">Distance</th>
-                                    <th scope="col" class="text-center">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                
-                                    
-                                    <tr data-bs-toggle="modal" data-bs-target="#row1">
-                                        <td></td>
-                                        <td>
-                                            <a href="#"><img src="~/images/calendar.png"></a>
-                                            <span class="date"></span>
-                                            <br>
-                                            <span><img src="/assets/clock-blue.png">12:00 - 18:00</span>
-                                        </td>
-                                        <td></td>
-                                        <td class="euro"> &euro;
-                                        </td>
-                                        <td></td>
-                                        <td>
-                                            <button class="btn btn-primary export" data-bs-toggle="modal" data-bs-target="">Cancel</button>
-
-                                        </td>
-                                    </tr>
-                               
-                                
-                            </tbody>
-                        </table>
-                        
-                        <form asp-action="UpcommingServiceCancel" asp-controller="Helper" method="post">
-                            
-                                <div class="modal fade" id="" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title">Cancle Service Request </h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <p>Why you want to cancle the service request</p>
-                                                <div class="form-floating">
-                                                    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
-                                                </div>
-                                            </div>
-                                            <input value="" />
-                                            <button type="submit" class="btn btn-primary export m-3">Cancel</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            
-                        </form>
-                    </div>
-
-                    <div class="d-flex flex-row">
-                        <div class="show">Show</div>
-                        <div class="dropdown">
-                            <button class="btn btn-secondary button-dd dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">10
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                <li><a class="dropdown-item" href="#">20</a></li>
-                                <li><a class="dropdown-item" href="#">30</a></li>
-                                <li><a class="dropdown-item" href="#">40</a></li>
-                                <li><a class="dropdown-item" href="#">50</a></li>
-                                <li><a class="dropdown-item" href="#">55</a></li>
-                            </ul>
-                        </div>
-                        <span class="show">entries</span>
-                        <span class="show">Total Record: 55</span>
-
-                        <div class="d-flex justify-content-end">
-                            <a href="#"><i class="fa fa-step-backward chng-arw"></i></a>
-                            <a href="#"><i class="fa fa-angle-left chng-arw"></i></a>
-                            <span class="chng-num"><a href="#">1</a></span>
-                            <span class="chng-num"><a href="#">2</a></span>
-                            <span class="chng-num"><a href="#">3</a></span>
-                            <span class="chng-num"><a href="#">4</a></span>
-                            <a href="#"><i class="fa fa-angle-right chng-arw"></i></a>
-                            <a href="#"><i class="fa fa-step-forward chng-arw"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="a4 text">
-                    Escalation Management
-                </div>
-
-                <div class="a5 text">
-                    service Requests
-                    <div class="table-responsive mt-3">
                         <div class="user-management-2 d-flex flex-row my-3 flex-wrap">
                             <div class="m-1">
-                                <input class="form-control" type="text" placeholder="Sevice ID">
+                                <input class="form-control" type="date" id="Cfromdate" placeholder="From Date">
                             </div>
                             <div class="m-1">
-                                <select class="form-control">
-                                    <option value="0" selected disabled hidden>Costomer</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                </select>
+                                <input class="form-control" type="date" id="Ctodate" placeholder="To Date">
+                            </div>
+                            
+                            <div class="m-1">
+                                <button class="form-control btn btn-primary" id="search-inside-service-request" style="padding-left:60px;padding-right:60px;">Search</button>
                             </div>
                             <div class="m-1">
-                                <select class="form-control" name="service-provider" id="service-provider">
-                                    <option value="none" selected disabled hidden>Service Provider</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                </select>
-                            </div>
-                            <div class="m-1">
-                                <select class="form-control" name="status" id="status">
-                                    <option value="0" selected disabled hidden>Status</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                </select>
-                            </div>
-                            <div class="m-1">
-                                <input class="form-control" type="date" id="from-date" placeholder="From Date">
-                            </div>
-                            <div class="m-1">
-                                <input class="form-control" type="date" id="to-date" placeholder="To Date">
-                            </div>
-                            <div class="m-1">
-                                <button class="form-control" id="search-inside-user-management">Search</button>
-                            </div>
-                            <div class="m-1">
-                                <button class="form-control" id="clear-inside-user-management">clear</button>
+                                <button class="form-control btn btn-danger" id="clear-inside-service-request" style="padding-left:60px;padding-right:60px;">clear</button>
                             </div>
                         </div>
 
-                        <table class="table">
+                        <table class="table" id="serviceRequestTable">
                             <thead>
                                 <tr class="table-heading">
                                     <th scope="col">Service Id</th>
@@ -423,11 +132,11 @@
                             <tbody>
                                 @foreach (var item in Model.serviceRequest) {
                                     b = b + 1;
-                                    var b1 = "dropdown" + b;
+                                    var b1 = "#dropdown" + b;
 
                                     var endtime = item.ServiceStartDate.TimeOfDay.Hours + item.ServiceHours;
                                     <tr>
-                                        <td>@Html.DisplayFor(modelItem => item.ServiceId)</td>
+                                        <td id="serviceId">@Html.DisplayFor(modelItem => item.ServiceId)</td>
                                         <td>
                                             <a href="#"><img src="~/images/small-calender-logo/calculator.png"></a>
                                             <span class="date">@item.ServiceStartDate.ToString("dd/MM/yyyy")</span>
@@ -526,7 +235,7 @@
                                             </div>
                                             
                                         </td>
-                                        <td>
+                                        <td id="status">
                                             @if (item.Status == 0)
                                             {
                                                 <div class="status-button-new">
@@ -563,7 +272,7 @@
                                             <div class=@b1>
                                                 @if (item.Status == Model.IdForCanceled)
                                                 {
-                                                    <form asp-action="ActiveOrDeactiveUser" asp-controller="Admin" method="post">
+                                                   
                                                     <div class="three-dot-button" data-bs-toggle="dropdown">
                                                     </div>
                                                     <ul class="dropdown-menu">
@@ -573,40 +282,40 @@
                                                         <li><a class="dropdown-item" href="#">Download Invoice</a></li>
                                                     </ul>
                                                     <input asp-for="ServiceIdForAction" value=@item.ServiceId class="d-none">
-                                                    </form>
+                                                   
                                                 }
                                                 else if (item.Status == Model.IdForPending)
                                                 {
-                                                    <form asp-action="ActiveOrDeactiveUser" asp-controller="Admin" method="post">
-                                                    <div class="three-dot-button" data-bs-toggle="dropdown">
-                                                    </div>
-                                                    <ul class="dropdown-menu">
-                                                        <li><a class="dropdown-item" href="#">Edit & Reschedule</a></li>
-                                                        <li><a class="dropdown-item" href="#">Refund</a></li>
-                                                        <li><a class="dropdown-item" href="#">Cancel</a></li>
-                                                        <li><a class="dropdown-item" href="#">Change SP</a></li>
-                                                        <li><a class="dropdown-item" href="#">Escalate</a></li>
-                                                        <li><a class="dropdown-item" href="#">History Log</a></li>
-                                                        <li><a class="dropdown-item" href="#">Download Invoice</a></li>
-                                                    </ul>
-                                                    <input asp-for="ServiceIdForAction" value=@item.ServiceId class="d-none">
-                                                    </form>
+                                                    
+                                                        <div class="three-dot-button" data-bs-toggle="dropdown">
+                                                        </div>
+                                                        <ul class="dropdown-menu">
+                                                            <li><button data-bs-toggle="modal" data-bs-target=@b1 type="submit" class="dropdown-item">Edit & Reschedule</button></li>
+                                                            <li><a class="dropdown-item" href="#">Refund</a></li>
+                                                            <li><a class="dropdown-item" href="#">Cancel</a></li>
+                                                            <li><a class="dropdown-item" href="#">Change SP</a></li>
+                                                            <li><a class="dropdown-item" href="#">Escalate</a></li>
+                                                            <li><a class="dropdown-item" href="#">History Log</a></li>
+                                                            <li><a class="dropdown-item" href="#">Download Invoice</a></li>
+                                                        </ul>
+                                                        <input asp-for="ServiceIdForAction" value=@item.ServiceId class="d-none">
+                                                    
                                                 }
                                                 else if (item.Status == Model.IdForNew)
                                                 {
-                                                    <form asp-action="ActiveOrDeactiveUser" asp-controller="Admin" method="post">
-                                                    <div class="three-dot-button" data-bs-toggle="dropdown">
-                                                    </div>
-                                                    <ul class="dropdown-menu">
-                                                        <li><a class="dropdown-item" href="#">Edit & Reschedule</a></li>
-                                                        <li><a class="dropdown-item" href="#">Cancel SR by Cust</a></li>
-                                                        <li><a class="dropdown-item" href="#">Inquiry</a></li>
-                                                        <li><a class="dropdown-item" href="#">History Log</a></li>
-                                                        <li><a class="dropdown-item" href="#">Download Invoice</a></li>
-                                                        <li><a class="dropdown-item" href="#">Other Transactions</a></li>
-                                                    </ul>
-                                                    <input asp-for="ServiceIdForAction" value=@item.ServiceId class="d-none">
-                                                    </form>
+                                                    
+                                                        <div class="three-dot-button" data-bs-toggle="dropdown">
+                                                        </div>
+                                                        <ul class="dropdown-menu">
+                                                            <li><button data-bs-toggle="modal" data-bs-target=@b1 class="dropdown-item">Edit & Reschedule</button></li>
+                                                            <li><a class="dropdown-item" href="#">Cancel SR by Cust</a></li>
+                                                            <li><a class="dropdown-item" href="#">Inquiry</a></li>
+                                                            <li><a class="dropdown-item" href="#">History Log</a></li>
+                                                            <li><a class="dropdown-item" href="#">Download Invoice</a></li>
+                                                            <li><a class="dropdown-item" href="#">Other Transactions</a></li>
+                                                        </ul>
+                                                        <input asp-for="ServiceIdForAction" value=@item.ServiceId class="d-none">
+                                                    
                                                 }
 
                                             </div>
@@ -616,7 +325,79 @@
                                 
                             </tbody>
                         </table>
-                        
+                        @foreach (var item in Model.editServiceFromAdmin) {
+                            row1 = row1 + 1;
+                            var z1 = "dropdown" + row1;
+
+                            var dateDisplay = item.ServiceStartDate.Date.Year.ToString("0000")+"-"+item.ServiceStartDate.Date.Month.ToString("00")+"-"+@item.ServiceStartDate.Date.Day.ToString("00");
+                            var timeDisplay = item.ServiceStartDate.Date.Year.ToString("0000")+"-"+item.ServiceStartDate.Date.Month.ToString("00")+"-"+@item.ServiceStartDate.Date.Day.ToString("00")+" "+@item.ServiceStartDate.TimeOfDay.Hours.ToString("00")+":"+@item.ServiceStartDate.TimeOfDay.Minutes.ToString("00")+":00.000";
+                            <form asp-action="EditAndReschedule" asp-controller="Admin">
+                                <div class="modal fade" id=@z1 data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Edit Service Request</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                               <div class="row">
+                                                   <input class="d-none" asp-for="editServiceRequestFromAdmin.ServiceRequestId" value=@item.ServiceRequestId />
+                                                   <input class="d-none" type="datetime" asp-for="OldServiceDate" value=@timeDisplay />
+                                                   <div class="col">
+                                                       <label>Date</label>
+                                                       <input asp-for="editServiceRequestFromAdmin.ServiceStartDate" value=@dateDisplay type="date" class="form-control" /> 
+                                                    </div>
+
+                                                    <div class="col">
+                                                       <label>Time</label>
+                                                       <input asp-for="editServiceRequestFromAdmin.ServiceStartTime" value="@item.ServiceStartDate.TimeOfDay" type="time" class="form-control" />
+                                                   </div>
+                                               </div>
+                                               <div class="row mt-2">
+                                                   <span><b>Service Address</b></span>
+                                                   <div class="col">
+                                                       <label>Street Name</label>
+                                                       <input asp-for="editServiceRequestFromAdmin.StreetName" value=@item.StreetName type="text" class="form-control" /> 
+                                                    </div>
+
+                                                    <div class="col">
+                                                       <label>House Number</label>
+                                                       <input asp-for="editServiceRequestFromAdmin.HouseNumber" value=@item.HouseNumber type="number" class="form-control" />
+                                                   </div>
+                                               </div>
+                                               <div class="row mt-2">
+                                                   <div class="col">
+                                                       <label>Postal Code</label>
+                                                       <input asp-for="editServiceRequestFromAdmin.PostalCode" value=@item.PostalCode type="number" class="form-control" /> 
+                                                    </div>
+
+                                                    <div class="col">
+                                                       <label>City</label>
+                                                       <input asp-for="editServiceRequestFromAdmin.CityName" value=@item.CityName type="text" class="form-control" />
+                                                   </div>
+                                               </div>
+                                               <div class="row mt-2">
+                                                   <b>Why do you want to reschedule Service request?</b>
+                                                   <div class="col">
+                                                        <textarea class="form-control" placeholder="Why do you want to reschedule Service request?"></textarea>
+                                                    </div>
+                                               </div>
+                                               <div class="row mt-2">
+                                                   <b>Call center EMP Notes</b>
+                                                   <div class="col">
+                                                    <textarea class="form-control" placeholder="Enter Notes"></textarea>
+                                                   </div>
+                                               </div>
+                                            </div>
+
+                                            <div class="modal-footer">
+                                                <button type="submit" class="btn btn-primary">Update</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        }
                     </div>
 
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -654,114 +435,155 @@
                     </div>
                 </div>
 
-                <div class="a6 text">
-                    Service Providers
-                </div>
 
-                <div class="a7 text">
-                    User Management
-                    <div class="table-responsive mt-3">
-                        <table class="table">
-                            <thead>
-                                <tr class="table-heading">
-                                    <th scope="col">User Name</th>
-                                    <th scope="col">User Type</th>
-                                    <th scope="col">Role</th>
-                                    <th scope="col">Postal Code</th>
-                                    <th scope="col">City</th>
-                                    <th scope="col">Radius</th>
-                                    <th scope="col">User Status</th>
-                                    <th scope="col" class="text-center">Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (var item in Model.userData) {
-                                    <tr>
-                                        <td>@Html.DisplayFor(modelItem => item.FirstName)</td>
-                                        @if(item.UserTypeId==1)
-                                        {
-                                            <td>Customer</td>
-                                        }
-                                        else if(item.UserTypeId==2)
-                                        {
-                                            <td>Service Provider</td>
-                                        }
-                                        else if(item.UserTypeId==3)
-                                        {
-                                            <td>Admin</td>
-                                        }
-                                        <td></td>
-                                        <td>@item.ZipCode</td>
-                                        <td>@Model.cityData[a].CityName</td>
-                                        <td>Radius</td>
-                                        
-                                        <td>
-                                            @if (@item.IsActive)
-                                            {
-                                                <div class="status-button-active1"></div>
-                                            }
-                                            else
-                                            {
-                                                <div class="status-button-deactive1"></div>
-                                            }
-                                        </td>
-                                        
-                                        <td>
-                                            @if (item.IsActive == true)
-                                            {
-                                                <form asp-action="ActiveOrDeactiveUser" asp-controller="Admin" method="post">
-                                                <div data-bs-toggle="dropdown" class="three-dot-button"></div>
-                                                <ul class="dropdown-menu">
-                                                    <li><a class="dropdown-item" href="#">Edit</a></li>
-                                                    <li><button type="submit" class="dropdown-item">Deactive</button></li>
-                                                    <li><a class="dropdown-item" href="#">Service History</a></li>
-                                                </ul>
-                                                <input asp-for="UserIdForAD" value=@item.UserId class="d-none">
-                                                </form>
-                                            }
-                                            else if (item.IsActive == false)
-                                            {
-                                                <form asp-action="ActiveOrDeactiveUser" asp-controller="Admin" method="post">
-                                                <div data-bs-toggle="dropdown" class="three-dot-button"></div>
-                                                <ul class="dropdown-menu">
-                                                    <li><a class="dropdown-item" href="#">Edit</a></li>
-                                                    <li><button type="submit" class="dropdown-item">Active</button></li>
-                                                    <li><a class="dropdown-item" href="#">Service History</a></li>
-                                                </ul>
-                                                <input asp-for="UserIdForAD" value=@item.UserId class="d-none">
-                                                </form>
-                                            }
-                                            
-                                        </td>
+                <div class="a2 text">
+                    <div class="table-responsive" style="max-width:1000px;">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h5>User Management</h5>
+                            </div>
+                            <div class="add-new-user-button">
+                                <button type="button" id="add-new-button" class="btn btn-primary">
+                                    <img src="images/add-new-user-plus-symbole/vector-smart-object.png">
+                                    Add New User
+                                </button>
+
+                            </div>
+                        </div>
+
+                        <div class="d-flex flex-row flex-wrap mt-3" style="max-width:1000px;">
+                            <div class="m-1">
+                                <input class="form-control" type="text" id="UMusername" placeholder="User name">
+                            </div>
+                            <div class="m-1">
+                                <select class="form-control" name="service-provider" id="UMusertype">
+                                    <option value="0" selected disabled hidden>Service Provider</option>
+                                    <option value="1">User</option>
+                                    <option value="2">Helper</option>
+                                    <option value="3">Admin</option>
+                                </select>
+                            
+                            </div>
+                            <div class="m-1">
+                                <input class="form-control" type="text" id="UMphonenumber" placeholder="Phone number">
+                            </div>
+                            <div class="m-1">
+                                <input class="form-control" type="text" id="UMzipcode" placeholder="Zip code">
+                            </div>
+                            <div class="m-1">
+                                <input class="form-control" type="email" id="UMemail" placeholder="Email">
+                            </div>
+                            <div class="m-1">
+                                <button class="form-control btn btn-primary" id="search-inside-user-management" style="padding-left:60px;padding-right:60px;">Search</button>
+                            </div>
+                            <div class="m-1">
+                                <button class="form-control btn btn-danger" id="clear-inside-user-management" style="padding-left:60px;padding-right:60px;">clear</button>
+                            </div>
+                        </div>
+
+                        <div class="mt-3">
+                            <table class="table">
+                                <thead>
+                                    <tr class="table-heading">
+                                        <th scope="col">User Name</th>
+                                        <th scope="col">User Type</th>
+                                        <th scope="col">Role</th>
+                                        <th scope="col">Postal Code</th>
+                                        <th scope="col">City</th>
+                                        <th scope="col">Radius</th>
+                                        <th scope="col">User Status</th>
+                                        <th scope="col" class="text-center">Actions</th>
                                     </tr>
-                                    a = a + 1;
-                                }
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.userData) {
+                                        <tr>
+                                            <td>@Html.DisplayFor(modelItem => item.FirstName)</td>
+                                            @if(item.UserTypeId==1)
+                                            {
+                                                <td>Customer</td>
+                                            }
+                                            else if(item.UserTypeId==2)
+                                            {
+                                                <td>Service Provider</td>
+                                            }
+                                            else if(item.UserTypeId==3)
+                                            {
+                                                <td>Admin</td>
+                                            }
+                                            <td></td>
+                                            <td>@item.ZipCode</td>
+                                            <td>@Model.cityData[a].CityName</td>
+                                            <td>Radius</td>
+                                        
+                                            <td>
+                                                @if (@item.IsActive)
+                                                {
+                                                    <div class="status-button-active1"></div>
+                                                }
+                                                else
+                                                {
+                                                    <div class="status-button-deactive1"></div>
+                                                }
+                                            </td>
+                                        
+                                            <td>
+                                                @if (item.IsActive == true)
+                                                {
+                                                    <form asp-action="ActiveOrDeactiveUser" asp-controller="Admin" method="post">
+                                                    <div data-bs-toggle="dropdown" class="three-dot-button"></div>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a class="dropdown-item" href="#">Edit</a></li>
+                                                        <li><button type="submit" class="dropdown-item">Deactive</button></li>
+                                                        <li><a class="dropdown-item" href="#">Service History</a></li>
+                                                    </ul>
+                                                    <input asp-for="UserIdForAD" value=@item.UserId class="d-none">
+                                                    </form>
+                                                }
+                                                else if (item.IsActive == false)
+                                                {
+                                                    <form asp-action="ActiveOrDeactiveUser" asp-controller="Admin" method="post">
+                                                    <div data-bs-toggle="dropdown" class="three-dot-button"></div>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a class="dropdown-item" href="#">Edit</a></li>
+                                                        <li><button type="submit" class="dropdown-item">Active</button></li>
+                                                        <li><a class="dropdown-item" href="#">Service History</a></li>
+                                                    </ul>
+                                                    <input asp-for="UserIdForAD" value=@item.UserId class="d-none">
+                                                    </form>
+                                                }
+                                            
+                                            </td>
+                                        </tr>
+                                        a = a + 1;
+                                    }
                                 
-                            </tbody>
-                        </table>
+                                </tbody>
+                            </table>
                         
-                        <form asp-action="CancelService" asp-controller="Customer" method="post">
+                            <form asp-action="CancelService" asp-controller="Customer" method="post">
                         
-                            <div class="modal fade" id="" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title">Cancle Service Request </h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <p>Why you want to cancle the service request</p>
-                                            <div class="form-floating">
-                                                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+                                <div class="modal fade" id="" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Cancle Service Request </h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
+                                            <div class="modal-body">
+                                                <p>Why you want to cancle the service request</p>
+                                                <div class="form-floating">
+                                                    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+                                                </div>
+                                            </div>
+                                            <input  />
+                                            <button type="submit" class="btn btn-primary export m-3">Cancle Now</button>
                                         </div>
-                                        <input  />
-                                        <button type="submit" class="btn btn-primary export m-3">Cancle Now</button>
                                     </div>
                                 </div>
-                            </div>
                         
-                        </form>
+                            </form>
+                        </div>
                     </div>
                     <div class="d-flex flex-row">
                         <div class="show">Show</div>
@@ -777,7 +599,7 @@
                             </ul>
                         </div>
                         <span class="show">entries</span>
-                        <span class="show">Total Record: 55</span>
+                        <span class="show">Total Record: @Model.totalUsers</span>
 
                         <div class="d-flex justify-content-end">
                             <a href="#"><i class="fa fa-step-backward chng-arw"></i></a>
@@ -791,138 +613,59 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="a8 text">
-                    Finance Module
-                    <div class="row">
-                        <div class="col">
-                            <nav>
-                                <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                    <button class="nav-link active" id="nav-mydetails-tab" data-bs-toggle="tab"
-                                        data-bs-target="#nav-mydetails" type="button" role="tab"
-                                        aria-controls="nav-mydetails" aria-selected="true">My details
-                                    </button>
-                                    
-                                    <button class="nav-link" id="nav-changpass-tab" data-bs-toggle="tab"
-                                        data-bs-target="#nav-changpass" type="button" role="tab"
-                                        aria-controls="nav-changpass" aria-selected="false">Change password
-                                    </button>
-                                </div>
-                            </nav>
-                            <div class="tab-content" id="nav-tabContent">
-                                <div class="tab-pane fade show active" id="nav-mydetails" role="tabpanel" aria-labelledby="nav-mydetails-tab">
-                                    <form asp-action="EditMyDetail" asp-controller="Helper" method="post">
-                                        <h5>Basic Details</h5>
-                                        <div class="row g-3 mt-2">
-                                            <div class="col">
-                                                <label class="mb-2">First name</label>
-                                                <input value="" class="form-control" placeholder="First name" required/>
-                                            </div>
-                                            <div class="col">
-                                                <label class="mb-2">Last name</label>
-                                                <input value="" class="form-control" placeholder="Last name" required/>
-                                            </div>
-                                            <div class="col">
-                                                <label class="mb-2">E-mail Address</label>
-                                                <input value="" type="email" class="form-control" placeholder="email address" disabled>
-                                            </div>
-                                        </div>
-                                        <div class="row mt-2">
-                                            <div class="col">
-                                                <label for="MobileNumber" class="mb-2">Mobile Number</label>
-                                                <div class="input-group">
-                                                    <span class="input-group-text" id="inputGroupPrepend2">+91</span>
-                                                    <input value="" type="text" class="form-control" id="MobileNumber" placeholder="Mobile number" aria-describedby="inputGroupPrepend2" required>
-                                                </div>
-                                            </div>
-                                            <div class="col">
-                                                <label class="mb-2">Birthday</label>
-                                                <input value="" type="datetime" id="birthday" class="form-control" required>
-                                            </div>
-                                            <div class="col">
-                                                <label class="mb-2">Nationality</label>
-                                                <input type="text" id="nation" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="">
-                                            <p>Gender</p>
-                                              <input type="radio" id="male" name="gender" value="Male">
-                                              <label for="male">Male</label>
-                                              <input type="radio" id="female" name="gender" value="Female">
-                                              <label for="female">Female</label>
-                                              <input type="radio" id="not" name="gender" value="Not">
-                                              <label for="not">Rather Not to say</label>
-
-                                        </div>
-
-                                        <hr>
-                                        <h5>My Address</h5>
-                                        <div class="row mt-2">
-                                            <div class="col">
-                                                <label class="mb-2">Streat Name</label>
-                                                <input type="text" class="form-control" id="streetNameHelper" placeholder="Street Name" required>
-                                            </div>
-                                            <div class="col">
-                                                <label class="mb-2">House Number</label>
-                                                <input type="text" id="houseNumberHelper" class="form-control" placeholder="House Number" required>
-                                            </div>
-                                            <div class="col">
-                                                <label class="mb-2">Postal Code</label>
-                                                <input type="number" id="postalCodeHelper" class="form-control" placeholder="Postal Code" >
-                                            </div>
-                                        </div>
-                                        <div class="row mt-2">
-                                            <div class="col">
-                                                <label class="mb-2">City</label>
-                                                <input type="text" id="cityHelper" class="form-control" placeholder="City" >
-                                            </div>
-                                        </div>
-
-                                        <div class="row mt-2">
-                                            <div class="col">
-                                                <button type="submit" class="export2">Save</button>
-                                            </div>
-                                        </div>
-
-                                    </form>
-                                </div>
-                                
-                                <div class="tab-pane fade" id="nav-changpass" role="tabpanel" aria-labelledby="nav-changpass-tab">
-                                    <form asp-action="ChangePass" asp-controller="Helper" method="post">
-                                        <label class="mb-2 mt-2">Old Password</label>
-                                        <input class="form-control mb-2" type="password" placeholder="Old Password" required>
-                                        <label class="mb-2">New Password</label>
-                                        <input class="form-control mb-2" type="password" placeholder="Password" required>
-                                        <label class="mb-2">Confirm Password</label>
-                                        <input class="form-control mb-2" type="password" placeholder="Confirm Password" required>
-                                        <input type="submit" value="Save" class="export2"/>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="a9 text">
-                    Zip Code Management
-                </div>
-
-                <div class="a10 text">
-                    Rating Management
-                </div>
-
-                <div class="a11 text">
-                    Inquiry Management
-                </div>
-
-                <div class="a12 text">
-                    Newsletter Management
-                </div>
-
-                <div class="a13 text">
-                    Content Management
-                </div>
             </div>
         </div>
     </div>
 </section>
+
+@section Scripts{
+    <script>
+        $(document).ready(function(){
+
+            $("#clear-inside-user-management").click(function(){
+                $("#UMusername").val(null);
+                $("#UMusertype").val(0);
+                $("#UMphonenumber").val(null);
+                $("#UMzipcode").val(null);
+                $("#UMemail").val(null);
+                //alert("ok");
+            });
+
+            $("#clear-inside-service-request").click(function(){
+                $("#Cserviceid").val(null);
+                $("#Cpostalcode").val(null);
+                $("#Cemail").val(null);
+                $("#Ccustomer").val(0);
+                $("#Cserviceprovider").val(0);
+                $("#Cstatus").val(0);
+                $("#Csppaymentstatus").val(0);
+                $("#cbhasissue").prop('checked',false);
+                $("#Cfromdate").val("");
+                $("#Ctodate").val("");
+                //alert("ok");
+            });
+            
+
+            const table2=$('#serviceRequestTable').Datatable();
+            $('#search-inside-service-request').click(function(){
+                alert("ok");
+                
+                //alert("after table");
+                //var serviceId =$("#serviceId").val();
+                //var status=$("#status").val();
+                //console.log(table2.column([4]).data());
+                //if(serviceId !=null)
+                //{
+                //    table2.column([4]).search(serviceId).draw();
+                //}
+                //if(status != 'Status')
+                //{
+                //    table2.column([0]).search(status).draw();
+                //}
+            });
+
+        });
+
+
+    </script>
+}

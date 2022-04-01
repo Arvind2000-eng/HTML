@@ -9,6 +9,7 @@
     var HCount = 0;
     var idHelper = "Helper";
     var idsHelper = "";
+    var ServiceId1 = 0;
 }
 
 <section class="book-service">
@@ -222,7 +223,7 @@
 
                                                     }
                                                 </ul>
-                                                <input type="text" id="totalAddress" value=@c disabled/>
+                                                <input class="d-none" type="text" id="totalAddress" value=@c disabled/>
                                                 <div class="scenario1 hide">
                                                     <form>
                                                         <div class="row">
@@ -282,7 +283,7 @@
                                                       @Html.DisplayFor(modelItem => item.FirstName)
                                                       
                                                   }
-                                                  <input type="text" id="totalHelper" value=@HCount disabled/>
+                                                  <input class="d-none" type="text" id="totalHelper" value=@HCount disabled/>
                                               </div>
                                               <div class="text-right">
                                                   <button class="btn btn-primary btn-lg" type="submit">Continue</button>
@@ -422,7 +423,9 @@
         
                                                                 
                                                                 <div class="modal-body">
-                                                                    <h3>Booking has been successfully submitted</h3>
+                                                                    <h4>Booking has been successfully submitted</h4><br />
+                                                                    <h5>Service ID: <b id="ServiceId"></b></h5>
+
                                                                     <div class="d-grid mt-4">
                                                                         <a class="btn btn-primary btn-lg d-block my-1" href='~/Home/Index'>OK</a>
                                                                     </div>
@@ -721,24 +724,31 @@
                     ExtraHours:exh,
                     HavePets:$('#@Html.IdFor(x=>x.scheduleAndPlan.HavePets)').prop('checked')==true,
                     Total:$('#totalprc').text(),
-                    saveHelper:(SaveHelper-1)
+                    saveHelper:(SaveHelper-1),
+                    IdForCabinet:$("#cabinetExtra").prop('checked'),
+                    IdForFridge:$("#fridgeExtra").prop('checked'),
+                    IdForOven:$("#ovenExtra").prop('checked'),
+                    IdForLaundry:$("#laundryExtra").prop('checked'),
+                    IdForWindows:$("#windowsExtra").prop('checked')
                 }
 
-                //alert(model2.StartTime);
+                //alert(model2.IdForLaundry);
+                //alert(model2.IdForFridge);
                 $.ajax({
                     type: 'POST',
                     url: '@Url.Action("SaveScheduleAndPlan", "BookingService")',
                     data: model2,
-                    dataType: "json",
-                    success: function(val1) {
-                        if(val1==2){
+                    dataType: 'JSON',
+                    success: function(response) {
+                        if(response.lesser==1){
                             alert("Date Shoud be Greater than today !");
                         }
-                        else if(val1==1){
+                        else if(response.lesser==0){
                             alert("Time Sould be Greater than current Time !");
                         }
                         else{
-                            alert("Schedule And Plan Saved");
+                            $("#ServiceId").html(response.serviceId)
+                            //alert(val1);
                         }
                         
                     },
@@ -765,7 +775,7 @@
                     data: modelServiceAdd,
                     //dataType: "json",
                     success: function() {
-                        alert("Address Saved !");
+                        //alert("Address Saved !");
                         $(".book-service .navigation .nav-item a.third").removeClass("active");
                         $(".book-service .navigation .nav-item a.forth").addClass("active");
                         $("#yourData").removeClass("active");

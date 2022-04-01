@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using HelperLand.Models;
 
 namespace HelperLand.ViewModels
@@ -20,6 +21,7 @@ namespace HelperLand.ViewModels
 
 
         public int totalServiceRequest { get; set; }
+        public int totalUsers { get; set; }
 
 
 
@@ -42,6 +44,11 @@ namespace HelperLand.ViewModels
 
         public int UserIdForAD { get; set; }
         public int ServiceIdForAction { get; set; }
+
+
+        public List<EditServiceRequestFromAdmin> editServiceFromAdmin { get; set; }
+        public EditServiceRequestFromAdmin editServiceRequestFromAdmin { get; set; }
+        public DateTime OldServiceDate { get; set; }
     }
 
     public class UserCity
@@ -57,6 +64,19 @@ namespace HelperLand.ViewModels
     {
         public int serviceProviderId { get; set; }
         public float totalRatting { get; set; }
+    }
+
+    public class EditServiceRequestFromAdmin
+    {
+        public int? ServiceRequestId { get; set; }
+        public DateTime ServiceStartDate { get; set; }
+        public TimeSpan ServiceStartTime { get; set; }
+        public string StreetName { get; set; }
+        public string HouseNumber { get; set; }
+        public string PostalCode { get; set; }
+        public string CityName { get; set; }
+        public string WhyReschedule { get; set; }
+        public string CallCenterEMP { get; set; }
     }
    
 }

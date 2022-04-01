@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using HelperLand.Models;
 
 namespace HelperLand.ViewModels
@@ -15,6 +16,12 @@ namespace HelperLand.ViewModels
         public int acceptServiceno { get; set; }
         public int upcommingServiceno { get; set; }
 
+        public int totalDashboardCount { get; set; }
+        public int totalNewServicerequestCount { get; set; }
+        public int totalUpcommingServiceCount { get; set; }
+        public int totalServiceSceduleCount { get; set; }
+        public int totalServiceHistoryCount { get; set; }
+
 
 
 
@@ -25,6 +32,16 @@ namespace HelperLand.ViewModels
 
         public UserBasicData userBasicData1 { get; set; }
         public List<UserBasicData> userBasicData { get; set; }
+
+
+        public List<FavoriteAndBlocked> favoriteAndBlockeds { get; set; }
+
+        public List<User> userDataforfandb { get; set; }
+        public int TargetUserId { get; set; }
+
+        public MyrattingData myrate { get; set; }
+        public List<MyrattingData> myrateList { get; set; }
+        public int totalmyRattingData { get; set; }
     }
 
     public class UserBasicData
@@ -38,6 +55,18 @@ namespace HelperLand.ViewModels
         public string AddressLine2 { get; set; }
         public string PostalCode { get; set; }
         public string City { get; set; }
+
+    }
+
+    public class MyrattingData
+    {
+        public int ServiceId { get; set; }
+        public string RattingFrom { get; set; }
+        public float Rate { get; set; }
+        public DateTime ServiceStartDate { get; set; }
+        public DateTime ServiceStartTime { get; set; }
+        public Decimal SubTotalTime { get; set; }
+        public string RattingComment { get; set; }
 
     }
 }

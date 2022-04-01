@@ -90,46 +90,52 @@ namespace HelperLand.Controllers
 
         }
 
-        public void Login()
-        {
-        }
+        
 
         [HttpPost]
         public IActionResult Login(LoginViewModel loginViewModel)
         {
 
             User user = _coreDBContext.Users.Where(x => x.Email == loginViewModel.Email).FirstOrDefault();
+
+            if (user.IsActive == true)
+            {
+                if (user != null && user.Email == loginViewModel.Email && user.Password == loginViewModel.Password && user.UserTypeId == 1)
+                {
+                    HttpContext.Session.SetString("UserId", user.UserId.ToString());
+                    HttpContext.Session.SetString("UserName", user.FirstName);
+                    HttpContext.Session.SetString("UserTypeId", user.UserTypeId.ToString());
+
+                    return RedirectToAction("Index", "Customer");
+                }
+                else if (user != null && user.Email == loginViewModel.Email && user.Password == loginViewModel.Password && user.UserTypeId == 2)
+                {
+                    HttpContext.Session.SetString("UserId", user.UserId.ToString());
+                    HttpContext.Session.SetString("UserName", user.FirstName);
+                    HttpContext.Session.SetString("UserTypeId", user.UserTypeId.ToString());
+
+                    return RedirectToAction("Index", "Helper");
+                }
+                else if (user != null && user.Email == loginViewModel.Email && user.Password == loginViewModel.Password && user.UserTypeId == 3)
+                {
+                    HttpContext.Session.SetString("UserId", user.UserId.ToString());
+                    HttpContext.Session.SetString("UserName", user.FirstName);
+                    HttpContext.Session.SetString("UserTypeId", user.UserTypeId.ToString());
+
+                    return RedirectToAction("Index", "Admin");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Invalid Credentials");
+                    ViewBag.modal = string.Format("invalid");
+                    return View("~/Views/Home/Index.cshtml");
+                }
+            }
+            else 
+            { 
+                return View("~/Views/Home/Index.cshtml"); 
+            }
             
-            if (user != null && user.Email == loginViewModel.Email && user.Password == loginViewModel.Password && user.UserTypeId == 1)
-            {
-                HttpContext.Session.SetString("UserId",user.UserId.ToString());
-                HttpContext.Session.SetString("UserName", user.FirstName);
-                HttpContext.Session.SetString("UserTypeId", user.UserTypeId.ToString());
-
-                return RedirectToAction("Index", "Customer");
-            }
-            else if (user != null && user.Email == loginViewModel.Email && user.Password == loginViewModel.Password && user.UserTypeId == 2)
-            {
-                HttpContext.Session.SetString("UserId",user.UserId.ToString());
-                HttpContext.Session.SetString("UserName", user.FirstName);
-                HttpContext.Session.SetString("UserTypeId", user.UserTypeId.ToString());
-
-                return RedirectToAction("Index", "Helper");
-            }
-            else if (user != null && user.Email == loginViewModel.Email && user.Password == loginViewModel.Password && user.UserTypeId == 3)
-            {
-                HttpContext.Session.SetString("UserId", user.UserId.ToString());
-                HttpContext.Session.SetString("UserName", user.FirstName);
-                HttpContext.Session.SetString("UserTypeId", user.UserTypeId.ToString());
-
-                return RedirectToAction("Index", "Admin");
-            }
-            else
-            {
-                ModelState.AddModelError("", "Invalid Credentials");
-                ViewBag.modal = string.Format("invalid");
-                return View("~/Views/Home/Index.cshtml");
-            }
         
             
         }

@@ -27,11 +27,24 @@ namespace HelperLand.ViewModels
         public ChangePassViewModel changePassViewModel { get; set; }
 
         public List<Rating> ratingDataTable { get; set; }
+
+
+        public List<Rating> RatingData { get; set; }
+        public RattingData rattingdata1 { get; set; }
+        public List<RattingData> rattingdataList { get; set; }
+
+
         public List<Rating1> ratingData { get; set; }
 
         public Rating1 rating { get; set; }
         public RescheduleService ress { get; set; }
         //public List<ServiceProviderDetail> spdData { get; set; }
+
+        public int totalDashboardCount { get; set; }
+        public int totalServiceHistoryCount { get; set; }
+
+        
+        
 
     }
 
@@ -56,6 +69,8 @@ namespace HelperLand.ViewModels
         public DateTime newDate { get; set; }
         public DateTime newTime { get; set; }
     }
+
+    
 
     //public class ServiceProviderDetail
     //{

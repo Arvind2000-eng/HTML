@@ -33,6 +33,22 @@ namespace HelperLand.Controllers
         int IdForPending = (int)status.Pending;
         int IdForAccepted = (int)status.Accepted;
 
+        public enum ExtraServices
+        {
+            Cabinet = 1,
+            Fridge = 2,
+            Oven = 3,
+            Laundry = 4,
+            Windows = 5
+        }
+        int IdForCabinet = (int)ExtraServices.Cabinet;
+        int IdForFridge = (int)ExtraServices.Fridge;
+        int IdForOven = (int)ExtraServices.Oven;
+        int IdForLaundry = (int)ExtraServices.Laundry;
+        int IdForWindows = (int)ExtraServices.Windows;
+
+        public decimal? serviceRate = (decimal)18.0;
+
         private readonly HelperLand_DatabaseContext _coreDBContext;
         public BookingService(HelperLand_DatabaseContext coreDBContext)
         {
@@ -107,7 +123,8 @@ namespace HelperLand.Controllers
 
         }
 
-        public int SaveScheduleAndPlan(ScheduleAndPlanViewModel model2)
+
+        public JsonResult SaveScheduleAndPlan(ScheduleAndPlanViewModel model2)
         {
             var id = int.Parse(HttpContext.Session.GetString("UserId"));
             var b = _coreDBContext.Users.Where(x => x.UserTypeId == 2).ToList();
@@ -117,16 +134,17 @@ namespace HelperLand.Controllers
             //DateTime d2 = d1 + model2.StartTime.TimeOfDay.Minutes;
             if(model2.ServiceStartDate.Date< DateTime.Today.Date)
             {
-                return 2;
+                return Json(new {success=false,lesser=1});
             }
 
             if (model2.ServiceStartDate.Date == DateTime.Today.Date)
             {
                 if (model2.StartTime.TimeOfDay < DateTime.Now.TimeOfDay)
                 {
-                    return 1;
+                    return Json(new { success = false, lesser = 0 });
                 }
             }
+            
             
 
             DateTime starttime = model2.ServiceStartDate.Date + model2.StartTime.TimeOfDay;
@@ -148,10 +166,55 @@ namespace HelperLand.Controllers
             request.Comments = model2.Comments;
             request.ServiceProviderId = b[model2.saveHelper].UserId;
             request.Status=IdForNew;
+            request.ServiceHourlyRate = serviceRate;
 
             _coreDBContext.ServiceRequests.Add(request);
             _coreDBContext.SaveChanges();
-            return 0;
+
+            var j1 = _coreDBContext.ServiceRequests.Where(x => x.ServiceId == (10000 + c.Count + id * 10)).FirstOrDefault();
+            
+            if (model2.IdForCabinet == true)
+            {
+                ServiceRequestExtra sre = new ServiceRequestExtra();
+                sre.ServiceRequestId = j1.ServiceRequestId;
+                sre.ServiceExtraId = IdForCabinet;
+                _coreDBContext.ServiceRequestExtras.Add(sre);
+                _coreDBContext.SaveChanges();
+            }
+            if (model2.IdForFridge == true)
+            {
+                ServiceRequestExtra sre = new ServiceRequestExtra();
+                sre.ServiceRequestId = j1.ServiceRequestId;
+                sre.ServiceExtraId = IdForFridge;
+                _coreDBContext.ServiceRequestExtras.Add(sre);
+                _coreDBContext.SaveChanges();
+            }
+            if (model2.IdForOven == true)
+            {
+                ServiceRequestExtra sre = new ServiceRequestExtra();
+                sre.ServiceRequestId = j1.ServiceRequestId;
+                sre.ServiceExtraId = IdForOven;
+                _coreDBContext.ServiceRequestExtras.Add(sre);
+                _coreDBContext.SaveChanges();
+            }
+            if (model2.IdForLaundry == true)
+            {
+                ServiceRequestExtra sre = new ServiceRequestExtra();
+                sre.ServiceRequestId = j1.ServiceRequestId;
+                sre.ServiceExtraId = IdForLaundry;
+                _coreDBContext.ServiceRequestExtras.Add(sre);
+                _coreDBContext.SaveChanges();
+            }
+            if (model2.IdForWindows == true)
+            {
+                ServiceRequestExtra sre = new ServiceRequestExtra();
+                sre.ServiceRequestId = j1.ServiceRequestId;
+                sre.ServiceExtraId = IdForWindows;
+                _coreDBContext.ServiceRequestExtras.Add(sre);
+                _coreDBContext.SaveChanges();
+            }
+
+            return Json(new { success = true,serviceId = request.ServiceId });
         }
 
 
@@ -162,9 +225,10 @@ namespace HelperLand.Controllers
 
             var a = _coreDBContext.UserAddresses.Where(x => x.UserId == id).ToList();
             var c = _coreDBContext.ServiceRequests.Where(x => x.UserId == id).ToList();
+            
 
             //For Service Request Id..........///////////////
-            int serId = 10000 - 1 + c.Count + id * 10;
+            int serId = 9999 + c.Count + id * 10;
             var c1=_coreDBContext.ServiceRequests.Where(x=>x.ServiceId == serId).First();
             ServiceRequestAddress serviceRequestAddress = new ServiceRequestAddress();
 

@@ -3131,84 +3131,6 @@ a .power-button {
     background-color: #f2f4f5;
 }
 
-.admin-section
-.admin-right-block
-.user-management {
-    width: 1200px;
-    margin: 20px;
-}
-
-.user-management
-.user-management-1
-.add-new-user-button button {
-    height: 36px;
-    border-radius: 4px;
-    background-color: #1fb6ff;
-    border-style: none;
-    text-align: center;
-    color: white
-}
-
-.user-management
-.user-management-1
-.add-new-user-button button
-img {
-    padding-right: 4px;
-    padding-bottom: 3px;
-}
-
-.admin-section
-.admin-right-block
-.user-management
-.user-management-1 h3 {
-    margin-top: 0px;
-}
-
-.user-management
-.user-management-2 {
-    display: flex;
-    justify-content: space-between;
-    margin: 15px 0;
-}
-
-.user-management
-.user-management-2
-#search-inside-user-management {
-    height: 46px;
-    width: 84px;
-    background-color: #1fb6ff;
-    color: white;
-    text-align: center;
-    border-style: none;
-}
-
-.user-management
-.user-management-2
-#clear-inside-user-management {
-    height: 46px;
-    width: 84px;
-    text-align: center;
-    border-style: none;
-}
-
-.user-management-2
-.box-1 {
-    width: 205px;
-    height: 46px;
-    padding-left: 10px;
-    border: solid 1px #dedddd;
-    background-color: var(--white);
-}
-
-.user-management-2
-.box-2 {
-    width: 140px;
-    height: 46px;
-    padding-left: 10px;
-    border: solid 1px #dedddd;
-    background-color: var(--white);
-}
-
 .admin-section .admin-left-block
 table {
     background: white;
@@ -3305,31 +3227,8 @@ table tr td a {
         display: block;
     }
 
-    .admin-section
-    .admin-right-block
-    .user-management
-    .user-management-1 h3 {
-        font-size: 22px;
-    }
 }
 
-@media (max-width:1388px) {
-
-
-    .admin-section
-    .admin-right-block
-    .user-management {
-        width: auto;
-        min-width: 800px;
-    }
-
-    .user-management
-    .user-management-2 {
-        flex-wrap: wrap;
-        margin-bottom: 20px;
-        margin-top: 20px;
-    }
-}
 
 .status-button-active1:after {
     content: 'Active';
@@ -3684,15 +3583,6 @@ textarea.form-control {
     padding: 15px 34px;
 }
 
-.btn-primary {
-    background: #6da9b5;
-    border: none !important;
-    font-size: 16px;
-    line-height: 24px;
-    color: #fff !important;
-    transition: all .3s ease;
-    padding: 11px 25px;
-}
 
 .btn {
     border-radius: 50px;
@@ -4086,7 +3976,6 @@ textarea.form-control {
 
 .content1 {
     display: flex;
-    align-items: center;
     justify-content: space-between;
 }
 
@@ -4504,17 +4393,8 @@ textarea.form-control {
 
 /************Admin slider*************/
 #a1:checked ~ .list label.a1,
-#a2:checked ~ .list label.a2,
-#a3:checked ~ .list label.a3,
-#a4:checked ~ .list label.a4,
-#a5:checked ~ .list label.a5,
-#a6:checked ~ .list label.a6,
-#a7:checked ~ .list label.a7,
-#a8:checked ~ .list label.a8,
-#a9:checked ~ .list label.a9,
-#a10:checked ~ .list label.a10,
-#a11:checked ~ .list label.a11,
-#a12:checked ~ .list label.a12{
+#a2:checked ~ .list label.a2
+ {
     color: #fff;
 }
 
@@ -4524,60 +4404,11 @@ textarea.form-control {
 #a2:checked ~ .list .slider {
     top: 60px;
 }
-#a3:checked ~ .list .slider {
-    top: 120px;
-}
-#a4:checked ~ .list .slider {
-    top: 180px;
-}
-#a5:checked ~ .list .slider {
-    top: 240px;
-}
-#a6:checked ~ .list .slider {
-    top: 300px;
-}
-#a7:checked ~ .list .slider {
-    top: 360px;
-}
-#a8:checked ~ .list .slider {
-    top: 420px;
-}
-#a9:checked ~ .list .slider {
-    top: 480px;
-}
-#a10:checked ~ .list .slider {
-    top: 540px;
-}
-#a11:checked ~ .list .slider {
-    top: 600px;
-}
-#a12:checked ~ .list .slider {
-    top: 660px;
-}
-
 
 #a1:checked ~ .text-content .a1,
-#a2:checked ~ .text-content .a2,
-#a3:checked ~ .text-content .a3,
-#a4:checked ~ .text-content .a4,
-#a5:checked ~ .text-content .a5,
-#a6:checked ~ .text-content .a6,
-#a7:checked ~ .text-content .a7,
-#a8:checked ~ .text-content .a8,
-#a9:checked ~ .text-content .a9,
-#a10:checked ~ .text-content .a10,
-#a11:checked ~ .text-content .a11,
-#a12:checked ~ .text-content .a12 {
+#a2:checked ~ .text-content .a2{
     display: block;
 }
-
-
-
-
-
-
-
-
 
 
 
@@ -4613,6 +4444,8 @@ textarea.form-control {
         display:none;
     }
 }
+
+
 
 
 

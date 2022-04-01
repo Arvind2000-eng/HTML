@@ -29,7 +29,7 @@
     </div>
 </section>
 <section class="service-section table-responsive">
-    <div class="container container-fluid d-flex justify-content-center">
+    <div class="container container-fluid d-flex justify-content-start">
         <div class="content1 table-responsive">
             <input type="radio" name="slider" checked id="dashboard" style="display: none;">
             <input type="radio" name="slider" id="service-history" style="display: none;">
@@ -61,7 +61,7 @@
                 </span>
                 <div class="slider"></div>
             </div>
-            <div class="text-content">
+            <div class="text-content" style="margin-left:10px;">
                 <div class="dashboard text">
                     <span class="service-header">Current Service Requests</span>
                     <a asp-action="BookService" asp-controller="BookingService" class="addServiceExport">Add New Service Request</a>
@@ -97,7 +97,79 @@
                                                 @endtime.ToString("00") : @item.ServiceStartDate.TimeOfDay.Minutes.ToString("00")
                                                 </span>
                                         </td>
-                                        <td>@Html.DisplayFor(modelItem => item.ServiceProvider.FirstName) @Html.DisplayFor(modelItem => item.ServiceProvider.LastName)</td>
+                                        <td>
+                                            <div class="d-flex">
+                                                @*<div class="hate-circle">
+                                                    <img src="~/images/black-white-hat-logo/forma-1.png">
+                                                </div>*@
+                                                <div class="hate-circle-writting">
+                                                    @Html.DisplayFor(modelItem => item.ServiceProvider.FirstName) @Html.DisplayFor(modelItem => item.ServiceProvider.LastName)
+                                                        
+                                                    @*@foreach(var item1 in Model.rattingdataList)
+                                                    {
+                                                        if (item1.serviceProviderId == item.ServiceProviderId)
+                                                        {
+                                                        
+                                                        if (item1.totalRatting >= 4.5)
+                                                        {
+                                                            <br>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                        }
+                                                        else if (item1.totalRatting >= 3.5)
+                                                        {
+                                                            <br>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star unchecked"></span>
+                                                        }
+                                                        else if (item1.totalRatting >= 2.5)
+                                                        {
+                                                            <br>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star unchecked"></span>
+                                                            <span class="fa fa-star unchecked"></span>
+                                                        }
+                                                        else if (item1.totalRatting >= 1.5)
+                                                        {
+                                                            <br>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star unchecked"></span>
+                                                            <span class="fa fa-star unchecked"></span>
+                                                            <span class="fa fa-star unchecked"></span>
+                                                        }
+                                                        else if (item1.totalRatting >= 0.5)
+                                                        {
+                                                            <br>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star unchecked"></span>
+                                                            <span class="fa fa-star unchecked"></span>
+                                                            <span class="fa fa-star unchecked"></span>
+                                                            <span class="fa fa-star unchecked"></span>
+                                                        }
+                                                        else
+                                                        {
+                                                            <br>
+                                                            <span class="fa fa-star unchecked"></span>
+                                                            <span class="fa fa-star unchecked"></span>
+                                                            <span class="fa fa-star unchecked"></span>
+                                                            <span class="fa fa-star unchecked"></span>
+                                                            <span class="fa fa-star unchecked"></span>
+                                                        }
+                                                    }
+                                                    }*@
+                                                    
+                                                </div>
+                                            </div>
+                                        </td>
                                         <td class="euro">@Html.DisplayFor(modelItem => item.TotalCost) &euro;
                                         </td>
                                         <td>
@@ -120,7 +192,7 @@
                             RescheduleId2=RescheduleId2+1;
                             var y = "#Reschedule" + RescheduleId2;
 
-                            <form asp-action="CancelService" asp-controller="Customer" method="post">
+                            @*<form>*@
                                 <div class="modal fade" id=@z1 data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered">
                                         <div class="modal-content">
@@ -134,7 +206,7 @@
                                                 <hr>
                                                 <p>Service Id: @item.ServiceId</p>
                                                 <p>Extras: Inside Cabinets</p>
-                                                <p>Net Amount:</p>
+                                                <p>Net Amount:@item.SubTotal</p>
                                                 <hr>
                                                 <p>Service Address:</p>
                                                 <p>Building Address:</p>
@@ -146,14 +218,13 @@
                                             </div>
 
                                             <div class="modal-footer">
-                                                <button class="btn btn-primary export" data-bs-toggle="modal" data-bs-target=@y>Reschedule</button>
-                                                <button class="btn btn-danger export1" data-bs-toggle="modal" data-bs-target=@x>Cancelled
-                                                </button>
+                                                <button class="btn btn-primary export" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target=@y>Reschedule</button>
+                                                <button class="btn btn-danger export1" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target=@x>Cancelled</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </form>
+                            @*</form>*@
                         }
 
                         <form asp-action="CancelService" asp-controller="Customer" method="post">
@@ -231,7 +302,7 @@
                             </ul>
                         </div>
                         <span class="show">entries</span>
-                        <span class="show">Total Record: 55</span>
+                        <span class="show">Total Record: @Model.totalDashboardCount</span>
 
                         <div class="d-flex justify-content-end">
                             <a href="#"><i class="fa fa-step-backward chng-arw"></i></a>
@@ -278,15 +349,113 @@
                                         </span>
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.ServiceProvider.FirstName) @Html.DisplayFor(modelItem => item.ServiceProvider.LastName)
+                                        <div class="d-flex">
+                                                @*<div class="hate-circle">
+                                                    <img src="~/images/black-white-hat-logo/forma-1.png">
+                                                </div>*@
+                                                <div class="hate-circle-writting">
+                                                    @Html.DisplayFor(modelItem => item.ServiceProvider.FirstName) @Html.DisplayFor(modelItem => item.ServiceProvider.LastName)
+                                                        
+                                                    @*@foreach(var item1 in Model.rattingdataList)
+                                                    {
+                                                        if (item1.serviceProviderId == item.ServiceProviderId)
+                                                        {
+                                                        @*<p>@item1.totalRatting</p>*@
+                                                        @*if (item1.totalRatting >= 4.5)
+                                                        {
+                                                            <br>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                        }
+                                                        else if (item1.totalRatting >= 3.5)
+                                                        {
+                                                            <br>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star unchecked"></span>
+                                                        }
+                                                        else if (item1.totalRatting >= 2.5)
+                                                        {
+                                                            <br>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star unchecked"></span>
+                                                            <span class="fa fa-star unchecked"></span>
+                                                        }
+                                                        else if (item1.totalRatting >= 1.5)
+                                                        {
+                                                            <br>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star unchecked"></span>
+                                                            <span class="fa fa-star unchecked"></span>
+                                                            <span class="fa fa-star unchecked"></span>
+                                                        }
+                                                        else if (item1.totalRatting >= 0.5)
+                                                        {
+                                                            <br>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star unchecked"></span>
+                                                            <span class="fa fa-star unchecked"></span>
+                                                            <span class="fa fa-star unchecked"></span>
+                                                            <span class="fa fa-star unchecked"></span>
+                                                        }
+                                                        else
+                                                        {
+                                                            <br>
+                                                            <span class="fa fa-star unchecked"></span>
+                                                            <span class="fa fa-star unchecked"></span>
+                                                            <span class="fa fa-star unchecked"></span>
+                                                            <span class="fa fa-star unchecked"></span>
+                                                            <span class="fa fa-star unchecked"></span>
+                                                        }
+                                                    }
+                                                    }*@
+                                                    
+                                                </div>
+                                            </div>
                                     </td>
                                     <td class="euro">
                                         @Html.DisplayFor(modelItem => item.TotalCost) &euro;
                                     </td>
                                     <td>
-                                        <span class="btn btn-primary cancelled">
-                                            <div>Cancelled</div>
-                                        </span>
+                                        @if (item.Status == 0)
+                                        {
+                                            <div class="status-button-new">
+                                            </div>
+                                        }
+                                        else if(item.Status==1)
+                                        {
+                                            <div class="status-button-completed">
+                                            </div>
+                                        }
+                                        else if(item.Status==5)
+                                        {
+                                            <div class="status-button-pending">
+                                            </div>
+                                        }
+                                        else if(item.Status==2 || item.Status==4)
+                                        {
+                                            <div class="status-button-cancelled">
+                                            </div>
+                                        }
+                                        else if (item.Status == 3)
+                                        {
+                                            <div class="status-button-refunded">
+                                            </div>
+                                        }
+                                        else if (item.Status == 6)
+                                        {
+                                            <div class="status-button-accepted">
+                                            </div>
+                                        }
+                                            
                                     </td>
                                     <td>
                                         @{
@@ -306,7 +475,7 @@
                                         }
                                         @if (x == 1)
                                         {
-                                            <span class="rate-sp" disabled>Rate SP</span>
+                                            <span class="rate-sp" style="background-color: #9d4d4d;" disabled>Ratted</span>
                                         }
                                         else
                                         {
@@ -400,7 +569,7 @@
                             </ul>
                         </div>
                         <span class="show">entries</span>
-                        <span class="show">Total Record: 55</span>
+                        <span class="show">Total Record: @Model.totalServiceHistoryCount</span>
                         <div class="d-flex justify-content-end">
                             <a href="#"><i class="fa fa-step-backward chng-arw"></i></a>
                             <a href="#"><i class="fa fa-angle-left chng-arw"></i></a>
@@ -417,6 +586,8 @@
                 <div class="service-schedule text">
                    
                 </div>
+
+
 
             </div>
         </div>

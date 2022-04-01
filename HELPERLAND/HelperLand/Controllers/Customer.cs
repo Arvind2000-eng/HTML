@@ -67,6 +67,8 @@ namespace HelperLand.Controllers
                 }
             }
 
+            dashboardViewModel.totalDashboardCount = dashboardViewModel.dashboardData.Count;
+            dashboardViewModel.totalServiceHistoryCount = dashboardViewModel.serviceHistory.Count;
 
             var b = _coreDBContext.Users.Where(x => x.UserId == id).ToList();
             dashboardViewModel.userData = new List<User>();
@@ -110,6 +112,62 @@ namespace HelperLand.Controllers
                     dashboardViewModel.userDataAll.Add(item);
                 }
             }
+
+
+            /////////////////rating Start //////////////////////////
+            dashboardViewModel.RatingData = new List<Rating>();
+            dashboardViewModel.rattingdataList = new List<RattingData>();
+
+            var rat = _coreDBContext.Ratings.ToList();
+            var u = _coreDBContext.ServiceRequests.ToList();
+
+            var hId = new List<int?>();
+            hId.Add(u[0].ServiceProviderId);
+            for (int i = 0; i < u.Count; i++)
+            {
+                if (hId.Count != 0)
+                {
+                    var k = 0;
+                    for (int j = 0; j < hId.Count; j++)
+                    {
+                        if (u[i].ServiceProviderId == hId[j])
+                        {
+                            k = 1;
+                            break;
+                        }
+                    }
+                    if (k == 0)
+                    {
+                        hId.Add(u[i].ServiceProviderId);
+                    }
+                }
+            }
+
+
+            if (rat != null)
+            {
+                for (var i = 0; i < hId.Count; i++)
+                {
+                    var k = 0;
+                    float sum = 0;
+                    for (var j = 0; j < rat.Count; j++)
+                    {
+                        if (hId[i].Value == rat[j].RatingTo)
+                        {
+                            sum = sum + (float)rat[j].Ratings;
+                            k++;
+                        }
+                    }
+                    dashboardViewModel.rattingdata1 = new RattingData();
+                    dashboardViewModel.rattingdata1.totalRatting = sum / k;
+                    dashboardViewModel.rattingdata1.serviceProviderId = hId[i].Value;
+
+                    dashboardViewModel.rattingdataList.Add(dashboardViewModel.rattingdata1);
+                }
+            }
+            ///////////////////Rating End///////////////////////
+            ///
+
 
 
             return View(dashboardViewModel);
